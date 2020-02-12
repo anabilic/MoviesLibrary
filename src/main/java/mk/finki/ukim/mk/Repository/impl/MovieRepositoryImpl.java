@@ -1,0 +1,63 @@
+package mk.finki.ukim.mk.Repository.impl;
+
+import mk.finki.ukim.mk.Model.Actor;
+import mk.finki.ukim.mk.Model.Genre;
+import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Repository.MovieRepository;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Profile("jpa")
+@Repository
+public class MovieRepositoryImpl implements MovieRepository {
+
+    private final JpaMovieRepository jpaMovieRepository;
+
+
+    public MovieRepositoryImpl(JpaMovieRepository jpaMovieRepository) {
+        this.jpaMovieRepository = jpaMovieRepository;
+    }
+
+    @Override
+    public List<Movie> getAllMovies() {
+        return this.jpaMovieRepository.findAll();
+    }
+
+    @Override
+    public Movie save(Movie movie) {
+        return this.jpaMovieRepository.save(movie);
+    }
+
+    @Override
+    public void delete(Long id) {
+        this.jpaMovieRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Movie> findById(Long id) {
+        return this.jpaMovieRepository.findById(id);
+    }
+
+    @Override
+    public List<Actor> checkActors(List<String> actors) {
+        return this.jpaMovieRepository.checkActor(actors);
+    }
+
+    @Override
+    public List<Genre> checkGenres(List<String> genres) {
+        return this.jpaMovieRepository.checkGenres(genres);
+    }
+
+    @Override
+    public Movie findByName(String name) {
+        return this.jpaMovieRepository.findByName(name);
+    }
+
+    @Override
+    public Movie checkIfMovieExists(String name) {
+        return this.jpaMovieRepository.checkIfMovieExists(name);
+    }
+}
