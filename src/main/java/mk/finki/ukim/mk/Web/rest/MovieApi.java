@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -63,14 +64,16 @@ public class MovieApi {
                                       @RequestParam(value = "director",required = false) String director ,
                                       @RequestParam(value = "runningTime" , required = false) String runningTime,
                                       @RequestParam(value="plot",required=false) String plot,
-                                      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime releaseInformation,
+                                      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) String releaseInformation,
                                       @RequestParam(value = "originalLanguage",required = false) String originalLanguage,
                                       @RequestParam(value = "likes",required = false) Integer likes,
                                       @RequestParam(value="actors",required = false) List<String> actors,
                                       @RequestParam(value = "genres",required = false) List<String> genres,
                                       @RequestParam(value = "file",required = false) MultipartFile file) throws IOException {
 
-        Movie newMovie = this.movieService.createMovieWithImage(name,director,runningTime,plot,releaseInformation,originalLanguage,likes,file.getBytes(),actors,genres);
+        LocalDateTime localDate = LocalDateTime.parse(releaseInformation);
+
+        Movie newMovie = this.movieService.createMovieWithImage(name,director,runningTime,plot,localDate,originalLanguage,likes,file.getBytes(),actors,genres);
         return newMovie;
     }
 

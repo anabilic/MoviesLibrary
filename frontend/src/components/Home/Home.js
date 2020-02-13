@@ -29,7 +29,7 @@ class Home extends Component{
             this.setState((prevState) => {
                 return{
                     "movies": response.data,
-                    "heroImage": response.data[0],
+                    "heroImage": response.data[4],
                     "loading":false
                 }
             })
@@ -40,13 +40,14 @@ class Home extends Component{
     render() {
 
          const { movies, heroImage, loading, searchTerm } = this.state;
+
          console.log(movies);
         return (
             <div className="rmdb-home">
                 {heroImage ?
                     <div>
                         <HeroImage
-                            image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${heroImage.image}`}
+                            image={`data:image/jpeg;base64,${heroImage.file}`}
                             title={heroImage.name}
                             text={heroImage.plot}
                         />
@@ -61,7 +62,8 @@ class Home extends Component{
                             <MovieThumb
                                 key={i}
                                 clickable={true}
-                                image={element.image ? `${IMAGE_BASE_URL}${POSTER_SIZE}${element.image}` : './images/no_image.jpg'}
+                                // img src={`data:image/jpeg;base64,${this.props.book.file}`}  alt="" className="card-img-top imgWidthAndHeight"/>
+                                image={element.file ? `data:image/jpeg;base64,${element.file}` : './images/no_image.jpg'}
                                 movieId={element.id}
                                 movieName={element.name}
                             />

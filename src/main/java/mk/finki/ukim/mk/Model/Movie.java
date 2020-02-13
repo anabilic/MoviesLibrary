@@ -39,8 +39,9 @@ public class Movie {
 
     private Boolean deleted = false;
 
+
+
     @Lob
-    @JsonIgnore
     private byte[] file;
 
     @JsonIgnore

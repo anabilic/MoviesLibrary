@@ -12,6 +12,7 @@ import './App.css';
 import AddMovie from "../elements/AddMovie/AddMovie";
 import EditMovie from "../elements/EditMovie/EditMovie";
 import MovieService from "../../repository/axiosMovieRepository";
+import AddMovieClass from "../elements/AddMovie/AddMovieClass";
 
 class App extends React.Component {
 
@@ -105,7 +106,7 @@ class App extends React.Component {
                         <Route path="/" component={Home} exact/>
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
-                        <Route path="/addMovie" render={()=><AddMovie onNewMovieAdded={this.createMovie()}/> } />
+                        <Route path="/addMovie" render={()=><AddMovieClass onNewMovieAddedWithImg={this.createMovie}/> }/>
                         <Route path="/editMovie" component={EditMovie} exact />
                     </Switch>
             </Router>

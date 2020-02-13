@@ -4,7 +4,6 @@ import axios from '../../../custom-axios/axios';
 import './AddMovie.css'
 import { useHistory} from 'react-router-dom';
 
-
 const AddMovie = () => {
 
     const history = useHistory();
@@ -107,6 +106,8 @@ const AddMovie = () => {
             }
         }
 
+        setGenreSelect=genreValue;
+
 
         var actor = [];
         actor = e.target.language;
@@ -117,12 +118,15 @@ const AddMovie = () => {
             }
         }
 
+        setActorSelect=actorValue;
+
+
         const formData = new FormData();
-        // formData.append('name',e.target.name.value);
-        // formData.append('director',e.target.director.value);
-        // formData.append('runningTime',e.target.runningTime.value);
-        // formData.append('language');
-        // formData.append('releaseInformation',e.target.releaseInformation.value);
+         formData.append('name',e.target.name.value);
+         formData.append('director',e.target.director.value);
+         formData.append('runningTime',e.target.runningTime.value);
+         formData.append('language');
+         formData.append('releaseInformation',e.target.releaseInformation.value);
         // formData.append('genre',genreValue);
         // formData.append('actors',actorValue);
         // formData.append('file', e.target.files[0]);
@@ -142,55 +146,56 @@ const AddMovie = () => {
                 <br/>
 
                 <div className="field">
-                    <label  style={{color:'#800000',fontSize:'medium'}}>Name</label>
+                    <label id="name" style={{color:'#800000',fontSize:'medium'}}>Name</label>
                     <div className="">
-                        <input type="text" name={"name"} placeholder="Enter movie name..." style={{fontStyle:'italic'}}/>
+                        <input type="text" name={"name"} id="name" placeholder="Enter movie name..." style={{fontStyle:'italic'}}/>
                     </div>
                 </div>
                 <br/>
 
                 <div className="field">
-                    <label  style={{color:'#800000',fontSize:'medium'}}>Director/s:</label>
+                    <label id="director" style={{color:'#800000',fontSize:'medium'}}>Director/s:</label>
                     <div className="field">
-                        <input type="text" name={"director"} placeholder="Enter director/s..." style={{fontStyle:'italic'}}/>
+                        <input type="text" name="director" id="director" placeholder="Enter director/s..." style={{fontStyle:'italic'}}/>
                     </div>
                 </div>
+
                 <br/>
 
                 <div className="two fields">
                     <div className="field">
                         <label  style={{color:'#800000',fontSize:'medium'}}>Original Language</label>
-                        <Dropdown style={{fontStyle:'italic'}} name="language" text='Select language...' fluid multiple selection options={options} />
+                        <Dropdown style={{fontStyle:'italic'}} name={"language"} id="language" text='Select language...' fluid multiple selection options={options} />
                     </div>
 
                     <div className="field">
                         <label style={{color:'#800000',fontSize:'medium'}}>Running Time:</label>
-                        <input type="text" name="runningTime" placeholder="Enter running time..." style={{fontStyle:'italic'}}/>
+                        <input type="text" name={"runningTime"} id="runningTime" placeholder="Enter running time..." style={{fontStyle:'italic'}}/>
                     </div>
                 </div>
                 <br/>
 
                 <div className="field">
                     <label  style={{color:'#800000',fontSize:'medium'}}>Plot</label>
-                    <textarea name="plot" style={{fontStyle:'italic'}} placeholder="Enter plot..."></textarea>
+                    <textarea name={"plot"} id="plot" style={{fontStyle:'italic'}} placeholder="Enter plot..."></textarea>
                 </div>
                 <br/>
 
                 <div className="field">
                     <label  style={{color:'#800000',fontSize:'medium'}}>Release Information:</label>
-                    <input name="releaseInformation" type="datetime-local" style={{fontStyle:'italic'}}/>
+                    <input name={"releaseInformation"} id="releaseInformation" type="datetime-local" style={{fontStyle:'italic'}}/>
                 </div>
                 <br/>
 
                 <div className="field">
                     <label  style={{color:'#800000',fontSize:'medium'}}>Genre</label>
-                    <Dropdown name="genre" style={{fontStyle:'italic'}} text='Select genres...' fluid multiple selection options={items} />
+                    <Dropdown name={"genre"} id="genre" style={{fontStyle:'italic'}} text='Select genres...' fluid multiple selection options={items} />
                 </div>
                 <br/>
 
                 <div className="field">
                     <label  style={{color:'#800000',fontSize:'medium'}}>Actors</label>
-                    <Dropdown name="actors" style={{fontStyle:'italic'}} text='Select actors...' fluid multiple selection options={item} />
+                    <Dropdown name={"actors"} id="actor" style={{fontStyle:'italic'}} text='Select actors...' fluid multiple selection options={item} />
                 </div>
                 <br/>
 
@@ -198,7 +203,7 @@ const AddMovie = () => {
                     <div className="field">
                         <label  style={{color:'#800000',fontSize:'medium'}}>Image</label>
                         <div className="field">
-                            <input type="file" name={"file"} placeholder="Image" style={{fontStyle:'italic'}} />
+                            <input type="file" name={"file"} id="file" placeholder="Image" style={{fontStyle:'italic'}} />
                         </div>
                     </div>
                 </div>
@@ -208,7 +213,7 @@ const AddMovie = () => {
                 <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
                     <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Save</button>
                     <div className="or"></div>
-                    <button className="ui button"  style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Cancel</button>
+                    <button className="ui button" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Cancel</button>
                 </div>
             </form>
             </div>
