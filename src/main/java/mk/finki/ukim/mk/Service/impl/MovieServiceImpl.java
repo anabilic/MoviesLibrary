@@ -3,12 +3,13 @@ package mk.finki.ukim.mk.Service.impl;
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.User;
 import mk.finki.ukim.mk.Model.exceptions.MovieAlreadyExists;
 import mk.finki.ukim.mk.Repository.MovieRepository;
+import mk.finki.ukim.mk.Repository.UserRepository;
 import mk.finki.ukim.mk.Service.MovieService;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +19,11 @@ public class MovieServiceImpl implements MovieService {
 
     private final MovieRepository movieRepository;
 
-    public MovieServiceImpl(MovieRepository movieRepository) {
+    private final UserRepository userRepository;
+
+    public MovieServiceImpl(MovieRepository movieRepository, UserRepository userRepository) {
         this.movieRepository = movieRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -48,7 +52,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie createMovieWithImage(String name, String director, String runningTime,String plot,LocalDateTime releaseInformation, String originalLanguage, Integer Likes, byte[] file, List<String> actors, List<String> genres) {
+    public Movie createMovieWithImage(String name, String director, String runningTime,String plot,LocalDateTime releaseInformation, String originalLanguage, Integer Likes, byte[] file, List<String> actors, List<String> genres,String user) {
 
         Movie movie=this.movieRepository.checkIfMovieExists(name);
 
@@ -57,7 +61,11 @@ public class MovieServiceImpl implements MovieService {
             List<Actor> movieActors = this.movieRepository.checkActors(actors);
             List<Genre> movieGenres = this.movieRepository.checkGenres(genres);
 
+            User USER = this.userRepository.findByUsername(user);
+
+
             movie = new Movie();
+            movie.getId();
             movie.setName(name);
             movie.setDirector(director);
             movie.setRunningTime(runningTime);
@@ -68,7 +76,7 @@ public class MovieServiceImpl implements MovieService {
             movie.setActors(movieActors);
             movie.setGenres(movieGenres);
             movie.setFile(file);
-
+            movie.setUser(USER);
             return movieRepository.save(movie);
 
         }
@@ -108,6 +116,8 @@ public class MovieServiceImpl implements MovieService {
 
         List<Actor> movieActors = this.movieRepository.checkActors(actors);
         List<Genre> movieGenres = this.movieRepository.checkGenres(genres);
+
+
 
         movie.setDirector(director);
         movie.setRunningTime(runningTime);

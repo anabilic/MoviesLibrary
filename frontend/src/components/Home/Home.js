@@ -41,15 +41,15 @@ class Home extends Component{
 
          const { movies, heroImage, loading, searchTerm } = this.state;
 
-         console.log(movies);
-        return (
+         return (
             <div className="rmdb-home">
                 {heroImage ?
                     <div>
                         <HeroImage
-                            image={`data:image/jpeg;base64,${heroImage.file}`}
+                            image={`./images/Movie-Poster.jpg`}
                             title={heroImage.name}
                             text={heroImage.plot}
+                            style={{width: '1200px'}}
                         />
                         <SearchBar />
                     </div> : null}
@@ -62,7 +62,6 @@ class Home extends Component{
                             <MovieThumb
                                 key={i}
                                 clickable={true}
-                                // img src={`data:image/jpeg;base64,${this.props.book.file}`}  alt="" className="card-img-top imgWidthAndHeight"/>
                                 image={element.file ? `data:image/jpeg;base64,${element.file}` : './images/no_image.jpg'}
                                 movieId={element.id}
                                 movieName={element.name}

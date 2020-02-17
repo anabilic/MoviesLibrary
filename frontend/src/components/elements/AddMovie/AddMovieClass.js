@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { Dropdown } from 'semantic-ui-react';
+import {Dropdown, List} from 'semantic-ui-react';
 import './AddMovie.css'
 import ActorService from "../../../repository/axiosActorRepository";
 import GenreService from "../../../repository/axiosGenreRepository";
@@ -57,9 +57,9 @@ class AddMovieClass extends Component {
             options: [],
             selectedTeam: '',
             selectedFile:null,
-            languageSelected:{},
-            genreSelected:{},
-            actorSelected:{},
+            languageSelected:[],
+            genreSelected:[],
+            actorSelected:[],
             pom:[]
         };
     }
@@ -133,104 +133,87 @@ class AddMovieClass extends Component {
     onFormSubmit = (e) => {
 
         e.preventDefault();
-
-        // var language=[];
-        // language = e.target.options;
-        // console.log(language);
-        // var value = [];
-        // for (let i = 0, l = language.length; i < l; i++) {
-        //     if (language[i].selected) {
-        //         value.push(language[i].value);
-        //     }
-        // }
-        //
-        // this.setState((prevState) => {
-        //     return {
-        //         "languageSelected": value
-        //     }
-        // });
-        //
-        // var genre =[];
-        // genre = e.target.language;
-        // var genreValue = [];
-        // for (let i = 0, l = genre.length; i < l; i++) {
-        //     if (genre[i].selected) {
-        //         genreValue.push(genre[i].value);
-        //     }
-        // }
-        //
-        // this.setState((prevState) => {
-        //     return {
-        //         "genreSelected": genreValue
-        //     }
-        // });
-        //
-        //
-        //
-        // var actor = [];
-        // actor = e.target.language;
-        // var actorValue = [];
-        // for (let i = 0, l = actor.length; i < l; i++) {
-        //     if (actor[i].selected) {
-        //         actorValue.push(actor[i].value);
-        //     }
-        // }
-        //
-        // this.setState((prevState) => {
-        //     return {
-        //         "actorSelected": actorValue
-        //     }
-        // });
         
         const formData = new FormData();
         formData.append('name',e.target.name.value);
         formData.append('director',e.target.director.value);
         formData.append('runningTime',e.target.runningTime.value);
         formData.append('plot',e.target.plot.value);
-        formData.append('language',this.state.languageSelected);
+        //formData.append('language',this.state.languageSelected);
         formData.append('releaseInformation',e.target.releaseInformation.value);
         formData.append('genre',this.state.genreSelected);
         formData.append('actors',this.state.actorSelected);
         formData.append('file', this.state.selectedFile);
-        console.log('Form data:' + formData);
-        console.log('Selected File ' + this.state.selectedFile);
+        formData.append('user',this.props.User);
+        console.log(this.state.actorSelected);
+
         this.props.onNewMovieAddedWithImg(formData);
 
     };
 
 
-    getValueLanguage = (event, {value}) => {
-        console.log(value);
-        let text = event.target.textContent;
-        console.log(text);
+    // getValueLanguage = (event, {value}) => {
+    //     console.log(value);
+    //     let text = event.target.textContent;
+    //     //console.log(text);
+    //
+    //     this.setState({languageSelected:{value}});
+    //     console.log(this.state.languageSelected);
+    //
+    // };
 
-        this.setState({languageSelected:value});
+    // getValueActors = (event, {value}) => {
+    //     console.log(value);
+    //     let text = event.target.textContent;
+    //   //  console.log(text);
+    //
+    //     this.setState({actorSelected:{value}});
+    //
+    // };
+    //
+    // getValueGenres = (event, {value}) => {
+    //     console.log(value);
+    //     let text = event.target.textContent;
+    //     console.log(text);
+    //    this.setState({genreSelected:value});
+    //     console.log('State genre: ' + this.state.genreSelected);
+    // };
+
+    handleChange = (e, { value }) => {
+        if (this.state.languageSelected.length > value.length) { // an item has been removed
+            const difference = this.state.languageSelected.filter(
+                x => !value.includes(x),
+            );
+            console.log(difference); // this is the item
+            return false;
+        }
+        return this.setState({ languageSelected: value });
     };
 
-    getValueActors = (event, {value}) => {
-        console.log(value);
-        let text = event.target.textContent;
-        console.log(text);
-
-        this.setState({actorSelected:value});
+    handleChangeActors = (e, { value }) => {
+        if (this.state.actorSelected.length > value.length) { // an item has been removed
+            const difference = this.state.actorSelected.filter(
+                x => !value.includes(x),
+            );
+            console.log(difference); // this is the item
+            return false;
+        }
+        return this.setState({ actorSelected: value });
     };
 
-    getValueGenres = (event, {value}) => {
-        console.log(value);
-        let text = event.target.textContent;
-        console.log(text);
-
-        this.setState({genreSelected:value});
+    handleChangeGenres = (e, { value }) => {
+        if (this.state.genreSelected.length > value.length) { // an item has been removed
+            const difference = this.state.genreSelected.filter(
+                x => !value.includes(x),
+            );
+            console.log(difference); // this is the item
+            return false;
+        }
+        return this.setState({ genreSelected: value });
     };
 
     render() {
-        console.log('State: ' + this.state.actorSelected);
-        console.log('State Language: ' + this.state.languageSelected);
-        console.log('State Genre' + this.state.genreSelected);
 
-       // const pomosna = this.state.options.map(({ KEY, ID , LANGUAGE }) => ({ key:KEY, value: ID, text: LANGUAGE }));
-
-       // console.log('Pom: ' + pomosna);
         return(
             <div className="container">
                 <div style={{borderColor: 'black', boxShadow: '5px 10px 18px 5px black'}} className="card">
@@ -259,14 +242,19 @@ class AddMovieClass extends Component {
                     <br/>
 
                     <div className="two fields">
-                        <div className="field">
-                            <label style={{color: '#800000', fontSize: 'medium'}}>Original Language</label>
-                            <Dropdown style={{fontStyle: 'italic'}} name={"language"} id="language"
-                                      text='Select language...'
-                                      onChange={this.getValueLanguage}
-                                      renderLabel={({ text }) => text}
-                                      fluid multiple selection options={this.state.options} />
-                        </div>
+                        {/*<div className="field">*/}
+                        {/*    <label style={{color: '#800000', fontSize: 'medium'}}>Original Language</label>*/}
+                        {/*    <Dropdown style={{fontStyle: 'italic'}}*/}
+                        {/*              name={"language"}*/}
+                        {/*              id="language"*/}
+                        {/*              text='Select language...'*/}
+                        {/*              onChange={this.handleChange}*/}
+                        {/*              fluid*/}
+                        {/*              multiple*/}
+                        {/*              selection*/}
+                        {/*              options={this.state.options} />*/}
+                        {/*</div>*/}
+
 
                         <div className="field">
                             <label style={{color: '#800000', fontSize: 'medium'}}>Running Time:</label>
@@ -294,7 +282,7 @@ class AddMovieClass extends Component {
                         <label style={{color: '#800000', fontSize: 'medium'}}>Genre</label>
                         <Dropdown name={"genre"} id="genre" style={{fontStyle: 'italic'}} text='Select genres...' fluid
                                   multiple selection
-                                  onChange={this.getValueGenres}
+                                  onChange={this.handleChangeGenres}
                                   renderLabel={({ text }) => text}
                                   options={this.makeGenresKeys()}/>
                     </div>
@@ -304,8 +292,9 @@ class AddMovieClass extends Component {
                         <label style={{color: '#800000', fontSize: 'medium'}}>Actors</label>
                         <Dropdown name={"actors"} id="actor" style={{fontStyle: 'italic'}} text='Select actors...' fluid
                                   multiple selection
-                                  onChange={this.getValueActors}
-                                  renderLabel={({ text }) => text}                                  options={this.makeActorsKeys()}/>
+                                  onChange={this.handleChangeActors}
+                                  renderLabel={({ text }) => text}
+                                  options={this.makeActorsKeys()}/>
                     </div>
                     <br/>
 

@@ -9,7 +9,6 @@ import {createBrowserHistory} from 'history';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import './App.css';
-import AddMovie from "../elements/AddMovie/AddMovie";
 import EditMovie from "../elements/EditMovie/EditMovie";
 import MovieService from "../../repository/axiosMovieRepository";
 import AddMovieClass from "../elements/AddMovie/AddMovieClass";
@@ -32,24 +31,18 @@ class App extends React.Component {
         });
     }
 
-    createMovie=(movie)=>{
-        MovieService.addMovie(movie).then((response)=>{
-            const movie = response.data;
-            console.log(response+"img");
+     createMovie= async (movie) => {
+         await MovieService.addMovie(movie).then((response) => {
+             const movie = response.data;
 
-            this.setState((prevState) => {
-                const newMovieRef = [...prevState.movies, movie];
-                //or
-                //const terms = prevState.terms.concat(newTerm);
-
-                return {
-                    "movies": newMovieRef
-                }
-            });
-        });
-    };
-
-
+             this.setState((prevState) => {
+                 const newMovieRef = [...prevState.movies, movie];
+                 return {
+                     "movies": newMovieRef
+                 }
+             });
+         });
+     };
 
     logout() {
         UserService.logOut().then(data => {
@@ -62,7 +55,9 @@ class App extends React.Component {
     }
 
     render() {
+
         const {history, currentUser} = this.state;
+
         return (
 
             <Router history={history}>
@@ -106,7 +101,7 @@ class App extends React.Component {
                         <Route path="/" component={Home} exact/>
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
-                        <Route path="/addMovie" render={()=><AddMovieClass onNewMovieAddedWithImg={this.createMovie}/> }/>
+                        <Route path="/addMovie" render={()=><AddMovieClass User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
                         <Route path="/editMovie" component={EditMovie} exact />
                     </Switch>
             </Router>

@@ -40,7 +40,6 @@ public class Movie {
     private Boolean deleted = false;
 
 
-
     @Lob
     private byte[] file;
 

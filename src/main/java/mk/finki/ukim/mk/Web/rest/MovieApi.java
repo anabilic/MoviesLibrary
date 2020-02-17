@@ -1,17 +1,17 @@
 package mk.finki.ukim.mk.Web.rest;
 
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.User;
 import mk.finki.ukim.mk.Service.GenreService;
 import mk.finki.ukim.mk.Service.MovieService;
+import mk.finki.ukim.mk.Service.UserService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -25,9 +25,12 @@ public class MovieApi {
 
     private final GenreService genreService;
 
-    public MovieApi(MovieService movieService, GenreService genreService) {
+    private final UserService userService;
+
+    public MovieApi(MovieService movieService, GenreService genreService, UserService userService) {
         this.movieService = movieService;
         this.genreService = genreService;
+        this.userService = userService;
     }
 
     @GetMapping("/{id}")
@@ -65,15 +68,23 @@ public class MovieApi {
                                       @RequestParam(value = "runningTime" , required = false) String runningTime,
                                       @RequestParam(value="plot",required=false) String plot,
                                       @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) String releaseInformation,
-                                      @RequestParam(value = "originalLanguage",required = false) String originalLanguage,
+                                      @RequestParam(value = "originalLanguage",required = false)  List<String> originalLanguage,
                                       @RequestParam(value = "likes",required = false) Integer likes,
                                       @RequestParam(value="actors",required = false) List<String> actors,
                                       @RequestParam(value = "genres",required = false) List<String> genres,
+                                      @RequestParam(value = "user",required = false) String user,
                                       @RequestParam(value = "file",required = false) MultipartFile file) throws IOException {
 
         LocalDateTime localDate = LocalDateTime.parse(releaseInformation);
+        String listString = "";
 
-        Movie newMovie = this.movieService.createMovieWithImage(name,director,runningTime,plot,localDate,originalLanguage,likes,file.getBytes(),actors,genres);
+        for (String s : originalLanguage)
+        {
+            listString += s + ",";
+        }
+
+
+        Movie newMovie = this.movieService.createMovieWithImage(name,director,runningTime,plot,localDate,listString,likes,file.getBytes(),actors,genres,user);
         return newMovie;
     }
 
@@ -84,7 +95,7 @@ public class MovieApi {
                                     @RequestParam(value = "runningTime" , required = false) String runningTime,
                                     @RequestParam(value="plot",required=false) String plot,
                                     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime releaseInformation,
-                                    @RequestParam(value = "originalLanguage",required = false) String originalLanguage,
+                                    @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
                                     @RequestParam(value = "likes",required = false) Integer likes,
                                     @RequestParam(value="actors",required = false) List<String> actors,
                                     @RequestParam(value = "genres",required = false) List<String> genres,
@@ -101,7 +112,7 @@ public class MovieApi {
                            @RequestParam(value = "runningTime" , required = false) String runningTime,
                            @RequestParam(value="plot",required=false) String plot,
                            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime releaseInformation,
-                           @RequestParam(value = "originalLanguage",required = false) String originalLanguage,
+                           @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
                            @RequestParam(value = "likes",required = false) Integer likes,
                            @RequestParam(value="actors",required = false) List<String> actors,
                            @RequestParam(value = "genres",required = false) List<String> genres){
