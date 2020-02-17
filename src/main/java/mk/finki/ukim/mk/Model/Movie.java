@@ -44,11 +44,19 @@ public class Movie {
     private byte[] file;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany
+    @JoinTable(
+            name = "actors_movies",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<Actor> actors;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany
+    @JoinTable(
+            name = "genres_movies",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre>  genres;
 
     @JsonIgnore

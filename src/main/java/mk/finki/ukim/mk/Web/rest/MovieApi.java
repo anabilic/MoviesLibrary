@@ -1,7 +1,6 @@
 package mk.finki.ukim.mk.Web.rest;
 
 import mk.finki.ukim.mk.Model.Movie;
-import mk.finki.ukim.mk.Model.User;
 import mk.finki.ukim.mk.Service.GenreService;
 import mk.finki.ukim.mk.Service.MovieService;
 import mk.finki.ukim.mk.Service.UserService;
@@ -13,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,23 +68,16 @@ public class MovieApi {
                                       @RequestParam(value = "runningTime" , required = false) String runningTime,
                                       @RequestParam(value="plot",required=false) String plot,
                                       @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) String releaseInformation,
-                                      @RequestParam(value = "originalLanguage",required = false)  List<String> originalLanguage,
+                                      @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
                                       @RequestParam(value = "likes",required = false) Integer likes,
-                                      @RequestParam(value="actors",required = false) List<String> actors,
-                                      @RequestParam(value = "genres",required = false) List<String> genres,
+                                      @RequestParam(value="actors",required = false) ArrayList<String> actors,
+                                      @RequestParam(value = "genres",required = false) ArrayList<String> genres,
                                       @RequestParam(value = "user",required = false) String user,
                                       @RequestParam(value = "file",required = false) MultipartFile file) throws IOException {
 
         LocalDateTime localDate = LocalDateTime.parse(releaseInformation);
-        String listString = "";
 
-        for (String s : originalLanguage)
-        {
-            listString += s + ",";
-        }
-
-
-        Movie newMovie = this.movieService.createMovieWithImage(name,director,runningTime,plot,localDate,listString,likes,file.getBytes(),actors,genres,user);
+        Movie newMovie = this.movieService.createMovieWithImage(name,director,runningTime,plot,localDate,originalLanguage,likes,file.getBytes(),actors,genres,user);
         return newMovie;
     }
 

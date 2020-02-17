@@ -9,7 +9,7 @@ const FourColGrid = ({ header, loading, children }) => {
             <div key={i} className="rmdb-grid-element">
                 {element}
             </div>
-        ))
+        ));
         return gridElements;
     };
 

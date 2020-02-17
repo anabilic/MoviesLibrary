@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //starts authorizing configurations.
                 .authorizeRequests()
                 //ignoring the guest's urls...
-                .antMatchers(HttpMethod.POST, "/movie/image").permitAll()
+                //.antMatchers(HttpMethod.POST, "/movie/image").permitAll()
                 .antMatchers("/resources/**", "/error", "/user/**", "/genre","/genre/**","/actor","/actor/**","/movie","/movie/**").permitAll()
                 //authenticate all remaining URLs.
                 .anyRequest().fullyAuthenticated()

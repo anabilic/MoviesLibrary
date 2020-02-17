@@ -5,6 +5,6 @@ const Spinner = () => (
     <div>
         <p>Spinner</p>
     </div>
-)
+);
 
 export default Spinner;

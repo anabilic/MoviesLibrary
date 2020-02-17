@@ -3,7 +3,7 @@ import React from 'react';
 
 const MovieInfoBar = () => {
 
-    return <h1>MovieInfoBar compoment</h1>
+    return <h1>MovieInfoBar component</h1>
 
 };
 

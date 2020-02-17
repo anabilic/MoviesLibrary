@@ -1,7 +1,6 @@
 package mk.finki.ukim.mk.Service;
 
 import mk.finki.ukim.mk.Model.Movie;
-import mk.finki.ukim.mk.Model.User;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,7 +12,7 @@ public interface MovieService {
 
     Movie createMovie(String name, String director, String runningTime,String plot, LocalDateTime releaseInformation,  String originalLanguage, Integer Likes, List<String> actors, List<String> genres);
 
-    Movie createMovieWithImage(String name, String director, String runningTime,String plot, LocalDateTime releaseInformation, String originalLanguage, Integer Likes, byte[] file, List<String> actors, List<String> genres, String user);
+    Movie createMovieWithImage(String name, String director, String runningTime, String plot, LocalDateTime releaseInformation, String originalLanguage, Integer Likes, byte[] file, List<String> actors, List<String> genres, String user);
 
     Movie editMovie(String name, String director, String runningTime,String plot, LocalDateTime releaseInformation, String originalLanguage, Integer Likes, List<String> actors, List<String> genres);
 

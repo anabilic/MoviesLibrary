@@ -13,6 +13,8 @@ public interface MovieRepository {
 
     Movie save(Movie movie);
 
+    Movie saveAndFlash(Movie movie);
+
     void delete(Long id);
 
     Optional<Movie> findById(Long id);

@@ -32,6 +32,11 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
     @Override
+    public Movie saveAndFlash(Movie movie) {
+        return this.jpaMovieRepository.saveAndFlush(movie);
+    }
+
+    @Override
     public void delete(Long id) {
         this.jpaMovieRepository.deleteById(id);
     }

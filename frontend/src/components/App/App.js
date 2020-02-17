@@ -1,17 +1,17 @@
 import React from 'react';
 import { Router, Link, Route, Switch} from 'react-router-dom';
+import {createBrowserHistory} from 'history';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUser} from "@fortawesome/free-solid-svg-icons";
 import Home from '../Home/Home';
 import LogIn from "../Security/LogIn/LogIn";
 import Register from "../Security/Register/Register";
 import UserService from "../../repository/axiosUserRepository";
 import {User} from '../../model/User';
-import {createBrowserHistory} from 'history';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUser} from "@fortawesome/free-solid-svg-icons";
-import './App.css';
 import EditMovie from "../elements/EditMovie/EditMovie";
+import AddMovie from "../elements/AddMovie/AddMovie";
 import MovieService from "../../repository/axiosMovieRepository";
-import AddMovieClass from "../elements/AddMovie/AddMovieClass";
+import './App.css';
 
 class App extends React.Component {
 
@@ -101,7 +101,7 @@ class App extends React.Component {
                         <Route path="/" component={Home} exact/>
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
-                        <Route path="/addMovie" render={()=><AddMovieClass User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
+                        <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
                         <Route path="/editMovie" component={EditMovie} exact />
                     </Switch>
             </Router>

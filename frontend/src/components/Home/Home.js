@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { IMAGE_BASE_URL, BACKDROP_SIZE,POSTER_SIZE } from '../../config';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
-//import LoadMoreButton from '../elements/LoadMoreButton/LoadMoreButton';
 import Spinner from '../elements/Spinner/Spinner';
 import MovieService from "../../repository/axiosMovieRepository";
 import './Home.css';
@@ -29,7 +27,7 @@ class Home extends Component{
             this.setState((prevState) => {
                 return{
                     "movies": response.data,
-                    "heroImage": response.data[4],
+                    "heroImage": response.data[0],
                     "loading":false
                 }
             })

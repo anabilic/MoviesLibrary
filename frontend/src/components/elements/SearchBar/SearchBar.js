@@ -5,7 +5,7 @@ import './SearchBar.css';
 class SearchBar extends Component {
     state = {
         value: ''
-    }
+    };
     // Must have this here so we can reset it
     timeout = null;
 
@@ -20,7 +20,7 @@ class SearchBar extends Component {
         this.timeout = setTimeout( () => {
             callback(this.state.value);
         }, 500);
-    }
+    };
 
     render () {
         // ES6 Destructuring state

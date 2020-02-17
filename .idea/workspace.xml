@@ -5,22 +5,31 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/App/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/AddMovie/AddMovieClass.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/AddMovie/AddMovieClass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieThumb/MovieThumb.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieThumb/MovieThumb.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/AddMovie/AddMovie.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/AddMovie/AddMovie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/AddMovie/AddMovieClass.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/FourColGrid/FourColGrid.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/FourColGrid/FourColGrid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/LoadMoreButton/LoadMoreButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/LoadMoreButton/LoadMoreButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfoBar/MovieInfoBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfoBar/MovieInfoBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/SearchBar/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/SearchBar/SearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/Spinner/Spinner.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/Spinner/Spinner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Actor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Genre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/UserRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/MovieRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/MovieService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/MovieApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/MovieApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Actor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Genre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Genre.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/MovieService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/MovieService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/UserRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/MovieRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/MovieRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/MovieApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/MovieApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/config/SecurityConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/config/SecurityConfig$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/config/SecurityConfig.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -1247,6 +1256,8 @@
       <workItem from="1581757967851" duration="971000" />
       <workItem from="1581884156047" duration="7116000" />
       <workItem from="1581931462317" duration="720000" />
+      <workItem from="1581935376228" duration="12341000" />
+      <workItem from="1581962147624" duration="2371000" />
     </task>
     <servers />
   </component>
@@ -1274,10 +1285,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="420" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581083623705" />
-    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1581503675410">
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1581953365860">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1581503675410" />
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1581953365860" />
     <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1580122966769">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -1290,91 +1301,91 @@
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.826@0.23.1440.826" timestamp="1581888801553" />
-    <state width="1398" height="302" key="GridCell.Tab.0.bottom" timestamp="1581932339275">
+    <state width="1398" height="302" key="GridCell.Tab.0.bottom" timestamp="1581964718553">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581932339275" />
-    <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1581897479673" />
-    <state width="1398" height="302" key="GridCell.Tab.0.center" timestamp="1581932339274">
+    <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581964718553" />
+    <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1581963397338" />
+    <state width="1398" height="302" key="GridCell.Tab.0.center" timestamp="1581964718550">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581932339274" />
-    <state width="1398" height="302" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1581897479656" />
-    <state width="1398" height="302" key="GridCell.Tab.0.left" timestamp="1581932339273">
+    <state width="1398" height="302" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581964718550" />
+    <state width="1398" height="302" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1581963397321" />
+    <state width="1398" height="302" key="GridCell.Tab.0.left" timestamp="1581964718549">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581932339273" />
-    <state width="1398" height="302" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1581897479655" />
-    <state width="1398" height="302" key="GridCell.Tab.0.right" timestamp="1581932339275">
+    <state width="1398" height="302" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581964718549" />
+    <state width="1398" height="302" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1581963397304" />
+    <state width="1398" height="302" key="GridCell.Tab.0.right" timestamp="1581964718552">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581932339275" />
-    <state width="1398" height="302" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1581897479672" />
-    <state width="1398" height="302" key="GridCell.Tab.1.bottom" timestamp="1581932339278">
+    <state width="1398" height="302" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581964718552" />
+    <state width="1398" height="302" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1581963397329" />
+    <state width="1398" height="302" key="GridCell.Tab.1.bottom" timestamp="1581964718557">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581932339278" />
-    <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.23.1440.826@0.23.1440.826" timestamp="1581897479140" />
-    <state width="1398" height="302" key="GridCell.Tab.1.center" timestamp="1581932339277">
+    <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581964718557" />
+    <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.23.1440.826@0.23.1440.826" timestamp="1581963496811" />
+    <state width="1398" height="302" key="GridCell.Tab.1.center" timestamp="1581964718555">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1581932339277" />
-    <state width="1398" height="302" key="GridCell.Tab.1.center/0.23.1440.826@0.23.1440.826" timestamp="1581897479138" />
-    <state width="1398" height="302" key="GridCell.Tab.1.left" timestamp="1581932339276">
+    <state width="1398" height="302" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1581964718555" />
+    <state width="1398" height="302" key="GridCell.Tab.1.center/0.23.1440.826@0.23.1440.826" timestamp="1581963496808" />
+    <state width="1398" height="302" key="GridCell.Tab.1.left" timestamp="1581964718554">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1581932339276" />
-    <state width="1398" height="302" key="GridCell.Tab.1.left/0.23.1440.826@0.23.1440.826" timestamp="1581897479137" />
-    <state width="1398" height="302" key="GridCell.Tab.1.right" timestamp="1581932339278">
+    <state width="1398" height="302" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1581964718554" />
+    <state width="1398" height="302" key="GridCell.Tab.1.left/0.23.1440.826@0.23.1440.826" timestamp="1581963496808" />
+    <state width="1398" height="302" key="GridCell.Tab.1.right" timestamp="1581964718556">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1581932339278" />
-    <state width="1398" height="302" key="GridCell.Tab.1.right/0.23.1440.826@0.23.1440.826" timestamp="1581897479139" />
-    <state width="1398" height="302" key="GridCell.Tab.2.bottom" timestamp="1581932339281">
+    <state width="1398" height="302" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1581964718556" />
+    <state width="1398" height="302" key="GridCell.Tab.1.right/0.23.1440.826@0.23.1440.826" timestamp="1581963496810" />
+    <state width="1398" height="302" key="GridCell.Tab.2.bottom" timestamp="1581964718559">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581932339281" />
-    <state width="1398" height="302" key="GridCell.Tab.2.bottom/0.23.1440.826@0.23.1440.826" timestamp="1581897479143" />
-    <state width="1398" height="302" key="GridCell.Tab.2.center" timestamp="1581932339280">
+    <state width="1398" height="302" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581964718559" />
+    <state width="1398" height="302" key="GridCell.Tab.2.bottom/0.23.1440.826@0.23.1440.826" timestamp="1581963396893" />
+    <state width="1398" height="302" key="GridCell.Tab.2.center" timestamp="1581964718559">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1581932339280" />
-    <state width="1398" height="302" key="GridCell.Tab.2.center/0.23.1440.826@0.23.1440.826" timestamp="1581897479141" />
-    <state width="1398" height="302" key="GridCell.Tab.2.left" timestamp="1581932339279">
+    <state width="1398" height="302" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1581964718559" />
+    <state width="1398" height="302" key="GridCell.Tab.2.center/0.23.1440.826@0.23.1440.826" timestamp="1581963396891" />
+    <state width="1398" height="302" key="GridCell.Tab.2.left" timestamp="1581964718558">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1581932339279" />
-    <state width="1398" height="302" key="GridCell.Tab.2.left/0.23.1440.826@0.23.1440.826" timestamp="1581897479140" />
-    <state width="1398" height="302" key="GridCell.Tab.2.right" timestamp="1581932339281">
+    <state width="1398" height="302" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1581964718558" />
+    <state width="1398" height="302" key="GridCell.Tab.2.left/0.23.1440.826@0.23.1440.826" timestamp="1581963396890" />
+    <state width="1398" height="302" key="GridCell.Tab.2.right" timestamp="1581964718559">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1581932339281" />
-    <state width="1398" height="302" key="GridCell.Tab.2.right/0.23.1440.826@0.23.1440.826" timestamp="1581897479142" />
+    <state width="1398" height="302" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1581964718559" />
+    <state width="1398" height="302" key="GridCell.Tab.2.right/0.23.1440.826@0.23.1440.826" timestamp="1581963396892" />
     <state x="308" y="200" key="IDE.errors.dialog" timestamp="1581891232276">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="308" y="200" key="IDE.errors.dialog/0.0.1440.900@0.0.1440.900" timestamp="1581891232276" />
-    <state x="258" y="112" key="Maven.ArtifactSearchDialog" timestamp="1581103247559">
+    <state x="258" y="112" key="Maven.ArtifactSearchDialog" timestamp="1581949427558">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="258" y="112" key="Maven.ArtifactSearchDialog/0.0.1440.900@0.0.1440.900" timestamp="1581103247559" />
+    <state x="258" y="112" key="Maven.ArtifactSearchDialog/0.0.1440.900@0.0.1440.900" timestamp="1581949427558" />
     <state x="208" y="31" key="SettingsEditor" timestamp="1580122653620">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="208" y="31" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1580122653620" />
-    <state x="413" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1581931470193">
+    <state x="413" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1581962158591">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="413" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1581931470193" />
+    <state x="413" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1581962158591" />
     <state x="413" y="282" key="com.intellij.ide.util.TipDialog/0.23.1440.826@0.23.1440.826" timestamp="1581261777511" />
     <state x="479" y="199" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1580392438645">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="479" y="199" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1440.900@0.0.1440.900" timestamp="1580392438645" />
-    <state x="221" y="193" width="997" height="535" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1581684499241">
+    <state x="221" y="193" width="997" height="535" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1581940170327">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="221" y="193" width="997" height="535" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1440.900@0.0.1440.900" timestamp="1581684499240" />
+    <state x="221" y="193" width="997" height="535" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1440.900@0.0.1440.900" timestamp="1581940170327" />
     <state x="400" y="212" width="639" height="476" key="find.popup" timestamp="1580999920902">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -1383,5 +1394,12 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1581340286041" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="movieActors.get(1).movies" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

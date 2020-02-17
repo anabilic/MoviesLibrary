@@ -28,6 +28,6 @@ public class Actor {
     private byte[] imageActor;
 
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "actors")
     private List<Movie> movies;
 }

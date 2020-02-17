@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -23,12 +24,7 @@ public class Genre {
     private String name;
 
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "genres")
     private List<Movie> movies;
 
-    public Genre(Genre genre) {
-        this.id=genre.id;
-        this.name=genre.name;
-        this.movies=genre.movies;
-    }
 }
