@@ -149,4 +149,14 @@ public class MovieServiceImpl implements MovieService {
     public Movie findMovieByName(String name) {
         return this.movieRepository.findByName(name);
     }
+
+    @Override
+    public List<Actor> getMoviesActors(Long id) {
+        return this.movieRepository.getMoviesActor(id);
+    }
+
+    @Override
+    public List<Genre> getMoviesGenres(Long id) {
+        return this.movieRepository.getMoviesGenres(id);
+    }
 }

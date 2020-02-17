@@ -1,10 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './Navigation.css';
 
-
-const Navigation = () => {
-
-    return <h1>Navigation component</h1>
-
-};
+const Navigation = ({ movie }) => (
+    <div className="rmdb-navigation">
+        <div className="rmdb-navigation-content">
+            <Link to="/">
+                <p>Home</p>
+            </Link>
+            <p>/</p>
+            <p>{movie}</p>
+        </div>
+    </div>
+);
 
 export default Navigation;

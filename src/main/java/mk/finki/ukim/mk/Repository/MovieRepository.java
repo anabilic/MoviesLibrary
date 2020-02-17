@@ -27,5 +27,8 @@ public interface MovieRepository {
 
     Movie checkIfMovieExists(String name);
 
+    List<Actor> getMoviesActor(Long id);
+
+    List<Genre> getMoviesGenres(Long id);
 
 }

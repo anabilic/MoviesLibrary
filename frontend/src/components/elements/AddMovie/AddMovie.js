@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
-import {Dropdown, List} from 'semantic-ui-react';
+import { Redirect } from "react-router";
+import {Dropdown} from 'semantic-ui-react';
 import ActorService from "../../../repository/axiosActorRepository";
 import GenreService from "../../../repository/axiosGenreRepository";
 import './AddMovie.css'
@@ -41,6 +42,7 @@ class AddMovie extends Component {
             selectedFile:null,
             genreSelected:[],
             actorSelected:{},
+            redirect:false
         };
     }
 
@@ -120,6 +122,9 @@ class AddMovie extends Component {
 
         this.props.onNewMovieAddedWithImg(formData);
 
+        this.setState({redirect:true});
+
+
     };
 
 
@@ -148,6 +153,10 @@ class AddMovie extends Component {
 
 
     render() {
+
+        if (this.state.redirect) {
+            return <Redirect to='/'/>;
+        }
 
         return(
             <div className="container">

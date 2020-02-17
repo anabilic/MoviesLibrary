@@ -1,5 +1,7 @@
 package mk.finki.ukim.mk.Web.rest;
 
+import mk.finki.ukim.mk.Model.Actor;
+import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Service.GenreService;
 import mk.finki.ukim.mk.Service.MovieService;
@@ -119,5 +121,13 @@ public class MovieApi {
         this.movieService.deleteMovie(id);
     }
 
+    @GetMapping("/{id}/actors")
+    public List<Actor> getMoviesActors(@PathVariable Long id){
+        return this.movieService.getMoviesActors(id);
+    }
 
+    @GetMapping("/{id}/genres")
+    public List<Genre> getMoviesGenres(@PathVariable Long id){
+        return this.movieService.getMoviesGenres(id);
+    }
 }

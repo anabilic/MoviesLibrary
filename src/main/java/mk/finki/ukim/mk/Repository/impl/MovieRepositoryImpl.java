@@ -65,4 +65,14 @@ public class MovieRepositoryImpl implements MovieRepository {
     public Movie checkIfMovieExists(String name) {
         return this.jpaMovieRepository.checkIfMovieExists(name);
     }
+
+    @Override
+    public List<Actor> getMoviesActor(Long id) {
+        return this.jpaMovieRepository.getMoviesActors(id);
+    }
+
+    @Override
+    public List<Genre> getMoviesGenres(Long id) {
+        return this.jpaMovieRepository.getMoviesGenres(id);
+    }
 }

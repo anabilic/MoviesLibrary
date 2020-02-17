@@ -71,7 +71,7 @@ client.test("Request executed successfully", function() {
 
 
 ###
-DELETE http://localhost:8080/movie/2
+DELETE http://localhost:8080/movie/30
 
 > {%
 client.test("Request executed successfully", function() {
@@ -95,7 +95,7 @@ client.test("Request executed successfully", function() {
 
 
 ###
-GET http://localhost:8080/log/1
+GET http://localhost:8080/movie/29/actors
 
 > {%
 client.test("Request executed successfully", function() {
@@ -103,9 +103,17 @@ client.test("Request executed successfully", function() {
 });
 %}
 
+###
+GET http://localhost:8080/movie/30/genres
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
 
 ###
-GET http://localhost:8080/actor
+GET http://localhost:8080/movie/29
 
 > {%
 client.test("Request executed successfully", function() {

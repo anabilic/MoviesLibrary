@@ -9,9 +9,11 @@ import Register from "../Security/Register/Register";
 import UserService from "../../repository/axiosUserRepository";
 import {User} from '../../model/User';
 import EditMovie from "../elements/EditMovie/EditMovie";
+import NotFound from "../elements/NotFound/NotFound";
 import AddMovie from "../elements/AddMovie/AddMovie";
 import MovieService from "../../repository/axiosMovieRepository";
 import './App.css';
+import Movie from "../Movie/Movie";
 
 class App extends React.Component {
 
@@ -103,6 +105,8 @@ class App extends React.Component {
                         <Route path="/register" component={Register} exact/>
                         <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
                         <Route path="/editMovie" component={EditMovie} exact />
+                        <Route path="/movie/:id" render={()=> <Movie />} />
+                        <Route component={NotFound} />
                     </Switch>
             </Router>
         );

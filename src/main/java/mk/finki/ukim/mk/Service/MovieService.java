@@ -1,5 +1,7 @@
 package mk.finki.ukim.mk.Service;
 
+import mk.finki.ukim.mk.Model.Actor;
+import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
 
 import java.time.LocalDateTime;
@@ -23,5 +25,10 @@ public interface MovieService {
     Optional<Movie> findMovieById(Long id);
 
     Movie findMovieByName(String name);
+
+    List<Actor> getMoviesActors(Long id);
+
+    List<Genre> getMoviesGenres(Long id);
+
 
 }

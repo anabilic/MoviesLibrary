@@ -5,32 +5,33 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/App/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Movie/Movie.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Movie/Movie.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Movie/Movie.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Movie/Movie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/Actor/Actor.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/Actor/Actor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/Actor/Actor.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/Actor/Actor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/AddMovie/AddMovie.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/AddMovie/AddMovie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/AddMovie/AddMovieClass.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/FourColGrid/FourColGrid.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/FourColGrid/FourColGrid.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/LoadMoreButton/LoadMoreButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/LoadMoreButton/LoadMoreButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfo/MovieInfo.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfo/MovieInfo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfo/MovieInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfo/MovieInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfoBar/MovieInfoBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfoBar/MovieInfoBar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfoBar/MovieInfoBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfoBar/MovieInfoBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/SearchBar/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/SearchBar/SearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieThumb/MovieThumb.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieThumb/MovieThumb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/Navigation/Navigation.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/Navigation/Navigation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/Navigation/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/Navigation/Navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/NotFound/NotFound.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/NotFound/NotFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/NotFound/NotFound.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/Spinner/Spinner.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/Spinner/Spinner.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/Spinner/Spinner.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/Spinner/Spinner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Genre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/UserRole.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/MovieRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaMovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaMovieRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/MovieService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/MovieApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/MovieApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Actor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Genre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Genre.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/UserRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/api.http" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/api.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/MovieRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/MovieRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/MovieApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/MovieApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/config/SecurityConfig.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +122,156 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="127.0.0.1" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="977C5FED377147C77B431A9638EBBF94" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="02D16F1E37E694B094D7B4057CB5303D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/movie/29/actors" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="127.0.0.1" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="977C5FED377147C77B431A9638EBBF94" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="02D16F1E37E694B094D7B4057CB5303D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/movie/30/actors" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="127.0.0.1" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="977C5FED377147C77B431A9638EBBF94" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="02D16F1E37E694B094D7B4057CB5303D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/movie/29" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="127.0.0.1" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="977C5FED377147C77B431A9638EBBF94" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="02D16F1E37E694B094D7B4057CB5303D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="DELETE" />
+          <option name="urlBase" value="http://localhost:8080/movie/30" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="127.0.0.1" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="977C5FED377147C77B431A9638EBBF94" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="02D16F1E37E694B094D7B4057CB5303D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/movie/30/genres" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="127.0.0.1" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="977C5FED377147C77B431A9638EBBF94" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="-1" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="JSESSIONID" />
+                <option name="path" value="/" />
+                <option name="value" value="02D16F1E37E694B094D7B4057CB5303D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/movie/30" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="biscuits">
             <list>
@@ -1166,20 +1317,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.MoviesLibrary">
-    <configuration name="api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/test/java/api.http" runType="Run single request">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="HTTP Request.api#9">
     <configuration name="api#10" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/test/java/api.http" index="10" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="api#11" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/test/java/api.http" index="11" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="api#4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/test/java/api.http" index="4" runType="Run single request">
+    <configuration name="api#5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/test/java/api.http" index="5" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="api#5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/test/java/api.http" index="5" runType="Run single request">
+    <configuration name="api#7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/test/java/api.http" index="7" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="api#9" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/test/java/api.http" index="9" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="MoviesLibrary" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -1192,11 +1343,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.api#5" />
-        <item itemvalue="HTTP Request.api#1" />
+        <item itemvalue="HTTP Request.api#9" />
         <item itemvalue="HTTP Request.api#11" />
+        <item itemvalue="HTTP Request.api#7" />
         <item itemvalue="HTTP Request.api#10" />
-        <item itemvalue="HTTP Request.api#4" />
+        <item itemvalue="HTTP Request.api#5" />
       </list>
     </recent_temporary>
   </component>
@@ -1257,7 +1408,7 @@
       <workItem from="1581884156047" duration="7116000" />
       <workItem from="1581931462317" duration="720000" />
       <workItem from="1581935376228" duration="12341000" />
-      <workItem from="1581962147624" duration="2371000" />
+      <workItem from="1581962147624" duration="10517000" />
     </task>
     <servers />
   </component>
@@ -1285,10 +1436,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="420" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581083623705" />
-    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1581953365860">
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1581969492999">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1581953365860" />
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1581969492999" />
     <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1580122966769">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -1301,65 +1452,65 @@
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.826@0.23.1440.826" timestamp="1581888801553" />
-    <state width="1398" height="302" key="GridCell.Tab.0.bottom" timestamp="1581964718553">
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1581979288326">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581964718553" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581979288326" />
     <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1581963397338" />
-    <state width="1398" height="302" key="GridCell.Tab.0.center" timestamp="1581964718550">
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1581979288324">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581964718550" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581979288324" />
     <state width="1398" height="302" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1581963397321" />
-    <state width="1398" height="302" key="GridCell.Tab.0.left" timestamp="1581964718549">
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1581979288323">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581964718549" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581979288323" />
     <state width="1398" height="302" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1581963397304" />
-    <state width="1398" height="302" key="GridCell.Tab.0.right" timestamp="1581964718552">
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1581979288326">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581964718552" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581979288326" />
     <state width="1398" height="302" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1581963397329" />
-    <state width="1398" height="302" key="GridCell.Tab.1.bottom" timestamp="1581964718557">
+    <state width="1398" height="302" key="GridCell.Tab.1.bottom" timestamp="1581979288313">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581964718557" />
+    <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581979288313" />
     <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.23.1440.826@0.23.1440.826" timestamp="1581963496811" />
-    <state width="1398" height="302" key="GridCell.Tab.1.center" timestamp="1581964718555">
+    <state width="1398" height="302" key="GridCell.Tab.1.center" timestamp="1581979288312">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1581964718555" />
+    <state width="1398" height="302" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1581979288312" />
     <state width="1398" height="302" key="GridCell.Tab.1.center/0.23.1440.826@0.23.1440.826" timestamp="1581963496808" />
-    <state width="1398" height="302" key="GridCell.Tab.1.left" timestamp="1581964718554">
+    <state width="1398" height="302" key="GridCell.Tab.1.left" timestamp="1581979288312">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1581964718554" />
+    <state width="1398" height="302" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1581979288312" />
     <state width="1398" height="302" key="GridCell.Tab.1.left/0.23.1440.826@0.23.1440.826" timestamp="1581963496808" />
-    <state width="1398" height="302" key="GridCell.Tab.1.right" timestamp="1581964718556">
+    <state width="1398" height="302" key="GridCell.Tab.1.right" timestamp="1581979288313">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1581964718556" />
+    <state width="1398" height="302" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1581979288313" />
     <state width="1398" height="302" key="GridCell.Tab.1.right/0.23.1440.826@0.23.1440.826" timestamp="1581963496810" />
-    <state width="1398" height="302" key="GridCell.Tab.2.bottom" timestamp="1581964718559">
+    <state width="1398" height="302" key="GridCell.Tab.2.bottom" timestamp="1581979288320">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581964718559" />
+    <state width="1398" height="302" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581979288320" />
     <state width="1398" height="302" key="GridCell.Tab.2.bottom/0.23.1440.826@0.23.1440.826" timestamp="1581963396893" />
-    <state width="1398" height="302" key="GridCell.Tab.2.center" timestamp="1581964718559">
+    <state width="1398" height="302" key="GridCell.Tab.2.center" timestamp="1581979288319">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1581964718559" />
+    <state width="1398" height="302" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1581979288319" />
     <state width="1398" height="302" key="GridCell.Tab.2.center/0.23.1440.826@0.23.1440.826" timestamp="1581963396891" />
-    <state width="1398" height="302" key="GridCell.Tab.2.left" timestamp="1581964718558">
+    <state width="1398" height="302" key="GridCell.Tab.2.left" timestamp="1581979288318">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1581964718558" />
+    <state width="1398" height="302" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1581979288318" />
     <state width="1398" height="302" key="GridCell.Tab.2.left/0.23.1440.826@0.23.1440.826" timestamp="1581963396890" />
-    <state width="1398" height="302" key="GridCell.Tab.2.right" timestamp="1581964718559">
+    <state width="1398" height="302" key="GridCell.Tab.2.right" timestamp="1581979288319">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="302" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1581964718559" />
+    <state width="1398" height="302" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1581979288319" />
     <state width="1398" height="302" key="GridCell.Tab.2.right/0.23.1440.826@0.23.1440.826" timestamp="1581963396892" />
     <state x="308" y="200" key="IDE.errors.dialog" timestamp="1581891232276">
       <screen x="0" y="0" width="1440" height="900" />
