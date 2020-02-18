@@ -17,7 +17,7 @@ const Movie = (props) => {
     const [loading,setLoading] = useState(false);
     const {id} = useParams();
 
-    useEffect(() => {
+    useEffect(()=>{
         axios.get("/movie/" + id).then((data) => {
             setMovies(data.data);
         });
@@ -26,28 +26,31 @@ const Movie = (props) => {
         });
         axios.get("/movie/" + id + "/genres").then((data) => {
             setMoviesGenres(data.data);
-        }, []);
-    });
+        })
+    },[])
+
 
 
     const actors = Object.values(moviesActors);
     const genres = Object.values(moviesGenres);
 
     return (
+
             <div className="rmdb-movie">
                 {movie ?
                     <div>
                         <Navigation movie={movie.name} />
                         <MovieInfo movie={movie} director={movie.director} genres={genres} />
                         <MovieInfoBar runningTime={movie.runningTime} releaseInformation={movie.releaseInformation} originalLanguage={movie.originalLanguage} />
-                    </div>
-                    : null }
+                    </div> : null }
+                    <br/>
+
                 {actors ?
                     <div className="rmdb-movie-grid">
                         <FourColGrid header={'Actors'}>
                             {actors.map( (element, i) => (
                                 <Actor key={i} actor={element} />
-                            ))}
+                                ))}
                         </FourColGrid>
                     </div>
                     : null }

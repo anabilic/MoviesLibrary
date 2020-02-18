@@ -12,8 +12,11 @@ import EditMovie from "../elements/EditMovie/EditMovie";
 import NotFound from "../elements/NotFound/NotFound";
 import AddMovie from "../elements/AddMovie/AddMovie";
 import MovieService from "../../repository/axiosMovieRepository";
-import './App.css';
+import ActorService from "../../repository/axiosActorRepository";
 import Movie from "../Movie/Movie";
+import AddActor from "../elements/AddActor/AddActor";
+import './App.css';
+
 
 class App extends React.Component {
 
@@ -23,7 +26,8 @@ class App extends React.Component {
         this.state = {
             history: createBrowserHistory(),
             currentUser: new User(),
-            movies:[]
+            movies:[],
+            actors:[]
         };
     }
 
@@ -45,6 +49,19 @@ class App extends React.Component {
              });
          });
      };
+
+    createActor= async (actor) => {
+        await ActorService.addActor(actor).then((response) => {
+            const actor = response.data;
+
+            this.setState((prevState) => {
+                const newActorRef = [...prevState.actors, actor];
+                return {
+                    "actors": newActorRef
+                }
+            });
+        });
+    };
 
     logout() {
         UserService.logOut().then(data => {
@@ -106,6 +123,7 @@ class App extends React.Component {
                         <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
                         <Route path="/editMovie" component={EditMovie} exact />
                         <Route path="/movie/:id" render={()=> <Movie />} />
+                        <Route path="/addActor" render={()=><AddActor onNewActorAddedWithImg={this.createActor}/>} />
                         <Route component={NotFound} />
                     </Switch>
             </Router>

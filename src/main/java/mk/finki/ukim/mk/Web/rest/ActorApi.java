@@ -5,7 +5,9 @@ import mk.finki.ukim.mk.Service.ActorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -39,9 +41,9 @@ public class ActorApi {
     public Actor createActorWithImage(@RequestParam(value = "name") String name,
                              @RequestParam(value = "castName", required = false) String castName,
                              @RequestParam(value = "movies", required = false) List<String> movies,
-                             @RequestParam(value = "imageActor", required = false) byte[] imageActor) {
+                             @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
 
-        Actor newActor = this.actorService.createActorWithImage(name, castName, movies, imageActor);
+        Actor newActor = this.actorService.createActorWithImage(name, castName, movies, file.getBytes());
         return newActor;
     }
 

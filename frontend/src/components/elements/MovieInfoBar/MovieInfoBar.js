@@ -14,7 +14,7 @@ const MovieInfoBar = ({ runningTime, releaseInformation, originalLanguage }) => 
                 <span className="rmdb-movieinfobar-info">Released: {releaseInformation}</span>
             </div>
             <div className="rmdb-movieinfobar-content-col">
-                <FontAwesome className="fas fa-language" name="ticket" size="2x" />
+                <FontAwesome className="fas fa-language" name="lamguage" size="2x" />
                 <span className="rmdb-movieinfobar-info">Language/s:{originalLanguage} </span>
             </div>
         </div>

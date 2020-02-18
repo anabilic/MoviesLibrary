@@ -7,6 +7,14 @@ const ActorService = {
         return axios.get("/actor");
     },
 
+    addActor: (actor) => {
+
+        return axios.post("/actor/image", actor,{
+            headers: {
+                'Content-Type': 'multipart/form-data; boundary=${form._boundary}'
+            }
+        });
+    }
 };
 
 

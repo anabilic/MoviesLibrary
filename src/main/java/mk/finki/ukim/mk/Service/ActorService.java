@@ -11,7 +11,7 @@ public interface ActorService {
 
     Actor createActor(String name, String castName, List<String> movies);
 
-    Actor createActorWithImage(String name,String castName,List<String> movies,byte[] imageActor);
+    Actor createActorWithImage(String name,String castName,List<String> movies, byte[] file);
 
     Optional<Actor> findById(Long id);
 
