@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
-import Spinner from '../elements/Spinner/Spinner';
 import MovieService from "../../repository/axiosMovieRepository";
 import './Home.css';
 
@@ -13,27 +11,29 @@ class Home extends Component{
     state = {
         movies: [],
         heroImage: null,
-        loading: false,
-        currentPage: 0,
-        totalPages: 0,
-        searchTerm: ''
+        searchTerm: '',
+        pageSize:6,
+        totalPages:0
     };
 
     componentDidMount() {
         this.loadMovies();
+        console.log(this.loadMovies());
     }
 
-    loadMovies = () => {
-        MovieService.getMovies().then(response =>  {
-            this.setState((prevState) => {
-                return{
-                    "movies": response.data,
-                    "heroImage": response.data[0],
-                    "loading":false
-                }
+    loadMovies = (page=0) => {
+        MovieService.fetchMoviesPaged(page, this.state.pageSize).then((data) => {
+            this.setState({
+
+                movies: data.data,
+                heroImage: data.data[0],
+                page:data.data.page,
+                pageSize: data.data.pageSize,
+                totalPages: data.data.totalPages
             })
         })
     };
+
 
 
     render() {
@@ -56,7 +56,9 @@ class Home extends Component{
                 <div className="rmdb-home-grid">
                     <FourColGrid
                         header={searchTerm ? 'Search Result' : 'Popular Movies'}
-                        loading={loading} >
+                        loading={loading}
+                        onPageClick={this.loadMovies}
+                        totalPages={this.state.totalPages}>
                         {movies && movies.map( (element, i) => (
                             <MovieThumb
                                 key={i}
@@ -67,7 +69,6 @@ class Home extends Component{
                             />
                         ))}
                     </FourColGrid>
-                    {loading ? <Spinner /> : null}
                 </div>
             </div>
         )

@@ -90,7 +90,7 @@ class App extends React.Component {
                                     <Link to="" className="btn btn-outline-danger waves-effect">
                                         <FontAwesomeIcon icon={faUser}/> {currentUser.name}
                                     </Link>
-                                    <Link to="" onClick={()=>this.logout()} className="btn btn-outline-danger waves-effect">
+                                    <Link to="" style={{marginLeft:'10px'}} onClick={()=>this.logout()} className="btn btn-outline-danger waves-effect">
                                         Sign Out
                                     </Link>
                                     {/*<button type="button" className="btn btn-outline-danger waves-effect">My profile</button>*/}
