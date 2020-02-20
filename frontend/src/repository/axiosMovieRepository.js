@@ -20,7 +20,11 @@ const MovieService = {
                 'Content-Type': 'multipart/form-data; boundary=${form._boundary}'
             }
         });
+    },
+    searchMovieTerm: (searchTerm) => {
+        return axios.get(`/movie?term=${searchTerm}`);
     }
+
 
 };
 

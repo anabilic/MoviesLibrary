@@ -1,0 +1,26 @@
+.topPhoto {
+    width: 300px;
+    height: 250px;
+    position: relative;
+}
+
+.rounded {
+    border-radius: 7% !important;
+}
+
+.imgProfile {
+    width: 100px !important;
+    height: 100px !important;
+    position: absolute;
+    top:0% !important;
+    left: 10%;
+    border: 1px white solid;
+}
+
+.nameProfile {
+    font-size: 20px;
+}
+
+hr.new4 {
+    border-top: 1px solid #800000;
+}

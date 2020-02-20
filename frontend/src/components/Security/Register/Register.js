@@ -77,7 +77,7 @@ class Register extends React.Component {
                     <form name="form" onSubmit={(e) => this.handleRegister(e)}>
                         <div className={'form-group' + (submitted && !user.name ? 'has-error' : '')}>
                             <FontAwesomeIcon icon={faSignature}/>
-                            <label style={{color:'#800000'}} htmlFor="name">Full Name</label>
+                            <label style={{color:'#800000',padding: '5px'}} htmlFor="name">Full Name</label>
                             <input type="text" className="form-control" name="name" placeholder="Type full name" value={user.name}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !user.name &&
@@ -87,7 +87,7 @@ class Register extends React.Component {
 
                         <div className={'form-group' + (submitted && !user.email ? 'has-error' : '')}>
                             <FontAwesomeIcon icon={faEnvelope}/>
-                            <label style={{color:'#800000'}} htmlFor="email">Email</label>
+                            <label style={{color:'#800000', padding: '5px'}} htmlFor="email">Email</label>
                             <input type="text" className="form-control" name="email" placeholder="Type email" value={user.email}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !user.email &&
@@ -97,7 +97,7 @@ class Register extends React.Component {
 
                         <div className={'form-group' + (submitted && !user.username ? 'has-error' : '')}>
                             <FontAwesomeIcon icon={faUser} />
-                            <label style={{color:'#800000'}} htmlFor="username">Username</label>
+                            <label style={{color:'#800000', padding: '5px'}} htmlFor="username">Username</label>
                             <input type="text" className="form-control" name="username" placeholder="Type username" value={user.username}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !user.username &&
@@ -107,7 +107,7 @@ class Register extends React.Component {
 
                         <div className={'form-group' + (submitted && !user.password ? 'has-error' : '')}>
                             <FontAwesomeIcon icon={faLock}/>
-                            <label style={{color:'#800000'}} htmlFor="password">Password</label>
+                            <label style={{color:'#800000',padding: '5px'}} htmlFor="password">Password</label>
                             <input type="password" className="form-control" name="password" placeholder="Type password" value={user.password}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !user.password &&

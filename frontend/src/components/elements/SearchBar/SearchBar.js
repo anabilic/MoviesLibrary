@@ -2,46 +2,29 @@ import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import './SearchBar.css';
 
-class SearchBar extends Component {
-    state = {
-        value: ''
-    };
-    // Must have this here so we can reset it
-    timeout = null;
+const SearchBar = (props) => {
 
-    doSearch = (event) => {
-        // ES6 Destructuring prop
-        const { callback } = this.props;
-
-        this.setState({ value: event.target.value })
-        clearTimeout(this.timeout);
-        // Set a timeout to wait for the user to stop writing
-        // So we don´t have to make unnessesary calls
-        this.timeout = setTimeout( () => {
-            callback(this.state.value);
-        }, 500);
+    const onSearch = (e)=>{
+        e.preventDefault();
+        props.onSearch(e.target["searchTerm"].value);
     };
 
-    render () {
-        // ES6 Destructuring state
-        const { value } = this.state;
 
-        return (
-            <div className="rmdb-searchbar">
-                <div className="rmdb-searchbar-content">
-                    <FontAwesome className="rmdb-fa-search" name="search" size="2x" />
-                    <input
-                        type="text"
-                        className="rmdb-searchbar-input"
-                        placeholder="Search"
-                        onChange={this.doSearch}
-                        value={value}
+    return (
+        <div className="rmdb-searchbar">
+            <div className="rmdb-searchbar-content">
+                <FontAwesome className="rmdb-fa-search" name="search" size="2x" />
+                <form onSubmit={onSearch} className="form-inline mt-2 mt-md-0">
+                    <input  type="text"
+                            className="rmdb-searchbar-input"
+                            placeholder="Search"
+                            name={"searchTerm"}
                     />
-                </div>
+                </form>
             </div>
-        )
-    }
-}
+        </div>
+    )
+};
 
 
 export default SearchBar;

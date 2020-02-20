@@ -75,4 +75,9 @@ public class MovieRepositoryImpl implements MovieRepository {
     public List<Genre> getMoviesGenres(Long id) {
         return this.jpaMovieRepository.getMoviesGenres(id);
     }
+
+    @Override
+    public List<Movie> searchMovies(String term) {
+        return this.jpaMovieRepository.searchMovies(term);
+    }
 }

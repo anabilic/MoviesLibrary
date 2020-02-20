@@ -12,7 +12,8 @@ class Home extends Component{
         movies: [],
         heroImage: null,
         searchTerm: '',
-        pageSize:6,
+        page:0,
+        pageSize:2,
         totalPages:0
     };
 
@@ -34,6 +35,17 @@ class Home extends Component{
         })
     };
 
+    searchData = (searchTerm) => {
+        MovieService.searchMovieTerm(searchTerm).then((response)=>{
+            this.setState({
+                movies: response.data,
+                page:0,
+                pageSize:0,
+                totalPages:0
+            })
+        })
+    };
+
 
 
     render() {
@@ -50,15 +62,15 @@ class Home extends Component{
                             text={heroImage.plot}
                             style={{width: '1200px'}}
                         />
-                        <SearchBar />
+                        <SearchBar onSearch={this.searchData} />
                     </div> : null}
 
                 <div className="rmdb-home-grid">
+                    {/*header={searchTerm ? 'Search Result' : 'Popular Movies'}*/}
                     <FourColGrid
-                        header={searchTerm ? 'Search Result' : 'Popular Movies'}
-                        loading={loading}
+                        header='Popular Movies'
                         onPageClick={this.loadMovies}
-                        totalPages={this.state.totalPages}>
+                        totalPages={this.state.totalPages} >
                         {movies && movies.map( (element, i) => (
                             <MovieThumb
                                 key={i}

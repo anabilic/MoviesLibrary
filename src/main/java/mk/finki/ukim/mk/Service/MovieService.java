@@ -30,5 +30,8 @@ public interface MovieService {
 
     List<Genre> getMoviesGenres(Long id);
 
+    List<Movie> searchMovies(String term);
+
+
 
 }

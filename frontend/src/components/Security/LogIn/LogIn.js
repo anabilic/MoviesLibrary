@@ -72,7 +72,7 @@ render() {
                 <form name="form" onSubmit={(e) => this.handleLogin(e)}>
                     <div className={'form-group' + (submitted && !user.username ? 'has-error':'')}>
                         <FontAwesomeIcon icon={faUser} />
-                        <label style={{color:'#800000'}} htmlFor="username"> Username</label>
+                        <label style={{color:'#800000',padding: '5px'}} htmlFor="username"> Username</label>
                         <input style={{boxShadow:'#800000'}} type="text" className="form-control" name="username" placeholder="Type username" value={user.username} onChange={(e)=>this.handleChange(e)}/>
                         {submitted && !user.username &&
                         <div className="help-block">Username is required</div>
@@ -80,7 +80,7 @@ render() {
                     </div>
                     <div className={'form-group' + (submitted && !user.password ? 'has-error':'')}>
                         <FontAwesomeIcon icon={faLock}/>
-                        <label style={{color:'#800000'}}  htmlFor="password">Password</label>
+                        <label style={{color:'#800000',padding: '5px'}}  htmlFor="password">Password</label>
                         <input type="password" className="form-control" placeholder="Type password" name="password" value={user.password} onChange={(e)=>this.handleChange(e)}/>
                         {submitted && !user.password &&
                         <div className="help-block">Password is required</div>

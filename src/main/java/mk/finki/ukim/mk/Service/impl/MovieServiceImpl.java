@@ -159,4 +159,9 @@ public class MovieServiceImpl implements MovieService {
     public List<Genre> getMoviesGenres(Long id) {
         return this.movieRepository.getMoviesGenres(id);
     }
+
+    @Override
+    public List<Movie> searchMovies(String term) {
+        return this.movieRepository.searchMovies(term);
+    }
 }

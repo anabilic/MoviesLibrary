@@ -3,6 +3,7 @@ package mk.finki.ukim.mk.Repository;
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,5 +31,8 @@ public interface MovieRepository {
     List<Actor> getMoviesActor(Long id);
 
     List<Genre> getMoviesGenres(Long id);
+
+    List<Movie> searchMovies(String term);
+
 
 }

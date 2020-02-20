@@ -3,10 +3,11 @@ import ReactPaginate from 'react-paginate';
 import './FourColGrid.css';
 
 
-const FourColGrid = ({ header, loading, children, onPageClick, totalPages, page }) => {
+const FourColGrid = (props) => {
 
     const renderElements = () => {
-        const gridElements = children && children.map( (element, i) => (
+
+        const gridElements = props.children && props.children.map( (element, i) => (
             <div key={i} className="rmdb-grid-element">
                 {element}
             </div>
@@ -15,17 +16,17 @@ const FourColGrid = ({ header, loading, children, onPageClick, totalPages, page 
     };
 
     const handlePageClick = (e) => {
-        onPageClick(e.selected)
+        props.onPageClick(e.selected)
     };
 
     const paginate = () => {
-        if (totalPages !== 0) {
+        if (props.totalPages !== 0) {
             return (
                 <ReactPaginate previousLabel={"previous"}
                                nextLabel={"next"}
                                breakLabel={<span className="gap">...</span>}
                                breakClassName={"break-me"}
-                               pageCount={totalPages}
+                               pageCount={props.totalPages}
                                marginPagesDisplayed={2}
                                pageRangeDisplayed={5}
                                pageClassName={"page-item"}
@@ -34,7 +35,7 @@ const FourColGrid = ({ header, loading, children, onPageClick, totalPages, page 
                                nextClassName={"page-item"}
                                previousLinkClassName={"page-link"}
                                nextLinkClassName={"page-link"}
-                               forcePage={page}
+                               forcePage={props.page}
                                onPageChange={handlePageClick}
                                containerClassName={"pagination justify-content-center"}
                                activeClassName={"active"}/>
@@ -43,8 +44,9 @@ const FourColGrid = ({ header, loading, children, onPageClick, totalPages, page 
     };
 
     return (
+
         <div className="rmdb-grid">
-            {header && !loading ? <h1>{header}</h1> : null}
+            {props.header && !props.loading ? <h1>{props.header}</h1> : null}
         <br/>
             <div className="rmdb-grid-content">
                 {renderElements()}

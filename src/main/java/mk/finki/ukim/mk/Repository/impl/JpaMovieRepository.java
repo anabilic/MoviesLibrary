@@ -28,4 +28,10 @@ public interface JpaMovieRepository extends JpaRepository<Movie,Long> {
 
     @Query(value = "select g from Genre g join g.movies m where m.Id=:id")
     List<Genre> getMoviesGenres(@Param("id") Long id);
+
+    @Query("select m from Movie m WHERE m.name like %:term%")
+    List<Movie> searchMovies(@Param("term") String term);
+
+
+
 }

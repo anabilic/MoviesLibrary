@@ -45,6 +45,12 @@ public class MovieApi {
         return  this.movieService.listAllMovies();
     }
 
+
+    @GetMapping(params = "term")
+    public List<Movie> searchMovie(@RequestParam String term) {
+        return movieService.searchMovies(term);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Movie createMovie(@RequestParam(value = "name") String name,

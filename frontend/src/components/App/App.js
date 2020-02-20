@@ -16,6 +16,7 @@ import ActorService from "../../repository/axiosActorRepository";
 import Movie from "../Movie/Movie";
 import AddActor from "../elements/AddActor/AddActor";
 import './App.css';
+import Profile from "../Security/Profile/Profile";
 
 
 class App extends React.Component {
@@ -124,6 +125,7 @@ class App extends React.Component {
                         <Route path="/editMovie" component={EditMovie} exact />
                         <Route path="/movie/:id" render={()=> <Movie />} />
                         <Route path="/addActor" render={()=><AddActor onNewActorAddedWithImg={this.createActor}/>} />
+                        <Route path="/profile" render={()=> <Profile/>}  />
                         <Route component={NotFound} />
                     </Switch>
             </Router>

@@ -2,19 +2,17 @@ import React, {  useEffect, useState } from 'react';
 import Navigation from '../elements/Navigation/Navigation';
 import MovieInfo from '../elements/MovieInfo/MovieInfo';
 import MovieInfoBar from '../elements/MovieInfoBar/MovieInfoBar';
-import FourColGrid from '../elements/FourColGrid/FourColGrid.js';
 import Actor from '../elements/Actor/Actor';
-import Spinner from '../elements/Spinner/Spinner';
 import {useParams} from "react-router";
 import axios from "../../custom-axios/axios";
 import './Movie.css';
+import FourColGridActors from "../elements/FourColGridActors/FourColGridActors";
 
 const Movie = (props) => {
 
     const [movie,setMovies] = useState({});
     const [moviesActors,setMoviesActors] = useState({});
     const [moviesGenres,setMoviesGenres] = useState({});
-    const [loading,setLoading] = useState(false);
     const {id} = useParams();
 
     useEffect(()=>{
@@ -47,15 +45,14 @@ const Movie = (props) => {
 
                 {actors ?
                     <div className="rmdb-movie-grid">
-                        <FourColGrid header={'Actors'}>
+                        <FourColGridActors
+                            header={'Actors'}>
                             {actors.map( (element, i) => (
                                 <Actor key={i} actor={element} />
                                 ))}
-                        </FourColGrid>
+                        </FourColGridActors>
                     </div>
                     : null }
-                {!actors && !loading ? <h1>No movie found</h1> : null }
-                {loading ? <Spinner /> : null}
             </div>
         )
 };

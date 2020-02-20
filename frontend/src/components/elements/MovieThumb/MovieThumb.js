@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './MovieThumb.css';
 
-const MovieThumb = ({ image, movieId,movieName, clickable }) => (
+const MovieThumb = ({ image, movieId, movieName, clickable }) => (
     <div className="rmdb-moviethumb">
         {/* You can send props via the Links "to" object. Here we create our own "movieName" */}
         {clickable ?
