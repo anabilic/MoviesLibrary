@@ -30,6 +30,8 @@ public class User {
 
     private byte[] imageUser;
 
+    private String gender;
+
     @Enumerated(value = EnumType.STRING)
     private Role role;
 

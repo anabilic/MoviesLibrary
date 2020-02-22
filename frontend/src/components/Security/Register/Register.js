@@ -2,7 +2,7 @@ import React from 'react';
 import UserService from '../../../repository/axiosUserRepository';
 import {User} from '../../../model/User';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEnvelope, faLock, faSignature, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faEnvelope, faLock, faSignature, faUser, faMale, faFemale} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import './Register.css';
 
@@ -114,6 +114,17 @@ class Register extends React.Component {
                             <div className="help-block">Password is required</div>
                             }
                         </div>
+
+                        <div className={'form-group' + (submitted && !user.gender ? 'has-error' : '')}>
+                            <FontAwesomeIcon icon={faMale} /> <FontAwesomeIcon icon={faFemale} />
+                            <label style={{color:'#800000', padding: '5px'}} htmlFor="gender">Gender</label>
+                            <input type="text" className="form-control" name="gender" placeholder="Type gender" value={user.gender}
+                                   onChange={(e) => this.handleChange(e)}/>
+                            {submitted && !user.gender &&
+                            <div className="help-block">Gender is required</div>
+                            }
+                        </div>
+
                         <br/>
                         <div className="form-group">
                             <button className="btn btn-lg btn-primary btn-block btn-signin form-submit-button"

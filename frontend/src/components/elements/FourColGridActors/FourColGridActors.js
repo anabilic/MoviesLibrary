@@ -17,7 +17,6 @@ const FourColGridActors = (props) => {
     return (
 
         <div className="rmdb-grid">
-            {props.header && !props.loading ? <h1>{props.header}</h1> : null}
             <br/>
             <div className="rmdb-grid-content">
                 {renderElements()}

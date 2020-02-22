@@ -64,6 +64,36 @@ class App extends React.Component {
         });
     };
 
+    deleteMovie = (movieId) => {
+        MovieService.deleteMovie(movieId).then((response) => {
+            this.setState((state) => {
+                const movie = state.movies.filter((m) => {
+                    return m.id !== movieId;
+                });
+                return {movie};
+            })
+
+        })
+    };
+
+    updateMovie = ((editedMovie) => {
+        MovieService.editMovie(editedMovie).then((response) => {
+            const newMovie = response.data;
+            this.setState((prevState) => {
+                const newMovieRef = prevState.movies.map((item) => {
+                    if(item.name === newMovie.name){
+                        return newMovie;
+                    }
+                    return  item;
+                })
+                return{
+                    "movies": newMovieRef
+                }
+            });
+        });
+    });
+
+
     logout() {
         UserService.logOut().then(data => {
             this.state.history.push('/');
@@ -88,7 +118,7 @@ class App extends React.Component {
                                     <img className="rmdb-logo" src="/images/movie_logo.png" alt="rmdb-logo" />
                                 </Link>
                                 <div className="rmdb-tmdb-logo">
-                                    <Link to="" className="btn btn-outline-danger waves-effect">
+                                    <Link to="/profile" className="btn btn-outline-danger waves-effect">
                                         <FontAwesomeIcon icon={faUser}/> {currentUser.name}
                                     </Link>
                                     <Link to="" style={{marginLeft:'10px'}} onClick={()=>this.logout()} className="btn btn-outline-danger waves-effect">
@@ -122,10 +152,10 @@ class App extends React.Component {
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
                         <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
-                        <Route path="/editMovie" component={EditMovie} exact />
+                        <Route path="/editMovie/:name" render={()=> <EditMovie onSubmit={this.updateMovie}/>} />
                         <Route path="/movie/:id" render={()=> <Movie />} />
                         <Route path="/addActor" render={()=><AddActor onNewActorAddedWithImg={this.createActor}/>} />
-                        <Route path="/profile" render={()=> <Profile/>}  />
+                        <Route path="/profile" render={()=> <Profile onDelete={this.deleteMovie}/>}  />
                         <Route component={NotFound} />
                     </Switch>
             </Router>

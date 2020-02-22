@@ -11,15 +11,13 @@ class Home extends Component{
     state = {
         movies: [],
         heroImage: null,
-        searchTerm: '',
         page:0,
-        pageSize:2,
+        pageSize:6,
         totalPages:0
     };
 
     componentDidMount() {
         this.loadMovies();
-        console.log(this.loadMovies());
     }
 
     loadMovies = (page=0) => {
@@ -27,7 +25,7 @@ class Home extends Component{
             this.setState({
 
                 movies: data.data,
-                heroImage: data.data[0],
+                heroImage: data.data[8],
                 page:data.data.page,
                 pageSize: data.data.pageSize,
                 totalPages: data.data.totalPages
@@ -40,7 +38,7 @@ class Home extends Component{
             this.setState({
                 movies: response.data,
                 page:0,
-                pageSize:0,
+                pageSize:6,
                 totalPages:0
             })
         })
@@ -50,8 +48,7 @@ class Home extends Component{
 
     render() {
 
-         const { movies, heroImage, loading, searchTerm } = this.state;
-
+         const { movies, heroImage } = this.state;
          return (
             <div className="rmdb-home">
                 {heroImage ?
@@ -65,10 +62,10 @@ class Home extends Component{
                         <SearchBar onSearch={this.searchData} />
                     </div> : null}
 
+                    <br/>
                 <div className="rmdb-home-grid">
-                    {/*header={searchTerm ? 'Search Result' : 'Popular Movies'}*/}
                     <FourColGrid
-                        header='Popular Movies'
+                        header={'Popular Movies'}
                         onPageClick={this.loadMovies}
                         totalPages={this.state.totalPages} >
                         {movies && movies.map( (element, i) => (

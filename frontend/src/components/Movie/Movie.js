@@ -16,7 +16,7 @@ const Movie = (props) => {
     const {id} = useParams();
 
     useEffect(()=>{
-        axios.get("/movie/" + id).then((data) => {
+        axios.get("/movie/id/" + id).then((data) => {
             setMovies(data.data);
         });
         axios.get("/movie/" + id + "/actors").then((data) => {

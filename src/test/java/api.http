@@ -113,7 +113,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/movie/29
+GET http://localhost:8080/movie/Parasite
 
 > {%
 client.test("Request executed successfully", function() {
@@ -135,6 +135,16 @@ client.test("Request executed successfully", function() {
 
 ###
 GET http://localhost:8080/movie?term=Parasite
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+###
+
+GET http://localhost:8080/movie/Parasite/movie
 
 > {%
 client.test("Request executed successfully", function() {

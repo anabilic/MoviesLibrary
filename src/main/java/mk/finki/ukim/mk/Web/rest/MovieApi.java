@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(path="/movie",produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
@@ -35,16 +36,18 @@ public class MovieApi {
         this.userService = userService;
     }
 
-    @GetMapping("/{id}")
-    public Optional<Movie> getMovie(@PathVariable Long id){
-        return this.movieService.findMovieById(id);
+    @GetMapping("/id/{id}")
+    public Optional<Movie> getMovie(@PathVariable Long id){ return this.movieService.findMovieById(id); }
+
+    @GetMapping("/name/{name}")
+    public Movie getMovieByName(@PathVariable String name){
+        return this.movieService.findMovieByName(name);
     }
 
     @GetMapping
     public List<Movie> getAllMovies(){
         return  this.movieService.listAllMovies();
     }
-
 
     @GetMapping(params = "term")
     public List<Movie> searchMovie(@RequestParam String term) {
@@ -112,12 +115,15 @@ public class MovieApi {
                            @RequestParam(value = "director",required = false) String director ,
                            @RequestParam(value = "runningTime" , required = false) String runningTime,
                            @RequestParam(value="plot",required=false) String plot,
-                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime releaseInformation,
+                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) String releaseInformation,
                            @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
                            @RequestParam(value = "likes",required = false) Integer likes,
                            @RequestParam(value="actors",required = false) List<String> actors,
                            @RequestParam(value = "genres",required = false) List<String> genres){
-        Movie editedMovie = this.movieService.editMovie(name,director,runningTime,plot,releaseInformation,originalLanguage,likes,actors,genres);
+
+        LocalDateTime localDate = LocalDateTime.parse(releaseInformation);
+
+        Movie editedMovie = this.movieService.editMovie(name,director,runningTime,plot,localDate,originalLanguage,likes,actors,genres);
         return editedMovie;
     }
 
@@ -135,5 +141,10 @@ public class MovieApi {
     @GetMapping("/{id}/genres")
     public List<Genre> getMoviesGenres(@PathVariable Long id){
         return this.movieService.getMoviesGenres(id);
+    }
+
+    @GetMapping("/{name}/movie")
+    public List<Actor> getActorsByMovie(@PathVariable String name){
+        return this.movieService.getActorsByMovie(name);
     }
 }

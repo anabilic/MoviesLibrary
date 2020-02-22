@@ -34,5 +34,7 @@ public interface MovieRepository {
 
     List<Movie> searchMovies(String term);
 
+    List<Actor> getActorsByMovie(String name);
+
 
 }

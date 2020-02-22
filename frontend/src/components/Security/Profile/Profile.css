@@ -18,9 +18,39 @@
 }
 
 .nameProfile {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 hr.new4 {
-    border-top: 1px solid #800000;
+    border-top: 1px solid whitesmoke;
+}
+
+.grid-content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 30px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    opacity: 0.8;
+}
+
+.linkButton{
+
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: Helvetica, sans-serif;
+    /*input has OS specific font-family*/
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
 }

@@ -94,10 +94,12 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie editMovie(String name, String director, String runningTime, String plot,LocalDateTime releaseInformation, String originalLanguage, Integer Likes, List<String> actors, List<String> genres) {
+
         Movie movie = this.movieRepository.findByName(name);
 
         List<Actor> movieActors = this.movieRepository.checkActors(actors);
         List<Genre> movieGenres = this.movieRepository.checkGenres(genres);
+
 
         movie.setDirector(director);
         movie.setRunningTime(runningTime);
@@ -107,6 +109,8 @@ public class MovieServiceImpl implements MovieService {
         movie.setPlot(plot);
         movie.setActors(movieActors);
         movie.setGenres(movieGenres);
+        movie.setFile(movie.getFile());
+        movie.setUser(movie.getUser());
 
         return movieRepository.save(movie);
     }
@@ -120,8 +124,6 @@ public class MovieServiceImpl implements MovieService {
         List<Actor> movieActors = this.movieRepository.checkActors(actors);
         List<Genre> movieGenres = this.movieRepository.checkGenres(genres);
 
-        movie.setDirector(director);
-        movie.setRunningTime(runningTime);
         movie.setReleaseInformation(releaseInformation);
         movie.setOriginalLanguage(originalLanguage);
         movie.setLikes(Likes);
@@ -163,5 +165,10 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<Movie> searchMovies(String term) {
         return this.movieRepository.searchMovies(term);
+    }
+
+    @Override
+    public List<Actor> getActorsByMovie(String name) {
+        return this.movieRepository.getActorsByMovie(name);
     }
 }

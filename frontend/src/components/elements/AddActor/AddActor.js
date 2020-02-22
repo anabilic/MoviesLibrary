@@ -40,7 +40,7 @@ class AddActor extends Component {
     render() {
 
     if (this.state.redirect) {
-        return <Redirect to='/'/>;
+        return <Redirect to='/profile'/>;
     }
 
     return (

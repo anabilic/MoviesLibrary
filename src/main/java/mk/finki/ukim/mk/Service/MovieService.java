@@ -3,6 +3,7 @@ package mk.finki.ukim.mk.Service;
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,6 +33,6 @@ public interface MovieService {
 
     List<Movie> searchMovies(String term);
 
-
+    List<Actor> getActorsByMovie(String name);
 
 }

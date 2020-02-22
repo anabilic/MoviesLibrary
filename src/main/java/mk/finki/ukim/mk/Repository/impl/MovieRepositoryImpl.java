@@ -80,4 +80,9 @@ public class MovieRepositoryImpl implements MovieRepository {
     public List<Movie> searchMovies(String term) {
         return this.jpaMovieRepository.searchMovies(term);
     }
+
+    @Override
+    public List<Actor> getActorsByMovie(String name) {
+        return this.jpaMovieRepository.getActorsByMovie(name);
+    }
 }

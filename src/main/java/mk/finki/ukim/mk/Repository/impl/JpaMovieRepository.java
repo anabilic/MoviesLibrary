@@ -3,6 +3,7 @@ package mk.finki.ukim.mk.Repository.impl;
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Service.ActorService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -32,6 +33,7 @@ public interface JpaMovieRepository extends JpaRepository<Movie,Long> {
     @Query("select m from Movie m WHERE m.name like %:term%")
     List<Movie> searchMovies(@Param("term") String term);
 
-
+    @Query(value = "select a from Actor a join a.movies m where m.name like :name")
+    List<Actor> getActorsByMovie(@Param("name") String name);
 
 }
