@@ -10,9 +10,10 @@ const EditMovie = (props) => {
     const [genres,setGenres] = useState({});
     const [actors,setActors] = useState({});
     const [movie,setMovie] = useState({});
-    const [actorSelected,setActorSelected] = useState({});
-    const [genreSelected, setGenreSelected] = useState({});
+    const [actorSelected,setActorSelected] = useState([]);
+    const [genreSelected, setGenreSelected] = useState([]);
     const [actorsByMovie,setActorsByMovie] = useState({});
+
     const {name} = useParams();
     const history = useHistory();
 
@@ -29,7 +30,13 @@ const EditMovie = (props) => {
         axios.get("/movie/"+name+"/movie").then((data) =>{
            setActorsByMovie(data.data);
         });
+
+ console.log('MOVIE', movie)
     },[]);
+
+    const allAuthorsArray = Object.values(actors);
+    const allAuthorsFromApi = allAuthorsArray.map(author => {return {value: author.name, display: author.name}});
+
 
 
     function is_object(mixed_var) {
@@ -70,7 +77,6 @@ const EditMovie = (props) => {
 
     const makeGenresKeys = () => {
         const arrayOfGenres = objectToArray(genres);
-
         const items = [];
         for (let i = 0; i < arrayOfGenres.length; i++) {
             let GENRE = arrayOfGenres[i].name;
@@ -78,17 +84,17 @@ const EditMovie = (props) => {
         }
 
         return items;
+        console.log('KKKK', arrayOfGenres)
+
     };
 
     const makeActorsByMovieKeys = () => {
         const arrayOfActorsByMovie = objectToArray(actorsByMovie);
-
         const items = [];
         for (let i = 0; i < arrayOfActorsByMovie.length; i++) {
-            let GENRE = arrayOfActorsByMovie[i].name;
-            items.push({key: GENRE, text: GENRE, value: GENRE} );
+            let ACTOR = arrayOfActorsByMovie[i].name;
+            items.push({key: ACTOR, text: ACTOR, value: ACTOR} );
         }
-
         return items;
     };
 
@@ -102,6 +108,7 @@ const EditMovie = (props) => {
             "director": e.target.director.value,
             "originalLanguage": e.target.originalLanguage.value,
             "plot": e.target.plot.value,
+            "runningTime":e.target.runningTime.value,
             "releaseInformation": e.target.releaseInformation.value,
             "genres": genreSelected,
             "actors": actorSelected
@@ -127,7 +134,7 @@ const EditMovie = (props) => {
             );
             return false;
         }
-        return setActorSelected ({value});
+        return setActorSelected (value);
     };
 
     const handleChangeGenres = (e, { value }) => {
@@ -137,8 +144,20 @@ const EditMovie = (props) => {
             );
             return false;
         }
-        return setGenreSelected({value});
+        return setGenreSelected(value);
     };
+
+    const handleChange = (e) =>{
+        var options = e.target.options;
+        var value = [];
+        for (var i = 0, l = options.length; i < l; i++) {
+            if (options[i].selected) {
+                value.push(options[i].value);
+            }
+        }
+        return setGenreSelected(value);
+    };
+
 
     return (
 
@@ -192,24 +211,39 @@ const EditMovie = (props) => {
 
                     <div className="field">
                         <label style={{color: '#800000', fontSize: 'medium'}}>Genre</label>
-                        <Dropdown name={"genres"} id="genres" style={{fontStyle: 'italic'}} text='Select genres...' fluid
-                                  multiple selection
+                        <Dropdown name={"genres"} id="genres" style={{fontStyle: 'italic'}} text='Select genres...'
+                                  fluid multiple selection
                                   onChange={handleChangeGenres}
-                                  renderLabel={({ text }) => text}
-                                  options={makeGenresKeys()}/>
+                                  renderLabel={genres.data}
+                                  // options={genres && genres.map(e=> ({label: genres.name, text: genres.name, value: genres.name}))}/>
+                        options={makeGenresKeys()}/>
+
+                        {/*<select name={"genres"} id="genres" onChange={handleChange} className="form-control col-md-6" multiple>*/}
+                        {/*    {allAuthorsFromApi.map((author) =>*/}
+                        {/*        <option key={author.value} value={author.value}>{author.display}</option>*/}
+                        {/*    )}*/}
+                        {/*</select>*/}
+
                     </div>
                     <br/>
 
                     <div className="field">
                         <label style={{color: '#800000', fontSize: 'medium'}}>Actors</label>
-                        <Dropdown name={"actors"} id="actors" style={{fontStyle: 'italic'}} text='Select actors...' fluid
-                                  multiple selection
-                                  onChange={handleChangeActors}
+                        <Dropdown name={"actors"} id="actors" style={{fontStyle: 'italic'}} text='Select actors...'
+                                  fluid multiple selection
+                                  onChange={handleChange}
                                   renderLabel={({ text }) => text}
-                                  defaultValue={actorsByMovie}
-                                  options={makeActorsKeys()}/>
+                                  options={allAuthorsFromApi.map(author => {
+                                      return {
+                                          key: author.value,
+                                          text: author.value,
+                                          value: author.display
+                                      }
+                                  })}/>
                     </div>
                     <br/>
+
+
 
                     {/*<div className="ui form">*/}
                     {/*    <div className="field">*/}

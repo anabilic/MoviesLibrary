@@ -11,21 +11,21 @@ class Home extends Component{
     state = {
         movies: [],
         heroImage: null,
-        page:0,
-        pageSize:6,
+        pageSize:12,
         totalPages:0
     };
 
     componentDidMount() {
-        this.loadMovies();
+        this.loadMovies()
+
     }
 
     loadMovies = (page=0) => {
         MovieService.fetchMoviesPaged(page, this.state.pageSize).then((data) => {
             this.setState({
 
-                movies: data.data,
-                heroImage: data.data[8],
+                movies: data.data.content,
+                heroImage: data.data.content[8],
                 page:data.data.page,
                 pageSize: data.data.pageSize,
                 totalPages: data.data.totalPages
@@ -68,7 +68,7 @@ class Home extends Component{
                         header={'Popular Movies'}
                         onPageClick={this.loadMovies}
                         totalPages={this.state.totalPages} >
-                        {movies && movies.map( (element, i) => (
+                        {movies &&  movies.map( (element, i) => (
                             <MovieThumb
                                 key={i}
                                 clickable={true}

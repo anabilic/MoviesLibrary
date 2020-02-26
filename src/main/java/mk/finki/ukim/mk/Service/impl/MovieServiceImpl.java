@@ -5,6 +5,7 @@ import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.User;
 import mk.finki.ukim.mk.Model.exceptions.MovieAlreadyExists;
+import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Repository.MovieRepository;
 import mk.finki.ukim.mk.Repository.UserRepository;
 import mk.finki.ukim.mk.Service.MovieService;
@@ -28,8 +29,13 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public Page<Movie> listAllMovies(int page, int size) {
+        return movieRepository.getAllMovies(page,size);
+    }
+
+    @Override
     public List<Movie> listAllMovies() {
-        return movieRepository.getAllMovies();
+        return this.movieRepository.getAllMovies();
     }
 
     @Override
@@ -101,14 +107,24 @@ public class MovieServiceImpl implements MovieService {
         List<Genre> movieGenres = this.movieRepository.checkGenres(genres);
 
 
+        if(movieActors == null ){
+            movie.setActors(movie.getActors());
+        }else{
+            movie.setActors(movieActors);
+        }
+
+        if(movieGenres == null){
+            movie.setGenres(movie.getGenres());
+        }else{
+            movie.setGenres(movieGenres);
+        }
+
         movie.setDirector(director);
         movie.setRunningTime(runningTime);
         movie.setReleaseInformation(releaseInformation);
         movie.setOriginalLanguage(originalLanguage);
         movie.setLikes(Likes);
         movie.setPlot(plot);
-        movie.setActors(movieActors);
-        movie.setGenres(movieGenres);
         movie.setFile(movie.getFile());
         movie.setUser(movie.getUser());
 

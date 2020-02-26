@@ -6,6 +6,8 @@ import mk.finki.ukim.mk.Repository.ActorRepository;
 import mk.finki.ukim.mk.Service.ActorService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +38,7 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
-    public Actor createActorWithImage(String name, String castName, List<String> movies, byte[] imageActor) {
+    public Actor createActorWithImage(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate, byte[] imageActor) {
 
         List<Movie> actorMovies = this.actorRepository.checkMovies(movies);
 
@@ -45,6 +47,9 @@ public class ActorServiceImpl implements ActorService {
         actor.setCastName(castName);
         actor.setMovies(actorMovies);
         actor.setImageActor(imageActor);
+        actor.setBiography(biography);
+        actor.setDateOfBirth(birthDate);
+        actor.setPlaceOfBirth(placeOfBirth);
 
         return actorRepository.save(actor);
     }

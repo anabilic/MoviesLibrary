@@ -20,7 +20,7 @@ const Profile = (props) => {
 
         setUser(UserService.currentUserValue);
 
-        axios.get("/movie").then((data) => {
+        axios.get("/movie/all").then((data) => {
             setMovies(data.data);
         });
 
@@ -98,11 +98,11 @@ const Profile = (props) => {
                             </span>
                             <br/>
                             <span>
-                            <a href="" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
+                            <Link to="/allActors" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
                             <i className="fa fa-list">
                             <span className="font-italic">List of all actors</span>
                             </i>
-                            </a>
+                            </Link>
                             </span>
                             <br/>
                             <span>
@@ -135,12 +135,13 @@ const Profile = (props) => {
                                     <div>
                                         <span className="ml-1 font-weight-bold" style={{ fontSize: '18px', color: 'red', fontFamily: 'Helvetica'}}>{element.name}</span>
                                         <br/>
-                                        <Link to={"/editMovie/" + element.name}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica',display:'flex'}} >
+                                        <Link to={"/editMovie/" + element.name}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}} >
                                             <i className="fa fa-edit">
                                                 <span className="font-italic">Edit this movie</span>
                                             </i>
                                         </Link>
-                                        <a  href="" className="ml-3" onClick={() => props.onDelete(element.id)}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}}>
+                                    <br/>
+                                        <a  href="" className="" onClick={() => props.onDelete(element.id)}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}}>
                                             <i className="fa fa-trash-o">
                                                 <span className="font-italic">Delete this movie</span>
                                             </i>

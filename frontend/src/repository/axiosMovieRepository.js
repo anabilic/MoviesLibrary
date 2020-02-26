@@ -5,7 +5,7 @@ import qs from 'qs';
 const MovieService = {
 
     getMovies: () => {
-        return axios.get("/movie");
+        return axios.get("/movie/all");
     },
 
     fetchMoviesPaged:(page,pageSize)=>{

@@ -17,6 +17,7 @@ import Movie from "../Movie/Movie";
 import AddActor from "../elements/AddActor/AddActor";
 import './App.css';
 import Profile from "../Security/Profile/Profile";
+import ListActors from "../elements/ListActor/ListActors";
 
 
 class App extends React.Component {
@@ -71,6 +72,18 @@ class App extends React.Component {
                     return m.id !== movieId;
                 });
                 return {movie};
+            })
+
+        })
+    };
+
+    deleteActor = (actorId) => {
+        ActorService.deleteActor(actorId).then((response) => {
+            this.setState((state) => {
+                const actor = state.actors.filter((a) => {
+                    return a.id !== actorId;
+                });
+                return {actor};
             })
 
         })
@@ -156,6 +169,7 @@ class App extends React.Component {
                         <Route path="/movie/:id" render={()=> <Movie />} />
                         <Route path="/addActor" render={()=><AddActor onNewActorAddedWithImg={this.createActor}/>} />
                         <Route path="/profile" render={()=> <Profile onDelete={this.deleteMovie}/>}  />
+                        <Route path="/allActors" render={()=> <ListActors onDelete={this.deleteActor}/>}  />
                         <Route component={NotFound} />
                     </Switch>
             </Router>

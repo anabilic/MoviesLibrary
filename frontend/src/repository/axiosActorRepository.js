@@ -7,6 +7,9 @@ const ActorService = {
         return axios.get("/actor");
     },
 
+    deleteActor: (actorId) => {
+        return axios.delete(`/actor/${actorId}`);
+    },
     addActor: (actor) => {
 
         return axios.post("/actor/image", actor,{

@@ -3,6 +3,7 @@ package mk.finki.ukim.mk.Web.rest;
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Service.GenreService;
 import mk.finki.ukim.mk.Service.MovieService;
 import mk.finki.ukim.mk.Service.UserService;
@@ -39,13 +40,20 @@ public class MovieApi {
     @GetMapping("/id/{id}")
     public Optional<Movie> getMovie(@PathVariable Long id){ return this.movieService.findMovieById(id); }
 
+
     @GetMapping("/name/{name}")
     public Movie getMovieByName(@PathVariable String name){
         return this.movieService.findMovieByName(name);
     }
 
     @GetMapping
-    public List<Movie> getAllMovies(){
+    public Page<Movie> getAllMovies(@RequestHeader(name = "page", defaultValue = "0", required = false) int page,
+                                    @RequestHeader(name = "page-size", defaultValue = "10", required = false) int size){
+        return  this.movieService.listAllMovies(page,size);
+    }
+
+    @GetMapping("/all")
+    public List<Movie> listAllMovies(){
         return  this.movieService.listAllMovies();
     }
 
@@ -118,8 +126,8 @@ public class MovieApi {
                            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) String releaseInformation,
                            @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
                            @RequestParam(value = "likes",required = false) Integer likes,
-                           @RequestParam(value="actors",required = false) List<String> actors,
-                           @RequestParam(value = "genres",required = false) List<String> genres){
+                           @RequestParam(value="actors",required = false) ArrayList<String> actors,
+                           @RequestParam(value = "genres",required = false) ArrayList<String> genres){
 
         LocalDateTime localDate = LocalDateTime.parse(releaseInformation);
 

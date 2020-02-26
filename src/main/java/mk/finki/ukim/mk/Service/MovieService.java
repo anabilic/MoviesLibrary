@@ -3,13 +3,15 @@ package mk.finki.ukim.mk.Service;
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
-import org.springframework.data.repository.query.Param;
+import mk.finki.ukim.mk.Model.pagination.Page;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 public interface MovieService {
+
+    Page<Movie> listAllMovies(int page, int size);
 
     List<Movie> listAllMovies();
 

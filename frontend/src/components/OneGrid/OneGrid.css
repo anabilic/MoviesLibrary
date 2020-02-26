@@ -1,18 +1,20 @@
-.rmdb-grid h1 {
+.imdb-grid h1 {
     font-family: 'Abel', sans-serif;
     font-size:42px;
 }
 
-.rmdb-grid-content {
+.imdb-grid-content {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-column-gap: 40px;
-    grid-row-gap: 40px;
+    grid-row-gap: 50px;
 }
 
-.rmdb-grid-element {
+.imdb-grid-element {
+    margin-left: 80px;
     background: #353535;
-    max-height: 430px;
+    height: 500px!important;
+    max-width: 1200px!important;
     animation: animateGrid 0.5s;
     overflow: hidden;
 }
@@ -27,16 +29,15 @@
 }
 
 @media screen and (max-width: 720px) {
-    .rmdb-grid-content {
+    .imdb-grid-content {
         grid-template-columns: auto auto;
     }
 
-    .rmdb-grid-element:nth-child(2n+2) {
+    .imdb-grid-element:nth-child(2n+2) {
         margin-right: 0;
     }
 
-    .rmdb-grid h1 {
+    .imdb-grid h1 {
         font-size:22px;
     }
 }
-

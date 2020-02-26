@@ -3,8 +3,10 @@ package mk.finki.ukim.mk.Repository.impl;
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Repository.MovieRepository;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,6 +21,12 @@ public class MovieRepositoryImpl implements MovieRepository {
 
     public MovieRepositoryImpl(JpaMovieRepository jpaMovieRepository) {
         this.jpaMovieRepository = jpaMovieRepository;
+    }
+
+    @Override
+    public Page<Movie> getAllMovies(int page, int size) {
+        org.springframework.data.domain.Page<Movie> movieResult =  this.jpaMovieRepository.findAll(PageRequest.of(page, size));
+        return new Page<>(page, movieResult.getTotalPages(), size, movieResult.getContent());
     }
 
     @Override
