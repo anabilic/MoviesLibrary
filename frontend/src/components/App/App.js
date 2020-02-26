@@ -18,6 +18,8 @@ import AddActor from "../elements/AddActor/AddActor";
 import './App.css';
 import Profile from "../Security/Profile/Profile";
 import ListActors from "../elements/ListActor/ListActors";
+import AddGenre from "../elements/AddGenre/AddGenre";
+import GenreService from "../../repository/axiosGenreRepository";
 
 
 class App extends React.Component {
@@ -29,7 +31,8 @@ class App extends React.Component {
             history: createBrowserHistory(),
             currentUser: new User(),
             movies:[],
-            actors:[]
+            actors:[],
+            genres:[]
         };
     }
 
@@ -51,6 +54,19 @@ class App extends React.Component {
              });
          });
      };
+
+    createGenre= async (genre) => {
+        await GenreService.addGenre(genre).then((response) => {
+            const genre = response.data;
+
+            this.setState((prevState) => {
+                const newGenreRef = [...prevState.genres, genre];
+                return {
+                    "genres": newGenreRef
+                }
+            });
+        });
+    };
 
     createActor= async (actor) => {
         await ActorService.addActor(actor).then((response) => {
@@ -168,6 +184,7 @@ class App extends React.Component {
                         <Route path="/editMovie/:name" render={()=> <EditMovie onSubmit={this.updateMovie}/>} />
                         <Route path="/movie/:id" render={()=> <Movie />} />
                         <Route path="/addActor" render={()=><AddActor onNewActorAddedWithImg={this.createActor}/>} />
+                        <Route path="/addGenre" render={()=><AddGenre onNewGenreAdded={this.createGenre}/>} />
                         <Route path="/profile" render={()=> <Profile onDelete={this.deleteMovie}/>}  />
                         <Route path="/allActors" render={()=> <ListActors onDelete={this.deleteActor}/>}  />
                         <Route component={NotFound} />

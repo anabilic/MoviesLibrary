@@ -98,6 +98,14 @@ const Profile = (props) => {
                             </span>
                             <br/>
                             <span>
+                            <Link to="/addGenre" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
+                            <i className="fa fa-plus">
+                            <span className="font-italic">Add new genre</span>
+                            </i>
+                            </Link>
+                            </span>
+                            <br/>
+                            <span>
                             <Link to="/allActors" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
                             <i className="fa fa-list">
                             <span className="font-italic">List of all actors</span>

@@ -16,7 +16,7 @@ const OneGrid = (props) => {
 
     return (
 
-        <div className="imdb-grid">
+        <div className="imdb-grid" style={{marginLeft:'-70px'}}>
             <br/>
             <div className="imdb-grid-content">
                 {renderElements()}

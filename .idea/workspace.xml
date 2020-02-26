@@ -4,32 +4,10 @@
     <list default="true" id="532f025a-be21-475c-8f45-64fc6e0668a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Security/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Security/Profile/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/AddActor/AddActor.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/AddActor/AddActor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/EditMovie/EditMovie.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/EditMovie/EditMovie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/FourColGrid/FourColGrid.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/FourColGrid/FourColGrid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/repository/axiosActorRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/repository/axiosActorRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/repository/axiosMovieRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/repository/axiosMovieRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/MovieRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaMovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaMovieRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/ActorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/ActorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/MovieService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/ActorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/ActorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/ActorApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/ActorApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/MovieApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/MovieApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Actor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/MovieRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/MovieRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/ActorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/ActorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/MovieService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/MovieService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/ActorServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/ActorServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/ActorApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/ActorApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/MovieApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/MovieApi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/OneGrid/OneGrid.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OneGrid/OneGrid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/ListActor/ListActors.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/ListActor/ListActors.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/ListActor/ListActors.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/ListActor/ListActors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/repository/axiosGenreRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/repository/axiosGenreRepository.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +34,9 @@
         <option value="Interface" />
         <option value="HTTP Request" />
         <option value="Enum" />
+        <option value="Class" />
         <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -1506,7 +1484,7 @@
       <workItem from="1582398257619" duration="1838000" />
       <workItem from="1582574526319" duration="5856000" />
       <workItem from="1582641423015" duration="4434000" />
-      <workItem from="1582714820321" duration="16470000" />
+      <workItem from="1582714820321" duration="18215000" />
     </task>
     <servers />
   </component>
@@ -1647,6 +1625,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="193" width="997" height="535" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1440.900@0.0.1440.900" timestamp="1581940170327" />
+    <state x="626" y="93" width="1018" height="572" key="dock-window-1" timestamp="1582749661616">
+      <screen x="0" y="23" width="1440" height="826" />
+    </state>
+    <state x="626" y="93" width="1018" height="572" key="dock-window-1/0.23.1440.826@0.23.1440.826" timestamp="1582749661616" />
     <state x="400" y="212" width="639" height="476" key="find.popup" timestamp="1582219414905">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

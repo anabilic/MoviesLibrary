@@ -23,8 +23,8 @@ const ListActors = (props) => {
         <div>
         <Navigation movie='List of All Actors' />
         <div className="col-md-12">
-            <div style={{borderColor:'black', boxShadow: '5px 10px 18px 5px black'}} className="cardd card-container">
-                <OneGrid header={'Actors'}>
+            <div style={{borderColor:'black', boxShadow: '5px 10px 18px 5px black'}} className="cardActor card-container">
+                <OneGrid>
                     {actorsList && actorsList.map( (element, i) => (
                         <div className="imdb-actor">
                             <img
