@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import UserService from '../../../repository/axiosUserRepository';
+import {User} from '../../../model/User';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLock, faUser} from "@fortawesome/free-solid-svg-icons";
 import {Link} from 'react-router-dom'
-import {User} from '../../../model/User';
 import './LogIn.css';
 
 
@@ -12,10 +12,6 @@ class LogIn extends Component{
 constructor(props) {
 
     super(props);
-
-    // if(UserService.currentUserValue) {
-    //     this.props.history.push('/');
-    // }
 
     this.state = {
         user: new User('',''),

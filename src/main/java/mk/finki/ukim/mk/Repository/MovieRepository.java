@@ -4,7 +4,6 @@ import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.pagination.Page;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;

@@ -114,11 +114,11 @@ const Profile = (props) => {
                             </span>
                             <br/>
                             <span>
-                            <a href="" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
-                            <i className="fa fa-list">
-                            <span className="font-italic">List of all users</span>
-                            </i>
-                            </a>
+                                <Link to="/allUsers" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
+                                    <i className="fa fa-list">
+                                    <span className="font-italic">List of all users</span>
+                                    </i>
+                                </Link>
                             </span>
                         </div>
 
@@ -190,7 +190,6 @@ const Profile = (props) => {
                                                 <span className="font-italic">Edit this movie</span>
                                             </i>
                                         </a>
-                                        {/*clickable={true} className="clickable"*/}
                                         <a  href="" className="ml-3" onClick={() => props.onDelete(element.id)}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}}>
                                             <i className="fa fa-trash-o">
                                                 <span className="font-italic">Delete this movie</span>

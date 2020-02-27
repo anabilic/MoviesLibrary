@@ -5,8 +5,6 @@ import ActorService from "../../../repository/axiosActorRepository";
 import GenreService from "../../../repository/axiosGenreRepository";
 import './AddMovie.css'
 
-
-
 function objectToArray(obj) {
     var array = [], tempObject;
 

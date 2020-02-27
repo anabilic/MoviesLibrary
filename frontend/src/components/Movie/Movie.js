@@ -1,12 +1,12 @@
 import React, {  useEffect, useState } from 'react';
+import axios from "../../custom-axios/axios";
 import Navigation from '../elements/Navigation/Navigation';
 import MovieInfo from '../elements/MovieInfo/MovieInfo';
 import MovieInfoBar from '../elements/MovieInfoBar/MovieInfoBar';
+import FourColGridActors from "../elements/FourColGridActors/FourColGridActors";
 import Actor from '../elements/Actor/Actor';
 import {useParams} from "react-router";
-import axios from "../../custom-axios/axios";
 import './Movie.css';
-import FourColGridActors from "../elements/FourColGridActors/FourColGridActors";
 
 const Movie = (props) => {
 

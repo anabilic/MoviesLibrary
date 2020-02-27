@@ -35,6 +35,6 @@ const MovieInfo = ({ movie, director ,genres}) => (
             <FontAwesome className="fa-film" name="film" size="5x" />
         </div>
     </div>
-)
+);
 
 export default MovieInfo;

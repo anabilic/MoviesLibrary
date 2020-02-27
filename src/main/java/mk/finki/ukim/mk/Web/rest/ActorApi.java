@@ -2,7 +2,6 @@ package mk.finki.ukim.mk.Web.rest;
 
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Service.ActorService;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController

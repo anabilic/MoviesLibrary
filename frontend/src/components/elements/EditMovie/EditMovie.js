@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from 'react';
-import { Dropdown } from 'semantic-ui-react';
 import axios from '../../../custom-axios/axios';
+import { Dropdown } from 'semantic-ui-react';
 import {useHistory} from "react-router";
 import {useParams} from "react-router";
 import './EditMovie.css'
@@ -36,6 +36,7 @@ const EditMovie = (props) => {
 
     const allAuthorsArray = Object.values(actors);
     const allAuthorsFromApi = allAuthorsArray.map(author => {return {value: author.name, display: author.name}});
+
 
 
 
@@ -242,19 +243,6 @@ const EditMovie = (props) => {
                                   })}/>
                     </div>
                     <br/>
-
-
-
-                    {/*<div className="ui form">*/}
-                    {/*    <div className="field">*/}
-                    {/*        <label  style={{color:'#800000',fontSize:'medium'}}>Image</label>*/}
-                    {/*        <div className="field">*/}
-                    {/*            <input type="file" name="image" placeholder="Image" style={{fontStyle:'italic'}}/>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-                    {/*<br/>*/}
-                    {/*<br/>*/}
 
                     <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
                         <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Edit</button>

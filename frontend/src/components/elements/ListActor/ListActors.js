@@ -1,9 +1,8 @@
 import React, {useState,useEffect} from 'react';
-import OneGrid from "../../OneGrid/OneGrid";
 import axios from "../../../custom-axios/axios";
-import './ListActors.css';
+import OneGrid from "../OneGrid/OneGrid";
 import Navigation from "../Navigation/Navigation";
-import {Link} from "react-router-dom";
+import './ListActors.css';
 
 const ListActors = (props) => {
 
@@ -40,7 +39,6 @@ const ListActors = (props) => {
                             <p className="imdb-actor-character">{element.placeOfBirth}</p>
                             <p className="imdb-actor-c">Biography:</p>
                             <p className="imdb-actor-character">{element.biography}</p>
-
                             <a className="" href="ml-3" style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}}>
                                     <i className="fa fa-edit">
                                         <span className="font-italic">Edit this actor</span>
@@ -51,7 +49,6 @@ const ListActors = (props) => {
                                         <span className="font-italic">Delete this actor</span>
                                     </i>
                             </a>
-
                         </div>
                     ))}
                 </OneGrid>

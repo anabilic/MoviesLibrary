@@ -34,6 +34,10 @@ class UserService {
         return axios.post( '/user/registration', JSON.stringify(user),
             {headers: {'Content-Type':'application/json; charset=UTF-8'}});
     }
+
+    deleteUser(userId) {
+    return axios.delete(`/user/${userId}`);
+    }
 }
 
 

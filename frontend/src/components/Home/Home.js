@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import MovieService from "../../repository/axiosMovieRepository";
 import HeroImage from '../elements/HeroImage/HeroImage';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
-import MovieService from "../../repository/axiosMovieRepository";
 import './Home.css';
 
 class Home extends Component{

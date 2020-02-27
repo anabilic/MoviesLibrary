@@ -1,4 +1,3 @@
-
 //Sizes: w300, w780, w1280, original
 const BACKDROP_SIZE = 'w1280'
 

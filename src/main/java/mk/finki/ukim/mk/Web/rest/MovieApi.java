@@ -74,8 +74,6 @@ public class MovieApi {
                              @RequestParam(value="actors",required = false) List<String> actors,
                              @RequestParam(value = "genres",required = false) List<String> genres){
 
-
-
         Movie newMovie = this.movieService.createMovie(name,director,runningTime,plot,releaseInformation,originalLanguage,likes,actors,genres);
         return newMovie;
     }

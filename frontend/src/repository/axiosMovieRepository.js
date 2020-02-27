@@ -1,12 +1,7 @@
 import axios from '../custom-axios/axios';
 import qs from 'qs';
 
-
 const MovieService = {
-
-    getMovies: () => {
-        return axios.get("/movie/all");
-    },
 
     fetchMoviesPaged:(page,pageSize)=>{
         return axios.get("/movie",{
@@ -15,7 +10,6 @@ const MovieService = {
             }
         })
     },
-
     addMovie: (movie) => {
 
         return axios.post("/movie/image", movie,{
@@ -24,15 +18,12 @@ const MovieService = {
             }
         });
     },
-
     searchMovieTerm: (searchTerm) => {
         return axios.get(`/movie?term=${searchTerm}`);
     },
-
     deleteMovie: (movieId) => {
         return axios.delete(`/movie/${movieId}`);
     },
-
     editMovie: (movie) => {
         const mName=movie.name;
         const formatParams=qs.stringify(movie);

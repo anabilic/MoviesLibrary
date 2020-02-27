@@ -4,7 +4,6 @@ import './MovieThumb.css';
 
 const MovieThumb = ({ image, movieId, movieName, clickable }) => (
     <div className="rmdb-moviethumb">
-        {/* You can send props via the Links "to" object. Here we create our own "movieName" */}
         {clickable ?
             <Link to={"/movie/"+movieId}>
                 <img className="clickable" src={image} alt="moviethumb" />

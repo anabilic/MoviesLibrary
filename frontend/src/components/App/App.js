@@ -1,25 +1,26 @@
 import React from 'react';
 import { Router, Link, Route, Switch} from 'react-router-dom';
+import {faUser} from "@fortawesome/free-solid-svg-icons";
+import MovieService from "../../repository/axiosMovieRepository";
+import ActorService from "../../repository/axiosActorRepository";
+import GenreService from "../../repository/axiosGenreRepository";
 import {createBrowserHistory} from 'history';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUser} from "@fortawesome/free-solid-svg-icons";
+import EditMovie from "../elements/EditMovie/EditMovie";
+import NotFound from "../elements/NotFound/NotFound";
+import Movie from "../Movie/Movie";
+import Profile from "../Security/Profile/Profile";
+import ListActors from "../elements/ListActor/ListActors";
+import ListUser from "../elements/ListUser/ListUser";
+import UserService from "../../repository/axiosUserRepository";
+import {User} from '../../model/User';
 import Home from '../Home/Home';
 import LogIn from "../Security/LogIn/LogIn";
 import Register from "../Security/Register/Register";
-import UserService from "../../repository/axiosUserRepository";
-import {User} from '../../model/User';
-import EditMovie from "../elements/EditMovie/EditMovie";
-import NotFound from "../elements/NotFound/NotFound";
 import AddMovie from "../elements/AddMovie/AddMovie";
-import MovieService from "../../repository/axiosMovieRepository";
-import ActorService from "../../repository/axiosActorRepository";
-import Movie from "../Movie/Movie";
 import AddActor from "../elements/AddActor/AddActor";
-import './App.css';
-import Profile from "../Security/Profile/Profile";
-import ListActors from "../elements/ListActor/ListActors";
 import AddGenre from "../elements/AddGenre/AddGenre";
-import GenreService from "../../repository/axiosGenreRepository";
+import './App.css';
 
 
 class App extends React.Component {
@@ -32,7 +33,8 @@ class App extends React.Component {
             currentUser: new User(),
             movies:[],
             actors:[],
-            genres:[]
+            genres:[],
+            users:[]
         };
     }
 
@@ -81,6 +83,24 @@ class App extends React.Component {
         });
     };
 
+    updateMovie = ((editedMovie) => {
+        MovieService.editMovie(editedMovie).then((response) => {
+            const newMovie = response.data;
+            this.setState((prevState) => {
+                const newMovieRef = prevState.movies.map((item) => {
+                    if(item.name === newMovie.name){
+                        return newMovie;
+                    }
+                    return  item;
+                })
+                return{
+                    "movies": newMovieRef
+                }
+            });
+        });
+    });
+
+
     deleteMovie = (movieId) => {
         MovieService.deleteMovie(movieId).then((response) => {
             this.setState((state) => {
@@ -105,22 +125,17 @@ class App extends React.Component {
         })
     };
 
-    updateMovie = ((editedMovie) => {
-        MovieService.editMovie(editedMovie).then((response) => {
-            const newMovie = response.data;
-            this.setState((prevState) => {
-                const newMovieRef = prevState.movies.map((item) => {
-                    if(item.name === newMovie.name){
-                        return newMovie;
-                    }
-                    return  item;
-                })
-                return{
-                    "movies": newMovieRef
-                }
-            });
-        });
-    });
+    deleteUser = (userId) => {
+        UserService.deleteUser(userId).then((response) => {
+            this.setState((state) => {
+                const user = state.users.filter((u) => {
+                    return u.id !== userId;
+                });
+                return {user};
+            })
+
+        })
+    };
 
 
     logout() {
@@ -153,8 +168,6 @@ class App extends React.Component {
                                     <Link to="" style={{marginLeft:'10px'}} onClick={()=>this.logout()} className="btn btn-outline-danger waves-effect">
                                         Sign Out
                                     </Link>
-                                    {/*<button type="button" className="btn btn-outline-danger waves-effect">My profile</button>*/}
-                                    {/*<button style={{marginLeft:'10px'}} onClick={() => history.push('/')} type="button" className="btn btn-outline-danger waves-effect">Sign Out</button>*/}
                                 </div>
                             </div>
                         </div>
@@ -187,11 +200,12 @@ class App extends React.Component {
                         <Route path="/addGenre" render={()=><AddGenre onNewGenreAdded={this.createGenre}/>} />
                         <Route path="/profile" render={()=> <Profile onDelete={this.deleteMovie}/>}  />
                         <Route path="/allActors" render={()=> <ListActors onDelete={this.deleteActor}/>}  />
+                        <Route path="/allUsers" render={()=> <ListUser onDelete={this.deleteUser} />}  />
                         <Route component={NotFound} />
                     </Switch>
             </Router>
         );
     };
-};
+}
 
 export default App;

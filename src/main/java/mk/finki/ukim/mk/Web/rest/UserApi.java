@@ -49,6 +49,16 @@ public class UserApi {
         return ResponseEntity.ok(userService.findUsers(idList));
     }
 
+    @GetMapping
+    public ResponseEntity<?> getAllUsers(){
+        return ResponseEntity.ok(userService.listAllUsers());
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        this.userService.deleteUser(id);
+    }
+
     @GetMapping("/test")
     public ResponseEntity<?> test(){
         return ResponseEntity.ok("It is working...");

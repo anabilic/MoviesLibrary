@@ -6,7 +6,6 @@ const ActorService = {
     getActors: () => {
         return axios.get("/actor");
     },
-
     deleteActor: (actorId) => {
         return axios.delete(`/actor/${actorId}`);
     },
