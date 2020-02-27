@@ -7,6 +7,7 @@ import GenreService from "../../repository/axiosGenreRepository";
 import {createBrowserHistory} from 'history';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import EditMovie from "../elements/EditMovie/EditMovie";
+import EditActor from "../elements/EditActor/EditActor";
 import NotFound from "../elements/NotFound/NotFound";
 import Movie from "../Movie/Movie";
 import Profile from "../Security/Profile/Profile";
@@ -95,6 +96,23 @@ class App extends React.Component {
                 })
                 return{
                     "movies": newMovieRef
+                }
+            });
+        });
+    });
+
+    updateActor = ((editedActor) => {
+        ActorService.editActor(editedActor).then((response) => {
+            const newActor = response.data;
+            this.setState((prevState) => {
+                const newActorRef = prevState.actors.map((item) => {
+                    if(item.name === newActor.name){
+                        return newActor;
+                    }
+                    return  item;
+                });
+                return{
+                    "actors": newActorRef
                 }
             });
         });
@@ -201,6 +219,7 @@ class App extends React.Component {
                         <Route path="/profile" render={()=> <Profile onDelete={this.deleteMovie}/>}  />
                         <Route path="/allActors" render={()=> <ListActors onDelete={this.deleteActor}/>}  />
                         <Route path="/allUsers" render={()=> <ListUser onDelete={this.deleteUser} />}  />
+                        <Route path="/editActor/:name" render={()=> <EditActor onSubmit={this.updateActor}/>} />
                         <Route component={NotFound} />
                     </Switch>
             </Router>

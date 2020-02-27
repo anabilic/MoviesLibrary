@@ -18,4 +18,7 @@ public interface ActorRepository {
 
     Optional<Actor> findById(Long id);
 
+    Actor findByName(String name);
+
+
 }

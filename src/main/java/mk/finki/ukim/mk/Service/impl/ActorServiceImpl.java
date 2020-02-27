@@ -25,6 +25,11 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
+    public Actor findActorByName(String name) {
+        return this.actorRepository.findByName(name);
+    }
+
+    @Override
     public Actor createActor(String name, String castName, List<String> movies) {
 
         List<Movie> actorMovies = this.actorRepository.checkMovies(movies);
@@ -46,6 +51,22 @@ public class ActorServiceImpl implements ActorService {
         actor.setCastName(castName);
         actor.setMovies(actorMovies);
         actor.setImageActor(imageActor);
+        actor.setBiography(biography);
+        actor.setDateOfBirth(birthDate);
+        actor.setPlaceOfBirth(placeOfBirth);
+
+        return actorRepository.save(actor);
+    }
+
+    @Override
+    public Actor editActor(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate) {
+
+        Actor actor = this.actorRepository.findByName(name);
+
+        actor.setName(name);
+        actor.setCastName(castName);
+        actor.setMovies(actor.getMovies());
+        actor.setImageActor(actor.getImageActor());
         actor.setBiography(biography);
         actor.setDateOfBirth(birthDate);
         actor.setPlaceOfBirth(placeOfBirth);

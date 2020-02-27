@@ -30,6 +30,11 @@ public class ActorRepositoryImpl implements ActorRepository {
     }
 
     @Override
+    public Actor findByName(String name) {
+        return this.jpaActorRepository.findByName(name);
+    }
+
+    @Override
     public Actor save(Actor actor) {
         return jpaActorRepository.save(actor);
     }

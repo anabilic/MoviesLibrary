@@ -1,14 +1,19 @@
 package mk.finki.ukim.mk.Web.rest;
 
 import mk.finki.ukim.mk.Model.Actor;
+import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Service.ActorService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,6 +30,11 @@ public class ActorApi {
     @GetMapping
     public List<Actor> getAllActors() {
         return this.actorService.listAllActors();
+    }
+
+    @GetMapping("/name/{name}")
+    public Actor getActorByName(@PathVariable String name){
+        return this.actorService.findActorByName(name);
     }
 
     @PostMapping
@@ -52,6 +62,22 @@ public class ActorApi {
         Actor newActor = this.actorService.createActorWithImage(name,castName,movies,biography,placeOfBirth,birthDate,file.getBytes());
         return newActor;
     }
+
+    @PatchMapping("/{name}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Actor editActor(@PathVariable String name,
+                           @RequestParam(value = "castName", required = false) String castName,
+                           @RequestParam(value = "movies", required = false) List<String> movies,
+                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String dateOfBirth,
+                           @RequestParam(value = "placeOfBirth",required = false) String placeOfBirth,
+                           @RequestParam(value = "biography",required = false) String biography){
+
+        LocalDate birthDate = LocalDate.parse(dateOfBirth);
+
+        Actor editedActor = this.actorService.editActor(name,castName,movies,biography,placeOfBirth,birthDate);
+        return editedActor;
+    }
+
 
     @DeleteMapping("/{id}")
     public void deleteActor(@PathVariable Long id) {

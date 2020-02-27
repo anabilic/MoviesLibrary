@@ -3,6 +3,7 @@ import axios from "../../../custom-axios/axios";
 import OneGrid from "../OneGrid/OneGrid";
 import Navigation from "../Navigation/Navigation";
 import './ListActors.css';
+import {Link} from "react-router-dom";
 
 const ListActors = (props) => {
 
@@ -39,11 +40,11 @@ const ListActors = (props) => {
                             <p className="imdb-actor-character">{element.placeOfBirth}</p>
                             <p className="imdb-actor-c">Biography:</p>
                             <p className="imdb-actor-character">{element.biography}</p>
-                            <a className="" href="ml-3" style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}}>
-                                    <i className="fa fa-edit">
-                                        <span className="font-italic">Edit this actor</span>
-                                    </i>
-                            </a>
+                            <Link to={"/editActor/" + element.name}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}} >
+                                <i className="fa fa-edit">
+                                    <span className="font-italic">Edit this actor</span>
+                                </i>
+                            </Link>
                             <a  href="" className="ml-3" onClick={() => props.onDelete(element.id)}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}}>
                                     <i className="fa fa-trash-o">
                                         <span className="font-italic">Delete this actor</span>
