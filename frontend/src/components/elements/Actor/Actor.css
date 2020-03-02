@@ -28,3 +28,11 @@
     width: 40%;
     box-sizing: border-box;
 }
+
+.rmdb-actor-details {
+    color:#fff;
+    float: left;
+    margin-left: 20px;
+    width: 40%;
+    box-sizing: border-box;
+}

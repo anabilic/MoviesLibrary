@@ -6,11 +6,11 @@ import './EditActor.css'
 const EditActor = (props) => {
 
     const [actor,setActor] = useState({});
-    const {name} = useParams();
+    const {id} = useParams();
     const history = useHistory();
 
     useEffect(() => {
-        axios.get("/actor/name/"+name).then((data)=>{
+        axios.get("/actor/id/"+id).then((data)=>{
             setActor(data.data);
         });
     },[]);
@@ -20,6 +20,7 @@ const EditActor = (props) => {
         e.preventDefault();
 
         props.onSubmit({
+            "id":id,
             "name": e.target.name.value,
             "castName": e.target.castName.value,
             "biography": e.target.biography.value,

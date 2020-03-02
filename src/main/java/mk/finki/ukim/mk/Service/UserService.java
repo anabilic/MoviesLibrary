@@ -17,6 +17,11 @@ public interface UserService extends UserDetailsService {
 
     User save(User user);
 
+    User editUser(Long id,String userName,String name, String email,String gender, byte [] file);
+
+    User editUserWithoutImg(Long id,String userName,String name, String email,String gender);
+
+
     User findByUsername(String username);
 
     List<String> findUsers(List<Long> idList);

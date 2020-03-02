@@ -40,7 +40,8 @@ class AddMovie extends Component {
             selectedFile:null,
             genreSelected:[],
             actorSelected:{},
-            redirect:false
+            redirect:false,
+            submitted: false
         };
     }
 
@@ -105,22 +106,27 @@ class AddMovie extends Component {
     onFormSubmit = (e) => {
 
         e.preventDefault();
-        
-        const formData = new FormData();
-        formData.append('name',e.target.name.value);
-        formData.append('director',e.target.director.value);
-        formData.append('runningTime',e.target.runningTime.value);
-        formData.append('plot',e.target.plot.value);
-        formData.append('originalLanguage',e.target.originalLanguage.value);
-        formData.append('releaseInformation',e.target.releaseInformation.value);
-        formData.append('genres',this.state.genreSelected);
-        formData.append('actors',this.state.actorSelected);
-        formData.append('file', this.state.selectedFile);
-        formData.append('user',this.props.User);
 
-        this.props.onNewMovieAddedWithImg(formData);
+            if (!(e.target.releaseInformation.value && e.target.name.value && this.state.selectedFile )) {
+                this.setState({submitted: true});
+                return;
+            }
 
-        this.setState({redirect:true});
+            const formData = new FormData();
+            formData.append('name', e.target.name.value);
+            formData.append('director', e.target.director.value);
+            formData.append('runningTime', e.target.runningTime.value);
+            formData.append('plot', e.target.plot.value);
+            formData.append('originalLanguage', e.target.originalLanguage.value);
+            formData.append('releaseInformation', e.target.releaseInformation.value);
+            formData.append('genres', this.state.genreSelected);
+            formData.append('actors', this.state.actorSelected);
+            formData.append('file', this.state.selectedFile);
+            formData.append('user', this.props.User);
+
+            this.props.onNewMovieAddedWithImg(formData);
+
+            this.setState({redirect: true});
 
 
     };
@@ -169,6 +175,9 @@ class AddMovie extends Component {
                         <div className="">
                             <input type="text" name={"name"} id="name" placeholder="Enter movie name..."
                                    style={{fontStyle: 'italic'}}/>
+                            {this.state.submitted &&
+                            <div className="help-block" style={{color: 'red'}}>Name is required!</div>
+                            }
                         </div>
                     </div>
                     <br/>
@@ -206,8 +215,11 @@ class AddMovie extends Component {
 
                     <div className="field">
                         <label style={{color: '#800000', fontSize: 'medium'}}>Release Information:</label>
-                        <input name={"releaseInformation"} id="releaseInformation" type="datetime-local"
+                        <input name={"releaseInformation"} id="releaseInformation" type="date"
                                style={{fontStyle: 'italic'}}/>
+                        {this.state.submitted &&
+                        <div className="help-block" style={{color: 'red'}}>Release Date is required!</div>
+                        }
                     </div>
                     <br/>
 
@@ -237,6 +249,9 @@ class AddMovie extends Component {
                             <div className="field">
                                 <input type="file" name={"file"} id="file" placeholder="Image"
                                        onChange={(event => this.onFileChangeHandler(event))}  style={{fontStyle: 'italic'}}/>
+                                {this.state.submitted &&
+                                <div className="help-block" style={{color: 'red'}}>Image is required!</div>
+                                }
                             </div>
                         </div>
                     </div>

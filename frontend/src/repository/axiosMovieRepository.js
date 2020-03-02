@@ -12,7 +12,7 @@ const MovieService = {
     },
     addMovie: (movie) => {
 
-        return axios.post("/movie/image", movie,{
+        return axios.post("/movie", movie,{
             headers: {
                 'Content-Type': 'multipart/form-data; boundary=${form._boundary}'
             }
@@ -25,9 +25,10 @@ const MovieService = {
         return axios.delete(`/movie/${movieId}`);
     },
     editMovie: (movie) => {
-        const mName=movie.name;
+        const movieId=movie.id;
+        console.log(movieId);
         const formatParams=qs.stringify(movie);
-        return axios.patch("/movie/"+mName,formatParams,{
+        return axios.patch("/movie/"+movieId,formatParams,{
             headers:{
                 'Content-Type': 'application/x-www-form-urlencoded',
             }

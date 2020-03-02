@@ -29,9 +29,11 @@ public class Actor {
 
     private String placeOfBirth;
 
+    @Column(nullable = true)
     private LocalDate dateOfBirth;
 
     @Lob
+    @Column(nullable = true)
     private byte[] imageActor;
 
     @JsonIgnore

@@ -7,9 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -44,9 +47,42 @@ public class UserApi {
         return ResponseEntity.ok(userService.findByUsername(principal.getName()));
     }
 
+    @PatchMapping("/{id}")
+    public User editUser(
+            @PathVariable(value="id") Long id,
+            @RequestParam(value = "username") String userName,
+            @RequestParam(value = "name")String name,
+            @RequestParam(value = "email")String email,
+            @RequestParam(value = "gender")String gender,
+            @RequestParam(value = "file",required = false) MultipartFile file) throws IOException {
+
+        if(file==null){
+            User user=this.userService.findById(id).get();
+            return (this.userService.editUser(id,userName,name,email,gender,user.getFile()));
+        }
+        return (this.userService.editUser(id,userName,name,email,gender,file.getBytes()));
+    }
+
+    @PatchMapping("/edit/{id}")
+    public User editUserWithoutImg(
+            @PathVariable(value="id") Long id,
+            @RequestParam(value = "username") String userName,
+            @RequestParam(value = "name")String name,
+            @RequestParam(value = "email")String email,
+            @RequestParam(value = "gender")String gender) {
+
+        return this.userService.editUserWithoutImg(id,userName,name,email,gender);
+    }
+
+
     @PostMapping("/names")
     public ResponseEntity<?> getNamesOfUsers(@RequestBody List<Long> idList){
         return ResponseEntity.ok(userService.findUsers(idList));
+    }
+
+    @GetMapping(params = "id")
+    public Optional<User> getById(@RequestParam Long id){
+        return userService.findById(id);
     }
 
     @GetMapping

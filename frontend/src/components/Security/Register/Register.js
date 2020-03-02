@@ -64,10 +64,7 @@ class Register extends React.Component {
             <div className="col-md-12">
                 <div style={{borderColor:'black', boxShadow: '5px 10px 18px 5px black'}}  className="card card-container">
                     <img  alt="" id="profile-img" className="profile-img-card"  src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/>
-                    {/*<Button onClick={this.show(true)} size='massive' circular image>*/}
-                    {/*    <Image src='/images/user.png' size='huge'  wrapped circular />*/}
-                    {/*</Button>*/}
-                    {errorMessage &&
+                            {errorMessage &&
                     <div className="alert alert-danger" role="alert">
                         <strong>Error! </strong> {errorMessage}
                     </div>

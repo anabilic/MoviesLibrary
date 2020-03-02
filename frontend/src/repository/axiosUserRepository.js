@@ -1,5 +1,6 @@
 import axios from '../custom-axios/axios';
 import {BehaviorSubject} from 'rxjs';
+import qs from "qs";
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
@@ -38,6 +39,30 @@ class UserService {
     deleteUser(userId) {
     return axios.delete(`/user/${userId}`);
     }
+
+    editUser(user,id,newUser)  {
+
+        localStorage.setItem('currentUser', JSON.stringify(newUser));
+        currentUserSubject.next(newUser);
+        return axios.patch("/user/"+id,user, {
+            headers: {
+                'Content-Type': 'multipart/form-data; boundary=${form._boundary}'
+            }
+        });
+    }
+
+    editUserWithoutImg(user)  {
+
+        const userId=user.id;
+        const formParams = qs.stringify(user);
+        return axios.patch("/user/edit/"+userId,formParams, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+    }
+
+
 }
 
 

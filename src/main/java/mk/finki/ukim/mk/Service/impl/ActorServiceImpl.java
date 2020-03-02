@@ -2,6 +2,7 @@ package mk.finki.ukim.mk.Service.impl;
 
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.exceptions.UserIdInvalid;
 import mk.finki.ukim.mk.Repository.ActorRepository;
 import mk.finki.ukim.mk.Service.ActorService;
 import org.springframework.stereotype.Service;
@@ -30,19 +31,7 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
-    public Actor createActor(String name, String castName, List<String> movies) {
-
-        List<Movie> actorMovies = this.actorRepository.checkMovies(movies);
-
-        Actor actor = new Actor();
-        actor.setName(name);
-        actor.setCastName(castName);
-        actor.setMovies(actorMovies);
-        return actorRepository.save(actor);
-    }
-
-    @Override
-    public Actor createActorWithImage(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate, byte[] imageActor) {
+    public Actor createActor(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate, byte[] imageActor) {
 
         List<Movie> actorMovies = this.actorRepository.checkMovies(movies);
 
@@ -59,9 +48,9 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
-    public Actor editActor(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate) {
+    public Actor editActor(Long id,String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate) {
 
-        Actor actor = this.actorRepository.findByName(name);
+        Actor actor = this.actorRepository.findById(id).orElseThrow(UserIdInvalid::new);
 
         actor.setName(name);
         actor.setCastName(castName);

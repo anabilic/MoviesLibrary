@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,29 +63,14 @@ public class MovieApi {
         return movieService.searchMovies(term);
     }
 
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Movie createMovie(@RequestParam(value = "name") String name,
-                             @RequestParam(value = "director",required = false) String director ,
-                             @RequestParam(value = "runningTime" , required = false) String runningTime,
-                             @RequestParam(value="plot",required=false) String plot,
-                             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime releaseInformation,
-                             @RequestParam(value = "originalLanguage",required = false) String originalLanguage,
-                             @RequestParam(value = "likes",required = false) Integer likes,
-                             @RequestParam(value="actors",required = false) List<String> actors,
-                             @RequestParam(value = "genres",required = false) List<String> genres){
-
-        Movie newMovie = this.movieService.createMovie(name,director,runningTime,plot,releaseInformation,originalLanguage,likes,actors,genres);
-        return newMovie;
-    }
-
-    @PostMapping(value="/image")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Movie createMovieWithImage(@RequestParam(value = "name") String name,
                                       @RequestParam(value = "director",required = false) String director ,
                                       @RequestParam(value = "runningTime" , required = false) String runningTime,
                                       @RequestParam(value="plot",required=false) String plot,
-                                      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) String releaseInformation,
+                                      @RequestParam(value = "releaseInformation",required = false) String releaseInformation,
                                       @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
                                       @RequestParam(value = "likes",required = false) Integer likes,
                                       @RequestParam(value="actors",required = false) ArrayList<String> actors,
@@ -92,44 +78,29 @@ public class MovieApi {
                                       @RequestParam(value = "user",required = false) String user,
                                       @RequestParam(value = "file",required = false) MultipartFile file) throws IOException {
 
-        LocalDateTime localDate = LocalDateTime.parse(releaseInformation);
+        LocalDate localDate = LocalDate.parse(releaseInformation);
 
-        Movie newMovie = this.movieService.createMovieWithImage(name,director,runningTime,plot,localDate,originalLanguage,likes,file.getBytes(),actors,genres,user);
+        Movie newMovie = this.movieService.createMovie(name,director,runningTime,plot,localDate,originalLanguage,likes,file.getBytes(),actors,genres,user);
         return newMovie;
     }
 
-    @PatchMapping("/{name}/image")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Movie editMovieWithImage(@PathVariable String name,
-                                    @RequestParam(value = "director",required = false) String director ,
-                                    @RequestParam(value = "runningTime" , required = false) String runningTime,
-                                    @RequestParam(value="plot",required=false) String plot,
-                                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime releaseInformation,
-                                    @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
-                                    @RequestParam(value = "likes",required = false) Integer likes,
-                                    @RequestParam(value="actors",required = false) List<String> actors,
-                                    @RequestParam(value = "genres",required = false) List<String> genres,
-                                    @RequestParam("image") MultipartFile image) throws IOException{
 
-        Movie editedMovie = this.movieService.editMovieWithImage(name,director,runningTime,plot,releaseInformation,originalLanguage,likes,image.getBytes(),actors,genres);
-        return editedMovie;
-    }
-
-    @PatchMapping("/{name}")
+    @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Movie editMovie(@PathVariable String name,
+    public Movie editMovie(@PathVariable Long id,
+                           @RequestParam(value = "name",required = false) String name,
                            @RequestParam(value = "director",required = false) String director ,
                            @RequestParam(value = "runningTime" , required = false) String runningTime,
                            @RequestParam(value="plot",required=false) String plot,
-                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) String releaseInformation,
+                           @RequestParam(value = "releaseInformation",required = false) String releaseInformation,
                            @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
                            @RequestParam(value = "likes",required = false) Integer likes,
                            @RequestParam(value="actors",required = false) ArrayList<String> actors,
                            @RequestParam(value = "genres",required = false) ArrayList<String> genres){
 
-        LocalDateTime localDate = LocalDateTime.parse(releaseInformation);
+        LocalDate localDate = LocalDate.parse(releaseInformation);
 
-        Movie editedMovie = this.movieService.editMovie(name,director,runningTime,plot,localDate,originalLanguage,likes,actors,genres);
+        Movie editedMovie = this.movieService.editMovie(id,name,director,runningTime,plot,localDate,originalLanguage,likes,actors,genres);
         return editedMovie;
     }
 

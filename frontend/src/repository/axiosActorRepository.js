@@ -12,24 +12,22 @@ const ActorService = {
     },
     addActor: (actor) => {
 
-        return axios.post("/actor/image", actor,{
+        return axios.post("/actor", actor,{
             headers: {
                 'Content-Type': 'multipart/form-data; boundary=${form._boundary}'
             }
         });
     },
     editActor: (actor) => {
-        const aName=actor.name;
+        const actorId=actor.id;
         const formatParams=qs.stringify(actor);
-        return axios.patch("/actor/"+aName,formatParams,{
+        return axios.patch("/actor/"+actorId,formatParams,{
             headers:{
                 'Content-Type': 'application/x-www-form-urlencoded',
             }
         });
     }
 };
-
-
 
 export default ActorService;
 

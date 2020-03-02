@@ -8,7 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -31,7 +31,8 @@ public class Movie {
 
     private String runningTime;
 
-    private LocalDateTime releaseInformation;
+    @Column(nullable = true)
+    private LocalDate releaseInformation;
 
     private String originalLanguage;
 
@@ -41,6 +42,7 @@ public class Movie {
 
 
     @Lob
+    @Column(nullable=true)
     private byte[] file;
 
     @JsonIgnore

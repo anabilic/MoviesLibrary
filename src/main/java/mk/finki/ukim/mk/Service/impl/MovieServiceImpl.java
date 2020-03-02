@@ -5,6 +5,7 @@ import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.User;
 import mk.finki.ukim.mk.Model.exceptions.MovieAlreadyExists;
+import mk.finki.ukim.mk.Model.exceptions.UserIdInvalid;
 import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Repository.MovieRepository;
 import mk.finki.ukim.mk.Repository.UserRepository;
@@ -12,7 +13,7 @@ import mk.finki.ukim.mk.Service.MovieService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,28 +40,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie createMovie(String name, String director, String runningTime,String plot, LocalDateTime releaseInformation, String originalLanguage, Integer Likes, List<String> actors, List<String> genres) {
-
-        List<Actor> movieActors = this.movieRepository.checkActors(actors);
-        List<Genre> movieGenres = this.movieRepository.checkGenres(genres);
-
-        Movie movie = new Movie();
-        movie.setName(name);
-        movie.setDirector(director);
-        movie.setRunningTime(runningTime);
-        movie.setReleaseInformation(releaseInformation);
-        movie.setOriginalLanguage(originalLanguage);
-        movie.setLikes(Likes);
-        movie.setPlot(plot);
-        movie.setActors(movieActors);
-        movie.setGenres(movieGenres);
-
-        return movieRepository.save(movie);
-    }
-
-    @Override
     @Transactional
-    public Movie createMovieWithImage(String name, String director, String runningTime,String plot,LocalDateTime releaseInformation, String originalLanguage, Integer Likes, byte[] file, List<String> actors, List<String> genres,String user) {
+    public Movie createMovie(String name, String director, String runningTime, String plot, LocalDate releaseInformation, String originalLanguage, Integer Likes, byte[] file, List<String> actors, List<String> genres, String user) {
 
         Movie movie=this.movieRepository.checkIfMovieExists(name);
 
@@ -99,9 +80,10 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie editMovie(String name, String director, String runningTime, String plot,LocalDateTime releaseInformation, String originalLanguage, Integer Likes, List<String> actors, List<String> genres) {
+    public Movie editMovie(Long id,String name, String director, String runningTime, String plot,LocalDate releaseInformation, String originalLanguage, Integer Likes, List<String> actors, List<String> genres) {
 
-        Movie movie = this.movieRepository.findByName(name);
+
+        Movie movie = this.movieRepository.findById(id).orElseThrow(UserIdInvalid::new);
 
         List<Actor> movieActors = this.movieRepository.checkActors(actors);
         List<Genre> movieGenres = this.movieRepository.checkGenres(genres);
@@ -119,6 +101,7 @@ public class MovieServiceImpl implements MovieService {
             movie.setGenres(movieGenres);
         }
 
+        movie.setName(name);
         movie.setDirector(director);
         movie.setRunningTime(runningTime);
         movie.setReleaseInformation(releaseInformation);
@@ -132,25 +115,6 @@ public class MovieServiceImpl implements MovieService {
     }
 
 
-    @Override
-    public Movie editMovieWithImage(String name, String director, String runningTime, String plot,LocalDateTime releaseInformation, String originalLanguage, Integer Likes, byte[] image, List<String> actors, List<String> genres) {
-
-        Movie movie = this.movieRepository.findByName(name);
-
-        List<Actor> movieActors = this.movieRepository.checkActors(actors);
-        List<Genre> movieGenres = this.movieRepository.checkGenres(genres);
-
-        movie.setReleaseInformation(releaseInformation);
-        movie.setOriginalLanguage(originalLanguage);
-        movie.setLikes(Likes);
-        movie.setPlot(plot);
-        movie.setActors(movieActors);
-        movie.setGenres(movieGenres);
-        movie.setFile(image);
-
-        return movieRepository.save(movie);
-
-    }
 
     @Override
     public void deleteMovie(Long id) {

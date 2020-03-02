@@ -28,7 +28,9 @@ public class User {
 
     private String email;
 
-    private byte[] imageUser;
+    @Lob
+    @Column(nullable = true)
+    private byte[] file;
 
     private String gender;
 

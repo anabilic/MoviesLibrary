@@ -12,11 +12,9 @@ public interface ActorService {
 
     Actor findActorByName(String name);
 
-    Actor createActor(String name, String castName, List<String> movies);
+    Actor createActor(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate, byte[] file);
 
-    Actor createActorWithImage(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate, byte[] file);
-
-    Actor editActor(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate);
+    Actor editActor(Long id,String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate);
 
     Optional<Actor> findById(Long id);
 

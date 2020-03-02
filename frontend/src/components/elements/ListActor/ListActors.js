@@ -40,7 +40,7 @@ const ListActors = (props) => {
                             <p className="imdb-actor-character">{element.placeOfBirth}</p>
                             <p className="imdb-actor-c">Biography:</p>
                             <p className="imdb-actor-character">{element.biography}</p>
-                            <Link to={"/editActor/" + element.name}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}} >
+                            <Link to={"/editActor/" + element.id}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}} >
                                 <i className="fa fa-edit">
                                     <span className="font-italic">Edit this actor</span>
                                 </i>

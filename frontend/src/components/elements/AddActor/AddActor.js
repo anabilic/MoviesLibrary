@@ -9,7 +9,8 @@ class AddActor extends Component {
 
         this.state = {
             selectedFile:null,
-            redirect:false
+            redirect:false,
+            submitted: false,
         };
     }
 
@@ -24,6 +25,12 @@ class AddActor extends Component {
     onFormSubmit = (e) => {
 
         e.preventDefault();
+
+        if (!(e.target.dateOfBirth.value && e.target.name.value && this.state.selectedFile )) {
+            this.setState({submitted: true});
+            return;
+        }
+
 
         const formData = new FormData();
         formData.append('name',e.target.name.value);
@@ -57,6 +64,9 @@ class AddActor extends Component {
                         <label  style={{color:'#800000',fontSize:'medium'}}>Name</label>
                         <div className="">
                             <input type="text" name={"name"} id="name" placeholder="Enter actors name..." style={{fontStyle:'italic'}}/>
+                            {this.state.submitted &&
+                            <div className="help-block" style={{color: 'red'}}>Name is required!</div>
+                            }
                         </div>
                     </div>
                     <br/>
@@ -80,6 +90,9 @@ class AddActor extends Component {
                         <label style={{color: '#800000', fontSize: 'medium'}}>Date of Birth:</label>
                         <input name={"dateOfBirth"} id="dateOfBirth" type="date"
                                style={{fontStyle: 'italic'}}/>
+                        {this.state.submitted &&
+                        <div className="help-block" style={{color: 'red'}}>Date of birth is required!</div>
+                        }
                     </div>
                     <br/>
 
@@ -97,6 +110,9 @@ class AddActor extends Component {
                             <div className="field">
                                 <input type="file" name={"file"} id="file"  placeholder="Image"
                                        onChange={(event => this.onFileChangeHandler(event))}  style={{fontStyle:'italic'}}/>
+                                {this.state.submitted &&
+                                <div className="help-block" style={{color: 'red'}}>Image is required!</div>
+                                }
                             </div>
                         </div>
                     </div>

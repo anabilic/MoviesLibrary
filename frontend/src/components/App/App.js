@@ -21,7 +21,9 @@ import Register from "../Security/Register/Register";
 import AddMovie from "../elements/AddMovie/AddMovie";
 import AddActor from "../elements/AddActor/AddActor";
 import AddGenre from "../elements/AddGenre/AddGenre";
+import EditUser from "../Security/EditUser/EditUser";
 import './App.css';
+import EditUserWithoutImg from "../Security/EditUserWithoutImg/EditUserWithoutImg";
 
 
 class App extends React.Component {
@@ -35,7 +37,7 @@ class App extends React.Component {
             movies:[],
             actors:[],
             genres:[],
-            users:[]
+            users:[],
         };
     }
 
@@ -88,12 +90,12 @@ class App extends React.Component {
         MovieService.editMovie(editedMovie).then((response) => {
             const newMovie = response.data;
             this.setState((prevState) => {
-                const newMovieRef = prevState.movies.map((item) => {
+                const newMovieRef = prevState.movies.filter((item) => {
                     if(item.name === newMovie.name){
                         return newMovie;
                     }
                     return  item;
-                })
+                });
                 return{
                     "movies": newMovieRef
                 }
@@ -105,7 +107,7 @@ class App extends React.Component {
         ActorService.editActor(editedActor).then((response) => {
             const newActor = response.data;
             this.setState((prevState) => {
-                const newActorRef = prevState.actors.map((item) => {
+                const newActorRef = prevState.actors.filter((item) => {
                     if(item.name === newActor.name){
                         return newActor;
                     }
@@ -118,6 +120,14 @@ class App extends React.Component {
         });
     });
 
+    updateUser = ((editedUser) => {
+        UserService.editUserWithoutImg(editedUser).then((response)=>{
+            const newUser= response.data;
+            this.setState({
+                "currentUser":newUser
+            })
+        });
+    });
 
     deleteMovie = (movieId) => {
         MovieService.deleteMovie(movieId).then((response) => {
@@ -181,7 +191,7 @@ class App extends React.Component {
                                 </Link>
                                 <div className="rmdb-tmdb-logo">
                                     <Link to="/profile" className="btn btn-outline-danger waves-effect">
-                                        <FontAwesomeIcon icon={faUser}/> {currentUser.name}
+                                        <FontAwesomeIcon icon={faUser}/> {this.state.currentUser.name}
                                     </Link>
                                     <Link to="" style={{marginLeft:'10px'}} onClick={()=>this.logout()} className="btn btn-outline-danger waves-effect">
                                         Sign Out
@@ -212,14 +222,16 @@ class App extends React.Component {
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
                         <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
-                        <Route path="/editMovie/:name" render={()=> <EditMovie onSubmit={this.updateMovie}/>} />
+                        <Route path="/editMovie/:id" render={()=> <EditMovie onSubmit={this.updateMovie}/>} />
                         <Route path="/movie/:id" render={()=> <Movie />} />
                         <Route path="/addActor" render={()=><AddActor onNewActorAddedWithImg={this.createActor}/>} />
                         <Route path="/addGenre" render={()=><AddGenre onNewGenreAdded={this.createGenre}/>} />
                         <Route path="/profile" render={()=> <Profile onDelete={this.deleteMovie}/>}  />
                         <Route path="/allActors" render={()=> <ListActors onDelete={this.deleteActor}/>}  />
                         <Route path="/allUsers" render={()=> <ListUser onDelete={this.deleteUser} />}  />
-                        <Route path="/editActor/:name" render={()=> <EditActor onSubmit={this.updateActor}/>} />
+                        <Route path="/editActor/:id" render={()=> <EditActor onSubmit={this.updateActor}/>} />
+                        <Route path="/user/edit/:id" render={()=> <EditUserWithoutImg onSubmit={this.updateUser}/>}/>
+                        <Route path="/editUser/:id"  render={()=> <EditUser currentUserId={this.state.currentUser.id}/>}/>
                         <Route component={NotFound} />
                     </Switch>
             </Router>
