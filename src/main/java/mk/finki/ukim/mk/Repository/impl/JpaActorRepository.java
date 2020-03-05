@@ -16,4 +16,8 @@ public interface JpaActorRepository extends JpaRepository<Actor,Long> {
     @Query(value = "select a from Actor a where a.name=:name")
     Actor findByName(@Param("name") String name);
 
+    @Query(value = "select a.name from Actor a where a.name like :name")
+    String findBySameName(String name);
+
+
 }

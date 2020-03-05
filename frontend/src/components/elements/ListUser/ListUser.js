@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import axios from "../../../custom-axios/axios";
+import {Link} from "react-router-dom";
 import { Table,Header,Image } from 'semantic-ui-react'
+import axios from "../../../custom-axios/axios";
 import Navigation from "../Navigation/Navigation";
 import './ListUser.css';
-import {Link} from "react-router-dom";
 
 
 const ListUser = (props) =>{

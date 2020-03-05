@@ -1,6 +1,8 @@
 package mk.finki.ukim.mk.Web.rest;
 
 import mk.finki.ukim.mk.Model.Actor;
+import mk.finki.ukim.mk.Model.exceptions.ActorAlreadyExists;
+import mk.finki.ukim.mk.Model.exceptions.ActorIdInvalid;
 import mk.finki.ukim.mk.Service.ActorService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -52,7 +54,7 @@ public class ActorApi {
                                       @RequestParam(value = "dateOfBirth",required = false) String dateOfBirth,
                                       @RequestParam(value = "placeOfBirth",required = false) String placeOfBirth,
                                       @RequestParam(value = "biography",required = false) String biography,
-                                      @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
+                                      @RequestParam(value = "file", required = false) MultipartFile file) throws IOException, ActorAlreadyExists {
 
         LocalDate birthDate = LocalDate.parse(dateOfBirth);
 
@@ -68,7 +70,7 @@ public class ActorApi {
                            @RequestParam(value = "movies", required = false) List<String> movies,
                            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String dateOfBirth,
                            @RequestParam(value = "placeOfBirth",required = false) String placeOfBirth,
-                           @RequestParam(value = "biography",required = false) String biography){
+                           @RequestParam(value = "biography",required = false) String biography) throws ActorIdInvalid {
 
         LocalDate birthDate = LocalDate.parse(dateOfBirth);
 

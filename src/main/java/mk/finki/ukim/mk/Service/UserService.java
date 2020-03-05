@@ -11,9 +11,11 @@ public interface UserService extends UserDetailsService {
 
     List<User> listAllUsers();
 
-    void deleteUser(Long id);
-
     Optional<User> findById(Long id);
+
+    User findByUsername(String username);
+
+    List<String> findUsers(List<Long> idList);
 
     User save(User user);
 
@@ -21,8 +23,6 @@ public interface UserService extends UserDetailsService {
 
     User editUserWithoutImg(Long id,String userName,String name, String email,String gender);
 
+    void deleteUser(Long id);
 
-    User findByUsername(String username);
-
-    List<String> findUsers(List<Long> idList);
 }

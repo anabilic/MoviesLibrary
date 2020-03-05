@@ -16,6 +16,6 @@ public interface JpaUserRepository extends JpaRepository<User,Long> {
     @Query("select u.name from User u where u.id  in (:pIdList)")
     List<String> findByIdList(@Param("pIdList") List<Long> idList);
 
-
-
+    @Query("select u.username from User u where u.id<>:id and  u.username like :username")
+    String findUserWithSameUsername(Long id,String username);
 }

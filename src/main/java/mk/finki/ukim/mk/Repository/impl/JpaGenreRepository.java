@@ -16,4 +16,7 @@ public interface JpaGenreRepository extends JpaRepository<Genre,Long> {
     @Query(value = "select g from Genre g where g.name=:name")
     Genre findByName(@Param("name") String name);
 
+    @Query(value = "select g.name from Genre g where g.name like :name")
+    String findBySameName(String name);
+
 }

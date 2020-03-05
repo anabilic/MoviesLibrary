@@ -1,5 +1,5 @@
 export class User {
-    constructor(username, password, name, email, id, role,gender,file){
+    constructor(username, password, name, email,gender, role,id,file){
         this.username = username;
         this.password = password;
         this.name = name;

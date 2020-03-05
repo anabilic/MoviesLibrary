@@ -20,5 +20,6 @@ public interface ActorRepository {
 
     Actor findByName(String name);
 
+    String findBySameName(String name);
 
 }

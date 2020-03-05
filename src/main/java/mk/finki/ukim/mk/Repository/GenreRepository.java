@@ -20,4 +20,6 @@ public interface GenreRepository {
 
     void delete(Long id);
 
+    String findBySameName(String name);
+
 }

@@ -1,14 +1,10 @@
 import axios from '../custom-axios/axios';
 import qs from "qs";
 
-
 const ActorService = {
 
     getActors: () => {
         return axios.get("/actor");
-    },
-    deleteActor: (actorId) => {
-        return axios.delete(`/actor/${actorId}`);
     },
     addActor: (actor) => {
 
@@ -26,6 +22,9 @@ const ActorService = {
                 'Content-Type': 'application/x-www-form-urlencoded',
             }
         });
+    },
+    deleteActor: (actorId) => {
+        return axios.delete(`/actor/${actorId}`);
     }
 };
 

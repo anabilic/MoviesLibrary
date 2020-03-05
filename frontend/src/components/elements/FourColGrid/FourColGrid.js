@@ -2,7 +2,6 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import './FourColGrid.css';
 
-
 const FourColGrid = (props) => {
 
     const renderElements = () => {

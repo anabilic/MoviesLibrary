@@ -35,6 +35,11 @@ public class ActorRepositoryImpl implements ActorRepository {
     }
 
     @Override
+    public String findBySameName(String name) {
+        return this.jpaActorRepository.findBySameName(name);
+    }
+
+    @Override
     public Actor save(Actor actor) {
         return jpaActorRepository.save(actor);
     }

@@ -1,7 +1,6 @@
 import React from 'react';
 import './OneGrid.css';
 
-
 const OneGrid = (props) => {
 
     const renderElements = () => {

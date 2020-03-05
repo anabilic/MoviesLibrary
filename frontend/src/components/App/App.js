@@ -10,9 +10,12 @@ import EditMovie from "../elements/EditMovie/EditMovie";
 import EditActor from "../elements/EditActor/EditActor";
 import NotFound from "../elements/NotFound/NotFound";
 import Movie from "../Movie/Movie";
-import Profile from "../Security/Profile/Profile";
 import ListActors from "../elements/ListActor/ListActors";
 import ListUser from "../elements/ListUser/ListUser";
+import EditUserWithoutImg from "../Security/EditUserWithoutImg/EditUserWithoutImg";
+import ListGenres from "../elements/ListGenres/ListGenres";
+import EditGenre from "../elements/EditGenre/EditGenre";
+import Profile from "../Security/Profile/Profile";
 import UserService from "../../repository/axiosUserRepository";
 import {User} from '../../model/User';
 import Home from '../Home/Home';
@@ -23,7 +26,6 @@ import AddActor from "../elements/AddActor/AddActor";
 import AddGenre from "../elements/AddGenre/AddGenre";
 import EditUser from "../Security/EditUser/EditUser";
 import './App.css';
-import EditUserWithoutImg from "../Security/EditUserWithoutImg/EditUserWithoutImg";
 
 
 class App extends React.Component {
@@ -38,6 +40,10 @@ class App extends React.Component {
             actors:[],
             genres:[],
             users:[],
+            errorMessageGenreAdd:false,
+            errorMessageGenre: false,
+            errorMessageAuthor:false,
+            errorMessage:false,
         };
     }
 
@@ -70,10 +76,16 @@ class App extends React.Component {
                     "genres": newGenreRef
                 }
             });
+        },error => {
+            if (error.response.status === 409) {
+                this.setState({
+                    errorMessageGenreAdd:true
+                });
+            }
         });
     };
 
-    createActor= async (actor) => {
+    createActor = async (actor) => {
         await ActorService.addActor(actor).then((response) => {
             const actor = response.data;
 
@@ -83,6 +95,12 @@ class App extends React.Component {
                     "actors": newActorRef
                 }
             });
+        },error => {
+            if (error.response.status === 409) {
+                this.setState({
+                    errorMessageAuthor:true
+                });
+            }
         });
     };
 
@@ -120,12 +138,41 @@ class App extends React.Component {
         });
     });
 
+    updateGenre = ((editedGenre) => {
+        GenreService.editGenre(editedGenre).then((response) => {
+            const newGenre = response.data;
+            this.setState((prevState) => {
+                const newGenreRef = prevState.genres.filter((item) => {
+                    if(item.name === newGenre.name){
+                        return newGenre;
+                    }
+                    return  item;
+                });
+                return{
+                    "genres": newGenreRef
+                }
+            });
+        },error => {
+            if (error.response.status === 409) {
+                this.setState({
+                    errorMessageGenre: true
+                });
+            }
+        });
+    });
+
     updateUser = ((editedUser) => {
         UserService.editUserWithoutImg(editedUser).then((response)=>{
             const newUser= response.data;
             this.setState({
                 "currentUser":newUser
             })
+        },error => {
+            if (error.response.status === 409) {
+                this.setState({
+                    errorMessage: true
+                });
+            }
         });
     });
 
@@ -152,6 +199,19 @@ class App extends React.Component {
 
         })
     };
+
+    deleteGenre = (genreId) => {
+        GenreService.deleteGenre(genreId).then((response) => {
+            this.setState((state) => {
+                const genre = state.genres.filter((g) => {
+                    return g.id !== genreId;
+                });
+                return {genre};
+            })
+
+        })
+    };
+
 
     deleteUser = (userId) => {
         UserService.deleteUser(userId).then((response) => {
@@ -221,17 +281,23 @@ class App extends React.Component {
                         <Route path="/" component={Home} exact/>
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
-                        <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
-                        <Route path="/editMovie/:id" render={()=> <EditMovie onSubmit={this.updateMovie}/>} />
-                        <Route path="/movie/:id" render={()=> <Movie />} />
-                        <Route path="/addActor" render={()=><AddActor onNewActorAddedWithImg={this.createActor}/>} />
-                        <Route path="/addGenre" render={()=><AddGenre onNewGenreAdded={this.createGenre}/>} />
                         <Route path="/profile" render={()=> <Profile onDelete={this.deleteMovie}/>}  />
+                        <Route path="/movie/:id" render={()=> <Movie />} />
+
+                        <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
+                        <Route path="/addActor" render={()=><AddActor errorMessageAuthor={this.state.errorMessageAuthor} onNewActorAddedWithImg={this.createActor}/>} />
+                        <Route path="/addGenre" render={()=><AddGenre errorMessageGenreAdd={this.state.errorMessageGenreAdd} onNewGenreAdded={this.createGenre}/>} />
+
                         <Route path="/allActors" render={()=> <ListActors onDelete={this.deleteActor}/>}  />
                         <Route path="/allUsers" render={()=> <ListUser onDelete={this.deleteUser} />}  />
+                        <Route path="/allGenres" render={()=> <ListGenres onDelete={this.deleteGenre} />}  />
+
+                        <Route path="/editMovie/:id" render={()=> <EditMovie onSubmit={this.updateMovie}/>} />
                         <Route path="/editActor/:id" render={()=> <EditActor onSubmit={this.updateActor}/>} />
-                        <Route path="/user/edit/:id" render={()=> <EditUserWithoutImg onSubmit={this.updateUser}/>}/>
+                        <Route path="/editGenre/:id" render={()=> <EditGenre errorMessageGenre={this.state.errorMessageGenre} onSubmit={this.updateGenre}/>} />
+                        <Route path="/user/edit/:id" render={()=> <EditUserWithoutImg errorMessage={this.state.errorMessage} onSubmit={this.updateUser}/>}/>
                         <Route path="/editUser/:id"  render={()=> <EditUser currentUserId={this.state.currentUser.id}/>}/>
+
                         <Route component={NotFound} />
                     </Switch>
             </Router>

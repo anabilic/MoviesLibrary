@@ -48,4 +48,9 @@ public class GenreRepositoryImpl implements GenreRepository {
     public void delete(Long id) {
         this.jpaGenreRepository.deleteById(id);
     }
+
+    @Override
+    public String findBySameName(String name) {
+        return this.jpaGenreRepository.findBySameName(name);
+    }
 }

@@ -1,6 +1,8 @@
 package mk.finki.ukim.mk.Web.rest;
 
 import mk.finki.ukim.mk.Model.Genre;
+import mk.finki.ukim.mk.Model.exceptions.GenreAlreadyExists;
+import mk.finki.ukim.mk.Model.exceptions.GenreInvalidId;
 import mk.finki.ukim.mk.Service.GenreService;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MimeTypeUtils;
@@ -34,18 +36,19 @@ public class GenreApi {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Genre createGenre(@RequestParam(value = "name") String name,
-                           @RequestParam(value = "movies", required = false) List<String> movies) {
+                           @RequestParam(value = "movies", required = false) List<String> movies) throws GenreAlreadyExists {
 
         Genre newGenre = this.genreService.createGenre(name, movies);
         return newGenre;
     }
 
-    @PatchMapping("/{name}")
+    @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Genre editGenre(@PathVariable String name,
-                           @RequestParam(value = "movies",required = false) List<String> movies) {
+    public Genre editGenre(@PathVariable Long id,
+                           @RequestParam(value = "name") String name,
+                           @RequestParam(value = "movies",required = false) List<String> movies) throws GenreInvalidId {
 
-        Genre editedGenre = this.genreService.editGenre(name, movies);
+        Genre editedGenre = this.genreService.editGenre(id,name,movies);
         return editedGenre;
     }
 

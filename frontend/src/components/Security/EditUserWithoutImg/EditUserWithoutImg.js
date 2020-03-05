@@ -30,8 +30,9 @@ const EditUserWithoutImg = (props) => {
             "gender":e.target.gender.value,
         });
 
-
-        history.push("/allUsers");
+        if(props.errorMessage){
+            history.push("/allUsers");
+        }
 
     };
 
@@ -43,7 +44,6 @@ const EditUserWithoutImg = (props) => {
         });
     };
 
-
     return (
 
         <div className="container">
@@ -51,7 +51,11 @@ const EditUserWithoutImg = (props) => {
                 <form className="ui form" onSubmit={onFormSubmit}>
                     <h4 className="ui dividing header" style={{color:'#800000', fontSize:'xx-large',fontStyle:'italic'}}>Edit User Profile</h4>
                     <br/>
-
+                    {props.errorMessage &&
+                    <div className="alert alert-danger" role="alert">
+                        <strong>Error! Username is not valid. It is already taken. </strong>
+                    </div>
+                    }
                     <div className="field">
                         <label  style={{color:'#800000',fontSize:'medium'}}>Name</label>
                         <div className="">
@@ -83,7 +87,6 @@ const EditUserWithoutImg = (props) => {
                     </div>
                     <br/>
                     <br/>
-
                     <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
                         <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Edit</button>
                         <div className="or"></div>

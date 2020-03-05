@@ -12,13 +12,15 @@ public interface UserRepository {
 
     User findByUsername(String username);
 
-    User save(User user);
-
-    void delete(Long id);
-
     Optional<User> findById(Long id);
 
     List<String> findByIdList(List<Long> idList);
+
+    String findUserWithSameUsername(Long id,String username);
+
+    User save(User user);
+
+    void delete(Long id);
 
 
 }

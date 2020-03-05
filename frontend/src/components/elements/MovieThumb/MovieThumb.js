@@ -10,7 +10,6 @@ const MovieThumb = ({ image, movieId, movieName, clickable }) => (
             </Link>
             :
             <img src={image} alt="moviethumb" />
-
         }
     </div>
 );

@@ -1,6 +1,6 @@
 package mk.finki.ukim.mk.Model.exceptions;
 
-public class MovieAlreadyExists extends Exception {
+public class MovieAlreadyExists extends RuntimeException {
 
     public String s;
     public MovieAlreadyExists(String s) {

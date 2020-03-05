@@ -76,11 +76,11 @@ class Profile extends Component{
                             <p className="font-italic" style={{color:'white',marginLeft:'40px',fontSize:'20px',fontFamily: 'Helvetica'}}>{this.state.userDetails.email}</p>
                             <br/>
                             <span>
-                            <a href='' style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
-                            <i className="fa fa-edit">
-                            <span className="font-italic">Edit my profile</span>
-                            </i>
-                            </a>
+                                <Link to={"/editUser/"+this.state.userDetails.id} style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
+                                    <i className="fa fa-edit">
+                                        <span className="font-italic">Edit my profile</span>
+                                    </i>
+                                </Link>
                             </span>
                         </div>
                         }
@@ -141,6 +141,14 @@ class Profile extends Component{
                                     <span className="font-italic">List of all users</span>
                                     </i>
                                 </Link>
+                            </span>
+                            <br/>
+                            <span>
+                            <Link to="/allGenres" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
+                            <i className="fa fa-list">
+                            <span className="font-italic">List of all genres</span>
+                            </i>
+                            </Link>
                             </span>
                         </div>
 

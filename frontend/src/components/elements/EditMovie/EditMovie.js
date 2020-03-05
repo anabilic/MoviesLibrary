@@ -1,8 +1,8 @@
 import React , {useState,useEffect} from 'react';
 import axios from '../../../custom-axios/axios';
+import Select from 'react-select';
 import {useHistory} from "react-router";
 import {useParams} from "react-router";
-import Select from 'react-select';
 import './EditMovie.css'
 
 const EditMovie = (props) => {

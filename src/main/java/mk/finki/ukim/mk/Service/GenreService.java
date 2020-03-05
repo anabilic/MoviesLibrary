@@ -9,11 +9,11 @@ public interface GenreService {
 
     List<Genre> listAllGenres();
 
+    Optional<Genre> findById(Long id);
+
     Genre createGenre(String name, List<String> movies);
 
-    Genre editGenre(String name, List<String> movies);
-
-    Optional<Genre> findById(Long id);
+    Genre editGenre(Long id,String name, List<String> movies);
 
     void deleteGenre(Long id);
 

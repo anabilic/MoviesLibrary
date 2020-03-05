@@ -40,6 +40,38 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public Optional<Movie> findMovieById(Long id) {
+
+        return this.movieRepository.findById(id);
+    }
+
+    @Override
+    public Movie findMovieByName(String name) {
+        return this.movieRepository.findByName(name);
+    }
+
+    @Override
+    public List<Actor> getMoviesActors(Long id) {
+        return this.movieRepository.getMoviesActor(id);
+    }
+
+    @Override
+    public List<Genre> getMoviesGenres(Long id) {
+        return this.movieRepository.getMoviesGenres(id);
+    }
+
+
+    @Override
+    public List<Actor> getActorsByMovie(String name) {
+        return this.movieRepository.getActorsByMovie(name);
+    }
+
+    @Override
+    public List<Movie> searchMovies(String term) {
+        return this.movieRepository.searchMovies(term);
+    }
+
+    @Override
     @Transactional
     public Movie createMovie(String name, String director, String runningTime, String plot, LocalDate releaseInformation, String originalLanguage, Integer Likes, byte[] file, List<String> actors, List<String> genres, String user) {
 
@@ -69,11 +101,12 @@ public class MovieServiceImpl implements MovieService {
             movie.setUser(USER);
             return movieRepository.saveAndFlash(movie);
 
-        }
-        try {
-            throw new MovieAlreadyExists("Movie with this name already exists");
-        } catch (MovieAlreadyExists movieAlreadyExists) {
-            movieAlreadyExists.getMessage();
+        }else {
+            try {
+                throw new MovieAlreadyExists("Movie with this name already exists");
+            } catch (MovieAlreadyExists movieAlreadyExists) {
+                movieAlreadyExists.getMessage();
+            }
         }
         return null;
 
@@ -121,34 +154,4 @@ public class MovieServiceImpl implements MovieService {
         this.movieRepository.delete(id);
     }
 
-    @Override
-    public Optional<Movie> findMovieById(Long id) {
-
-        return this.movieRepository.findById(id);
-    }
-
-    @Override
-    public Movie findMovieByName(String name) {
-        return this.movieRepository.findByName(name);
-    }
-
-    @Override
-    public List<Actor> getMoviesActors(Long id) {
-        return this.movieRepository.getMoviesActor(id);
-    }
-
-    @Override
-    public List<Genre> getMoviesGenres(Long id) {
-        return this.movieRepository.getMoviesGenres(id);
-    }
-
-    @Override
-    public List<Movie> searchMovies(String term) {
-        return this.movieRepository.searchMovies(term);
-    }
-
-    @Override
-    public List<Actor> getActorsByMovie(String name) {
-        return this.movieRepository.getActorsByMovie(name);
-    }
 }

@@ -1,10 +1,11 @@
+import React,{ useState} from "react";
+import { Image } from 'semantic-ui-react'
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Image } from 'semantic-ui-react'
-import React,{ useState} from "react";
+
 
 const ModalView =(props)=> {
 
@@ -31,8 +32,8 @@ const ModalView =(props)=> {
                             <Col xs={8} md={6}>
                                 <p style={{fontSize:'20px'}} className="font-weight-bold">{props.actorName}</p>
                                 <p className="font-weight-bold">Date of birth: </p><p>{props.actorDateOfBirth}</p>
-                                 <p className="font-weight-bold">Place of birth: </p><p>{props.actorPlaceOfBirth}</p>
-                                 <p className="font-weight-bold">Short Biography: </p><p>{props.actorBiography}</p>
+                                <p className="font-weight-bold">Place of birth: </p><p>{props.actorPlaceOfBirth}</p>
+                                <p className="font-weight-bold">Short Biography: </p><p>{props.actorBiography}</p>
                             </Col>
                         </Row>
                     </Container>

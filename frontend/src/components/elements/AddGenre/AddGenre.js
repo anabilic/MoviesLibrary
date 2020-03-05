@@ -21,9 +21,9 @@ class AddGenre extends Component {
 
         this.props.onNewGenreAdded(formData);
 
-        this.setState({redirect:true});
-
-
+        if(this.props.errorMessageGenreAdd){
+            this.setState({redirect:true});
+        }
     };
 
     render() {
@@ -38,7 +38,11 @@ class AddGenre extends Component {
                     <form className="ui form" onSubmit={this.onFormSubmit}>
                         <h4 className="ui dividing header" style={{color:'#800000', fontSize:'xx-large',fontStyle:'italic'}}>Add Genre</h4>
                         <br/>
-
+                        {this.props.errorMessageGenreAdd &&
+                        <div className="alert alert-danger" role="alert">
+                            <strong>Error! Name is not valid. It already exists!</strong>
+                        </div>
+                        }
                         <div className="field">
                             <label  style={{color:'#800000',fontSize:'medium'}}>Genre Name:</label>
                             <div className="">
@@ -46,8 +50,6 @@ class AddGenre extends Component {
                             </div>
                         </div>
                         <br/>
-
-
                         <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
                             <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Add</button>
                             <div className="or"></div>
@@ -57,7 +59,6 @@ class AddGenre extends Component {
                 </div>
             </div>
         );
-
     }
 }
 

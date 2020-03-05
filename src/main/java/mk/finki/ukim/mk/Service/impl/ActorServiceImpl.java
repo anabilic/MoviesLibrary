@@ -2,6 +2,7 @@ package mk.finki.ukim.mk.Service.impl;
 
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.exceptions.InvalidActorName;
 import mk.finki.ukim.mk.Model.exceptions.UserIdInvalid;
 import mk.finki.ukim.mk.Repository.ActorRepository;
 import mk.finki.ukim.mk.Service.ActorService;
@@ -26,12 +27,18 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
+    public Optional<Actor> findById(Long id) {
+        return this.actorRepository.findById(id);
+    }
+
+    @Override
     public Actor findActorByName(String name) {
         return this.actorRepository.findByName(name);
     }
 
     @Override
     public Actor createActor(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate, byte[] imageActor) {
+
 
         List<Movie> actorMovies = this.actorRepository.checkMovies(movies);
 
@@ -44,7 +51,12 @@ public class ActorServiceImpl implements ActorService {
         actor.setDateOfBirth(birthDate);
         actor.setPlaceOfBirth(placeOfBirth);
 
-        return actorRepository.save(actor);
+        if(name.equals(this.actorRepository.findBySameName(name))){
+            throw new InvalidActorName();
+        }else{
+            return this.actorRepository.save(actor);
+        }
+
     }
 
     @Override
@@ -61,11 +73,6 @@ public class ActorServiceImpl implements ActorService {
         actor.setPlaceOfBirth(placeOfBirth);
 
         return actorRepository.save(actor);
-    }
-
-    @Override
-    public Optional<Actor> findById(Long id) {
-        return this.actorRepository.findById(id);
     }
 
     @Override

@@ -10,6 +10,9 @@ const MovieService = {
             }
         })
     },
+    searchMovieTerm: (searchTerm) => {
+        return axios.get(`/movie?term=${searchTerm}`);
+    },
     addMovie: (movie) => {
 
         return axios.post("/movie", movie,{
@@ -17,12 +20,6 @@ const MovieService = {
                 'Content-Type': 'multipart/form-data; boundary=${form._boundary}'
             }
         });
-    },
-    searchMovieTerm: (searchTerm) => {
-        return axios.get(`/movie?term=${searchTerm}`);
-    },
-    deleteMovie: (movieId) => {
-        return axios.delete(`/movie/${movieId}`);
     },
     editMovie: (movie) => {
         const movieId=movie.id;
@@ -33,6 +30,9 @@ const MovieService = {
                 'Content-Type': 'application/x-www-form-urlencoded',
             }
         });
+    },
+    deleteMovie: (movieId) => {
+        return axios.delete(`/movie/${movieId}`);
     }
 };
 

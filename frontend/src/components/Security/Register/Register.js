@@ -1,9 +1,10 @@
 import React from 'react';
+import {faEnvelope, faLock, faSignature, faUser, faMale, faFemale} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
+import validator from 'validator';
 import UserService from '../../../repository/axiosUserRepository';
 import {User} from '../../../model/User';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEnvelope, faLock, faSignature, faUser, faMale, faFemale} from "@fortawesome/free-solid-svg-icons";
-import {Link} from "react-router-dom";
 import './Register.css';
 
 class Register extends React.Component {
@@ -16,7 +17,7 @@ class Register extends React.Component {
         }
 
         this.state = {
-            user: new User('', '', ''),
+            user: new User('', '', '','',''),
             submitted: false,
             loading: false,
             errorMessage: '',
@@ -25,22 +26,29 @@ class Register extends React.Component {
 
 
     handleChange(e) {
-        var {name, value} = e.target;
-        var user = this.state.user;
+
+        const {name, value} = e.target;
+        const user = this.state.user;
+
         user[name] = value;
         this.setState({user: user});
+
+
     }
 
     handleRegister(e) {
+
         e.preventDefault();
         this.setState({submitted: true});
         const {user} = this.state;
 
-        if (!(user.username && user.password && user.name)) {
+
+        if (!(user.username && user.password && user.name && user.gender && validator.isEmail(user.email))) {
             return;
         }
 
         this.setState({loading: true});
+
         UserService.register(user).then(data => {
             this.props.history.push("/login");
         }, error => {
@@ -78,7 +86,7 @@ class Register extends React.Component {
                             <input type="text" className="form-control" name="name" placeholder="Type full name" value={user.name}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !user.name &&
-                            <div className="help-block">Full name is required</div>
+                            <div className="help-block">Full name is required!</div>
                             }
                         </div>
 
@@ -87,8 +95,8 @@ class Register extends React.Component {
                             <label style={{color:'#800000', padding: '5px'}} htmlFor="email">Email</label>
                             <input type="text" className="form-control" name="email" placeholder="Type email" value={user.email}
                                    onChange={(e) => this.handleChange(e)}/>
-                            {submitted && !user.email &&
-                            <div className="help-block">Email is required</div>
+                            {submitted && !validator.isEmail(user.email) &&
+                            <div className="help-block">Email is not valid!</div>
                             }
                         </div>
 
@@ -98,7 +106,7 @@ class Register extends React.Component {
                             <input type="text" className="form-control" name="username" placeholder="Type username" value={user.username}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !user.username &&
-                            <div className="help-block">Username is required</div>
+                            <div className="help-block">Username is required!</div>
                             }
                         </div>
 
@@ -107,8 +115,8 @@ class Register extends React.Component {
                             <label style={{color:'#800000',padding: '5px'}} htmlFor="password">Password</label>
                             <input type="password" className="form-control" name="password" placeholder="Type password" value={user.password}
                                    onChange={(e) => this.handleChange(e)}/>
-                            {submitted && !user.password &&
-                            <div className="help-block">Password is required</div>
+                            {submitted && user.password.length < 8 &&
+                            <div className="help-block">Password must have minimum 8 characters!</div>
                             }
                         </div>
 
@@ -129,7 +137,7 @@ class Register extends React.Component {
                             </button>
                         </div>
                         <p>Already have an account?
-                            <Link style={{color:'#800000'}} to="/login" > Sign In</Link>
+                            <Link style={{color:'#800000'}} to="/login">Sign In</Link>
                         </p>
                     </form>
                 </div>

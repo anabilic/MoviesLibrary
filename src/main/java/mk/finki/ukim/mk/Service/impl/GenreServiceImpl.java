@@ -2,6 +2,8 @@ package mk.finki.ukim.mk.Service.impl;
 
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.exceptions.GenreInvalidId;
+import mk.finki.ukim.mk.Model.exceptions.InvalidGenreName;
 import mk.finki.ukim.mk.Repository.GenreRepository;
 import mk.finki.ukim.mk.Service.GenreService;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,11 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
+    public Optional<Genre> findById(Long id) {
+        return genreRepository.findById(id);
+    }
+
+    @Override
     public Genre createGenre(String name, List<String> movies) {
 
         List<Movie> genresMovies = this.genreRepository.checkMovies(movies);
@@ -32,25 +39,30 @@ public class GenreServiceImpl implements GenreService {
         genre.setName(name);
         genre.setMovies(genresMovies);
 
-        return genreRepository.save(genre);
+        if(name.equals(this.genreRepository.findBySameName(name))){
+            throw new InvalidGenreName();
+        }else{
+            return genreRepository.save(genre);
+        }
     }
 
     @Override
-    public Genre editGenre(String name, List<String> movies) {
+    public Genre editGenre(Long id,String name, List<String> movies) {
 
-        Genre genre = this.genreRepository.findByName(name);
+        Genre genre = this.genreRepository.findById(id).orElseThrow(GenreInvalidId::new);
 
         List<Movie> genreMovies = this.genreRepository.checkMovies(movies);
 
+        genre.setName(name);
         genre.setMovies(genreMovies);
 
-        return genreRepository.save(genre);
+        if(name.equals(this.genreRepository.findBySameName(name))){
+            throw new InvalidGenreName();
+        }else{
+            return genreRepository.save(genre);
+        }
     }
 
-    @Override
-    public Optional<Genre> findById(Long id) {
-        return genreRepository.findById(id);
-    }
 
     @Override
     public void deleteGenre(Long id) {

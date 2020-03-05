@@ -3,11 +3,11 @@ package mk.finki.ukim.mk.Web.rest;
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.exceptions.InvalidMovieId;
 import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Service.GenreService;
 import mk.finki.ukim.mk.Service.MovieService;
 import mk.finki.ukim.mk.Service.UserService;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -96,7 +95,7 @@ public class MovieApi {
                            @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
                            @RequestParam(value = "likes",required = false) Integer likes,
                            @RequestParam(value="actors",required = false) ArrayList<String> actors,
-                           @RequestParam(value = "genres",required = false) ArrayList<String> genres){
+                           @RequestParam(value = "genres",required = false) ArrayList<String> genres) throws  InvalidMovieId {
 
         LocalDate localDate = LocalDate.parse(releaseInformation);
 

@@ -46,6 +46,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public String findUserWithSameUsername(Long id, String username) {
+        return this.jpaUserRepository.findUserWithSameUsername(id,username);
+    }
+
+    @Override
     public User findByUsername(String username) {
         return this.jpaUserRepository.findByUsername(username);
     }

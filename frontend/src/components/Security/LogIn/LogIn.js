@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import UserService from '../../../repository/axiosUserRepository';
-import {User} from '../../../model/User';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLock, faUser} from "@fortawesome/free-solid-svg-icons";
 import {Link} from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import UserService from '../../../repository/axiosUserRepository';
+import {User} from '../../../model/User';
 import './LogIn.css';
 
 

@@ -10,15 +10,13 @@ public interface ActorService {
 
     List<Actor> listAllActors();
 
+    Optional<Actor> findById(Long id);
+
     Actor findActorByName(String name);
 
     Actor createActor(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate, byte[] file);
 
     Actor editActor(Long id,String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate);
 
-    Optional<Actor> findById(Long id);
-
     void deleteActor(Long id);
-
-
 }

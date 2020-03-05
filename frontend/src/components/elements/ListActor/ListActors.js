@@ -1,9 +1,9 @@
 import React, {useState,useEffect} from 'react';
+import {Link} from "react-router-dom";
 import axios from "../../../custom-axios/axios";
 import OneGrid from "../OneGrid/OneGrid";
 import Navigation from "../Navigation/Navigation";
 import './ListActors.css';
-import {Link} from "react-router-dom";
 
 const ListActors = (props) => {
 

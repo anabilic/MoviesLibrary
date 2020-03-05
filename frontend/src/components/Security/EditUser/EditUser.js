@@ -4,6 +4,7 @@ import { Redirect } from "react-router";
 import UserService from '../../../repository/axiosUserRepository'
 import './EditUser.css'
 
+
 class EditUser extends Component{
 
     constructor(props){
@@ -13,7 +14,10 @@ class EditUser extends Component{
             selectedFile:null,
             id:this.props.currentUserId,
             userDetails: [],
-            redirect:false
+            redirect:false,
+            submitted: false,
+            loading: false,
+            errorMessage: '',
         };
     }
 
@@ -28,10 +32,12 @@ class EditUser extends Component{
     }
 
     onFormSubmit = (e) => {
+
         e.preventDefault();
 
-       const newUser = {
+        this.setState({submitted: true});
 
+        const newUser = {
            "id":this.state.id,
            "name": e.target.name.value,
            "username": e.target.username.value,
@@ -44,31 +50,34 @@ class EditUser extends Component{
         formData.append('name',e.target.name.value);
         formData.append('username',e.target.username.value);
         formData.append('email',e.target.email.value);
-        formData.append('file', this.state.selectedFile);
         formData.append('gender',e.target.gender.value);
+        formData.append('file', this.state.selectedFile);
 
 
-        this.updateUser(formData,newUser);
+        this.setState({loading: true});
 
-        this.setState({redirect:true});
+        UserService.editUser(formData, this.state.id, newUser).then((response) => {
+                const newUser = response.data;
+            this.setState({redirect:true});
+            }, error => {
+                if (error.response.status === 409) {
+                    this.setState({
+                        errorMessage: "Username is not valid. It is already taken!",
+                        loading: false
+                    });
+                }else {
+                    this.setState({
+                        errorMessage: "Unexpected error occurred.",
+                        loading: false
+                    });
+                }
+            });
+
 
     };
 
-    updateUser= ((editedUser,newUser) => {
-        UserService.editUser(editedUser,this.state.id,newUser).then((response)=>{
-            const newUser = response.data;
-          //  this.props.history.push("/profile");
-        }, error => {
-            if (error.response.status === 409) {
-                console.log("error");
-
-            }
-        });
-    });
-
 
     handleTermOnChange = (e) => {
-
          this.setState({
              userDetails:e.target.value
          })
@@ -86,29 +95,35 @@ class EditUser extends Component{
     render() {
 
         if (this.state.redirect) {
-            return <Redirect to='/'/>;
+            return <Redirect to='/profile'/>;
         }
 
-         return (
+        const {selectedFile, id, userDetails,redirect, flag, submitted, loading, errorMessage} = this.state;
+
+        return (
 
              <div className="container">
                  <div style={{borderColor:'black', boxShadow: '5px 10px 18px 5px black'}} className="card">
+                     <h4 className="ui dividing header" style={{color:'#800000', fontSize:'xx-large',fontStyle:'italic'}}>Edit User Profile</h4>
+                     <br/>
+                     {errorMessage &&
+                     <div className="alert alert-danger" role="alert">
+                         <strong>Error! </strong> {errorMessage}
+                     </div>
+                     }
                      <form className="ui form" onSubmit={this.onFormSubmit}>
-                         <h4 className="ui dividing header" style={{color:'#800000', fontSize:'xx-large',fontStyle:'italic'}}>Edit User Profile</h4>
-                         <br/>
-
                          <div className="field">
                              <label  style={{color:'#800000',fontSize:'medium'}}>Name:</label>
                              <div className="">
-                                 <input type="text" name={"name"} id="name" value={this.state.userDetails.name} onChange={this.handleTermOnChange} style={{fontStyle:'italic'}}/>
+                                 <input required type="text" name={"name"} id="name" value={userDetails.name} onChange={this.handleTermOnChange} style={{fontStyle:'italic'}}/>
                              </div>
                          </div>
                          <br/>
 
-                         <div className="field">
+                         <div className={'field'}>
                              <label  style={{color:'#800000',fontSize:'medium'}}>Username:</label>
                              <div className="">
-                                 <input type="text" name={"username"} id="username" value={this.state.userDetails.username} onChange={this.handleTermOnChange} style={{fontStyle:'italic'}}/>
+                                 <input required type="text" name={"username"} id="username" value={userDetails.username} onChange={this.handleTermOnChange} style={{fontStyle:'italic'}}/>
                              </div>
                          </div>
                          <br/>
@@ -116,14 +131,14 @@ class EditUser extends Component{
                          <div className="field">
                              <label  style={{color:'#800000',fontSize:'medium'}}>Email:</label>
                              <div className="field">
-                                 <input type="text" name={"email"} id="email" value={this.state.userDetails.email} onChange={this.handleTermOnChange} style={{fontStyle:'italic'}}/>
+                                 <input required type="text" name={"email"} id="email" value={userDetails.email} onChange={this.handleTermOnChange} style={{fontStyle:'italic'}}/>
                              </div>
                          </div>
                          <br/>
 
                          <div className="field">
                              <label style={{color: '#800000', fontSize: 'medium'}}>Gender:</label>
-                             <input name={"gender"} id="gender" type="text" value={this.state.userDetails.gender} onChange={this.handleTermOnChange}
+                             <input name={"gender"} id="gender" type="text" value={userDetails.gender} onChange={this.handleTermOnChange}
                                     style={{fontStyle: 'italic'}}/>
                          </div>
                          <br/>
@@ -142,9 +157,10 @@ class EditUser extends Component{
                          <br/>
 
                          <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
-                             <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Edit</button>
+                             <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}
+                                     disabled={loading}>Edit</button>
                              <div className="or"></div>
-                             <button className="ui button"  style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Cancel</button>
+                             <button className="ui button"  style={{backgroundColor:' #800000',fontSize:'large',color:'black'}} >Cancel</button>
                          </div>
                      </form>
                  </div>

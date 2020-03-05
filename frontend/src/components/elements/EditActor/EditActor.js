@@ -89,8 +89,6 @@ const EditActor = (props) => {
                     </div>
                     <br/>
                     <br/>
-
-
                     <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
                         <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Edit</button>
                         <div className="or"></div>
