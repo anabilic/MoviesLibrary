@@ -1,13 +1,13 @@
 import React from 'react';
-import ReactPaginate from 'react-paginate';
-import './FourColGrid.css';
+import ReactPaginate from "react-paginate";
+import './ThreeColGrid.css';
 
-const FourColGrid = (props) => {
+const ThreeColGrid = (props) => {
 
     const renderElements = () => {
 
         const gridElements = props.children && props.children.map( (element, i) => (
-            <div key={i} className="rmdb-grid-element">
+            <div key={i} className="rmdb-grid-element-three">
                 {element}
             </div>
         ));
@@ -42,19 +42,21 @@ const FourColGrid = (props) => {
         }
     };
 
+
     return (
 
-        <div className="rmdb-grid">
-            {props.header && !props.loading ? <h1>{props.header}</h1> : null}
-        <br/>
-            <div className="rmdb-grid-content">
+        <div className="rmdb-grid-three">
+            <br/>
+            <div className="rmdb-grid-content-three">
                 {renderElements()}
             </div>
             <br/>
-            {paginate()}
+            <div className="gridPaginate">
+                {paginate()}
+            </div>
         </div>
     )
 };
 
 
-export default FourColGrid;
+export default ThreeColGrid;

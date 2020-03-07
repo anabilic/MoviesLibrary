@@ -4,19 +4,74 @@ import axios from "../../../custom-axios/axios";
 import OneGrid from "../OneGrid/OneGrid";
 import Navigation from "../Navigation/Navigation";
 import './ListActors.css';
+import ReactPaginate from "react-paginate";
 
 const ListActors = (props) => {
 
     const [actors,setActors] =useState({});
+    const [page,setPage]=useState(0);
+    const [totalPages,setTotalPages]=useState(0);
+    const [pageSize,setPageSize]=useState(3);
+
 
     useEffect(()=>{
-        axios.get("/actor").then((data) => {
-            setActors(data.data);
-        });
+        axios.get("/actor/paginate",{
+            headers: {
+                'page':page,'page-size':pageSize
+            }
+        }).then((data)=>{
+
+            setActors(data.data.content),
+                setPage(data.data.page),
+                setPageSize(data.data.pageSize),
+                setTotalPages(data.data.totalPages)
+        })
+
     },[]);
 
     const actorsList = Object.values(actors);
-    console.log(actorsList);
+
+    const loadActors=(page)=>{
+        return axios.get("/actor/paginate",{
+            headers: {
+                'page':page,'page-size':pageSize
+            }
+        }).then((data)=>{
+            setActors(data.data.content),
+                setPage(data.data.page),
+                setPageSize(data.data.pageSize),
+                setTotalPages(data.data.totalPages)
+        })
+    };
+
+    const handlePageClick = (e) => {
+        loadActors(e.selected);
+    };
+
+    const paginate = () => {
+        if (totalPages !== 0) {
+            return (
+                <ReactPaginate previousLabel={"previous"}
+                               nextLabel={"next"}
+                               breakLabel={<span className="gap">...</span>}
+                               breakClassName={"break-me"}
+                               pageCount={totalPages}
+                               marginPagesDisplayed={2}
+                               pageRangeDisplayed={5}
+                               pageClassName={"page-item"}
+                               pageLinkClassName={"page-link"}
+                               previousClassName={"page-item"}
+                               nextClassName={"page-item"}
+                               previousLinkClassName={"page-link"}
+                               nextLinkClassName={"page-link"}
+                               forcePage={page}
+                               onPageChange={handlePageClick}
+                               containerClassName={"pagination justify-content-center"}
+                               activeClassName={"active"}/>
+            )
+        }
+    };
+
 
 
     return(
@@ -53,6 +108,7 @@ const ListActors = (props) => {
                         </div>
                     ))}
                 </OneGrid>
+                {paginate()}
             </div>
         </div>
         </div>

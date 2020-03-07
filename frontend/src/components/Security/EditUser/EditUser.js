@@ -4,7 +4,6 @@ import { Redirect } from "react-router";
 import UserService from '../../../repository/axiosUserRepository'
 import './EditUser.css'
 
-
 class EditUser extends Component{
 
     constructor(props){

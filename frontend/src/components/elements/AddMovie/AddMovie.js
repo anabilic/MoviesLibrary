@@ -4,6 +4,7 @@ import {Dropdown} from 'semantic-ui-react';
 import ActorService from "../../../repository/axiosActorRepository";
 import GenreService from "../../../repository/axiosGenreRepository";
 import './AddMovie.css'
+import {Link} from "react-router-dom";
 
 function objectToArray(obj) {
     var array = [], tempObject;
@@ -258,14 +259,12 @@ class AddMovie extends Component {
                     <br/>
                     <br/>
 
-                    <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
+                    <div className="ui large buttons" style={{width: '800px', marginLeft: '125px'}}>
                         <button className="ui button" type="submit"
                                 style={{backgroundColor: ' #800000', fontSize: 'large', color: 'black'}}>Save
                         </button>
                         <div className="or"></div>
-                        <button className="ui button"
-                                style={{backgroundColor: ' #800000', fontSize: 'large', color: 'black'}}>Cancel
-                        </button>
+                        <Link to="/profile" className="ui button" style={{backgroundColor:' #800000',fontSize:'large',color:'black',height:'40px'}}>Cancel</Link>
                     </div>
                 </form>
             </div>

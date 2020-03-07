@@ -2,6 +2,7 @@ package mk.finki.ukim.mk.Repository;
 
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.pagination.Page;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +10,8 @@ import java.util.Optional;
 public interface ActorRepository {
 
     List<Actor> getAllActors();
+
+    Page<Actor> getAllActors(int page, int size);
 
     Actor save(Actor actor);
 

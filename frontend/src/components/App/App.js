@@ -26,6 +26,7 @@ import AddActor from "../elements/AddActor/AddActor";
 import AddGenre from "../elements/AddGenre/AddGenre";
 import EditUser from "../Security/EditUser/EditUser";
 import './App.css';
+import FourColGrid from "../elements/FourColGrid/FourColGrid";
 
 
 class App extends React.Component {
@@ -44,6 +45,8 @@ class App extends React.Component {
             errorMessageGenre: false,
             errorMessageAuthor:false,
             errorMessage:false,
+            pageSize:9,
+            totalPages:0
         };
     }
 
@@ -51,9 +54,25 @@ class App extends React.Component {
         UserService.currentUser.subscribe(data => {
             this.setState({currentUser: data});
         });
+
+        this.loadMoviesPaginate();
+
     }
 
-     createMovie= async (movie) => {
+    loadMoviesPaginate = (page=0) => {
+        MovieService.fetchMoviesPaged(page, this.state.pageSize).then((data) => {
+            this.setState({
+
+                movies: data.data.content,
+                page:data.data.page,
+                pageSize: data.data.pageSize,
+                totalPages: data.data.totalPages
+            })
+        })
+    };
+
+
+    createMovie= async (movie) => {
          await MovieService.addMovie(movie).then((response) => {
              const movie = response.data;
 
@@ -161,11 +180,11 @@ class App extends React.Component {
         });
     });
 
-    updateUser = ((editedUser) => {
+    updateUserWithoutImg = ((editedUser) => {
         UserService.editUserWithoutImg(editedUser).then((response)=>{
             const newUser= response.data;
             this.setState({
-                "currentUser":newUser
+                "users":newUser
             })
         },error => {
             if (error.response.status === 409) {
@@ -281,7 +300,9 @@ class App extends React.Component {
                         <Route path="/" component={Home} exact/>
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
-                        <Route path="/profile" render={()=> <Profile onDelete={this.deleteMovie}/>}  />
+                        <Route path="/profile" render={()=> <Profile  onPageClick={this.loadMoviesPaginate}
+                                                                      totalPages={this.state.totalPages}
+                                                                      onDelete={this.deleteMovie}/>}  />
                         <Route path="/movie/:id" render={()=> <Movie />} />
 
                         <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
@@ -295,7 +316,7 @@ class App extends React.Component {
                         <Route path="/editMovie/:id" render={()=> <EditMovie onSubmit={this.updateMovie}/>} />
                         <Route path="/editActor/:id" render={()=> <EditActor onSubmit={this.updateActor}/>} />
                         <Route path="/editGenre/:id" render={()=> <EditGenre errorMessageGenre={this.state.errorMessageGenre} onSubmit={this.updateGenre}/>} />
-                        <Route path="/user/edit/:id" render={()=> <EditUserWithoutImg errorMessage={this.state.errorMessage} onSubmit={this.updateUser}/>}/>
+                        <Route path="/user/edit/:id" render={()=> <EditUserWithoutImg errorMessage={this.state.errorMessage} onSubmit={this.updateUserWithoutImg}/>}/>
                         <Route path="/editUser/:id"  render={()=> <EditUser currentUserId={this.state.currentUser.id}/>}/>
 
                         <Route component={NotFound} />

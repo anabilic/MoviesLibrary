@@ -3,6 +3,11 @@ import qs from 'qs';
 
 const MovieService = {
 
+    loadMovies:()=>{
+        return axios.get("/movie");
+
+        },
+
     fetchMoviesPaged:(page,pageSize)=>{
         return axios.get("/movie",{
             headers: {
@@ -13,6 +18,7 @@ const MovieService = {
     searchMovieTerm: (searchTerm) => {
         return axios.get(`/movie?term=${searchTerm}`);
     },
+
     addMovie: (movie) => {
 
         return axios.post("/movie", movie,{

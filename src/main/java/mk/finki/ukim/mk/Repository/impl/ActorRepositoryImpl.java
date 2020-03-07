@@ -2,8 +2,10 @@ package mk.finki.ukim.mk.Repository.impl;
 
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Repository.ActorRepository;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,6 +24,12 @@ public class ActorRepositoryImpl implements ActorRepository {
     @Override
     public List<Actor> getAllActors() {
         return jpaActorRepository.findAll();
+    }
+
+    @Override
+    public Page<Actor> getAllActors(int page, int size) {
+        org.springframework.data.domain.Page<Actor> actorResult =  this.jpaActorRepository.findAll(PageRequest.of(page, size));
+        return new Page<>(page,actorResult.getTotalPages(),size,actorResult.getContent());
     }
 
     @Override

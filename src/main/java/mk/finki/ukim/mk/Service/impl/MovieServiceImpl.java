@@ -113,36 +113,22 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie editMovie(Long id,String name, String director, String runningTime, String plot,LocalDate releaseInformation, String originalLanguage, Integer Likes, List<String> actors, List<String> genres) {
+    public Movie editMovie(Long id,String name, String director, String runningTime, String plot,LocalDate releaseInformation, String originalLanguage) {
 
 
         Movie movie = this.movieRepository.findById(id).orElseThrow(UserIdInvalid::new);
-
-        List<Actor> movieActors = this.movieRepository.checkActors(actors);
-        List<Genre> movieGenres = this.movieRepository.checkGenres(genres);
-
-
-        if(movieActors == null ){
-            movie.setActors(movie.getActors());
-        }else{
-            movie.setActors(movieActors);
-        }
-
-        if(movieGenres == null){
-            movie.setGenres(movie.getGenres());
-        }else{
-            movie.setGenres(movieGenres);
-        }
 
         movie.setName(name);
         movie.setDirector(director);
         movie.setRunningTime(runningTime);
         movie.setReleaseInformation(releaseInformation);
         movie.setOriginalLanguage(originalLanguage);
-        movie.setLikes(Likes);
         movie.setPlot(plot);
+        movie.setLikes(movie.getLikes());
         movie.setFile(movie.getFile());
         movie.setUser(movie.getUser());
+        movie.setGenres(movie.getGenres());
+        movie.setActors(movie.getActors());
 
         return movieRepository.save(movie);
     }

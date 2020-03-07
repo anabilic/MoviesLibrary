@@ -1,8 +1,10 @@
 package mk.finki.ukim.mk.Web.rest;
 
 import mk.finki.ukim.mk.Model.Actor;
+import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.exceptions.ActorAlreadyExists;
 import mk.finki.ukim.mk.Model.exceptions.ActorIdInvalid;
+import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Service.ActorService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -32,6 +34,11 @@ public class ActorApi {
         return this.actorService.listAllActors();
     }
 
+    @GetMapping("/paginate")
+    public Page<Actor> getAllActors(@RequestHeader(name = "page", defaultValue = "0", required = false) int page,
+                                    @RequestHeader(name = "page-size", defaultValue = "10", required = false) int size){
+        return  this.actorService.listAllActors(page,size);
+    }
 
     @GetMapping("/id/{id}")
     public Optional<Actor> getActorById(@PathVariable Long id){

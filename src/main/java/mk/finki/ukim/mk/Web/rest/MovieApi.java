@@ -92,14 +92,11 @@ public class MovieApi {
                            @RequestParam(value = "runningTime" , required = false) String runningTime,
                            @RequestParam(value="plot",required=false) String plot,
                            @RequestParam(value = "releaseInformation",required = false) String releaseInformation,
-                           @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
-                           @RequestParam(value = "likes",required = false) Integer likes,
-                           @RequestParam(value="actors",required = false) ArrayList<String> actors,
-                           @RequestParam(value = "genres",required = false) ArrayList<String> genres) throws  InvalidMovieId {
+                           @RequestParam(value = "originalLanguage",required = false)  String originalLanguage) throws  InvalidMovieId {
 
         LocalDate localDate = LocalDate.parse(releaseInformation);
 
-        Movie editedMovie = this.movieService.editMovie(id,name,director,runningTime,plot,localDate,originalLanguage,likes,actors,genres);
+        Movie editedMovie = this.movieService.editMovie(id,name,director,runningTime,plot,localDate,originalLanguage);
         return editedMovie;
     }
 

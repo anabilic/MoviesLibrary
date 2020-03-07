@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import axios from "../../../custom-axios/axios";
 import {Link} from "react-router-dom";
+import MovieService from "../../../repository/axiosMovieRepository";
 import Navigation from '../../elements/Navigation/Navigation';
+import ThreeColGrid from "../../elements/ThreeColGrid/ThreeColGrid";
+import ThreeMovieThumb from "../../elements/ThreeMovieThumb/ThreeMovieThumb";
 import UserService from '../../../repository/axiosUserRepository';
 import './Profile.css';
+
 
 class Profile extends Component{
 
@@ -14,7 +18,9 @@ class Profile extends Component{
         this.state={
             user:UserService.currentUserValue,
             movie:[],
-            userDetails:[]
+            userDetails:[],
+            pageSize:6,
+            totalPages:0
         };
     }
 
@@ -26,14 +32,8 @@ class Profile extends Component{
             return;
         }
 
+        this.loadMoviesPaginate();
 
-            axios.get("/movie/all").then((response) => {
-                this.setState(
-                    {
-                        movie:response.data
-                    }
-                )
-            });
 
             axios.get("/user?id="+this.state.user.id).then((response)=>{
                 this.setState(
@@ -45,6 +45,19 @@ class Profile extends Component{
             });
 
     }
+
+    loadMoviesPaginate = (page=0) => {
+        MovieService.fetchMoviesPaged(page, this.state.pageSize).then((data) => {
+            this.setState({
+
+                movie: data.data.content,
+                page:data.data.page,
+                pageSize: data.data.pageSize,
+                totalPages: data.data.totalPages
+
+            })
+        })
+    };
 
     render(){
 
@@ -93,7 +106,7 @@ class Profile extends Component{
                             <br/>
                             <br/>
                             <p className="font-italic nameProfile" style={{color:'white',marginLeft:'120px',fontFamily: 'Helvetica'}}>{this.state.userDetails.name}</p>
-                            <p className="font-italic" style={{color:'white',marginLeft:'40px',fontSize:'20px',fontFamily: 'Helvetica'}}>{this.state.userDetails.email}</p>
+                            <p className="font-italic" style={{color:'white',marginLeft:'70px',fontSize:'20px',fontFamily: 'Helvetica'}}>Username: {this.state.userDetails.username}</p>
                             <br/>
                             <span>
                                 <Link to={"/editUser/"+this.state.userDetails.id} style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
@@ -160,74 +173,33 @@ class Profile extends Component{
                             <p className="font-italic"
                                style={{fontSize: '25px', color: 'white', fontFamily: 'Helvetica'}}>All movies</p>
                             <hr className="new4"/>
-                            <div className="grid-content">
-                                {this.state.movie && this.state.movie.map((element, i) => (
-                                    <div key={i}>
-                                        <div>
-                                            <Link to={"/movie/" + element.id}>
-                                                <img alt="" className="rounded"
-                                                     style={{width: '200px', height: '250', fontFamily: 'Helvetica'}}
-                                                     src={`data:image/jpeg;base64,${element.file}`}/>
-                                            </Link>
-                                        </div>
-                                        <div>
-                                            <span className="ml-1 font-weight-bold" style={{ fontSize: '18px', color: 'red', fontFamily: 'Helvetica'}}>{element.name}</span>
-                                            <br/>
-                                            <Link to={"/editMovie/" + element.id}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}} >
-                                                <i className="fa fa-edit">
-                                                    <span className="font-italic">Edit this movie</span>
-                                                </i>
-                                            </Link>
-                                            <br/>
-                                            <a  href="" className="" onClick={() => this.props.onDelete(element.id)}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}}>
-                                                <i className="fa fa-trash-o">
-                                                    <span className="font-italic">Delete this movie</span>
-                                                </i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                ))}
+                            <div>
+                                <ThreeColGrid
+                                    onPageClick={this.loadMoviesPaginate}
+                                    totalPages={this.state.totalPages}
+                                >
+                                    {this.state.movie && this.state.movie.map( (element, i) => (
+                                        <ThreeMovieThumb
+                                            key={i}
+                                            clickable={true}
+                                            image={element.file ? `data:image/jpeg;base64,${element.file}` : './images/no_image.jpg'}
+                                            movieId={element.id}
+                                            movieName={element.name}
+                                            onDelete = {this.props.onDelete}
+                                        />
+                                        ))}
+                                </ThreeColGrid>
                             </div>
                         </div>
-                        }
+                            }
                         {this.state.userDetails.role === 'USER' &&
-                        <div className="col-md-8" style={{color: 'white'}}>
+                        <div className="col-md-8" style={{color: '#800000'}}>
                             <br/>
                             <br/>
                             <p className="font-italic"
                                style={{fontSize: '25px', color: 'white', fontFamily: 'Helvetica'}}>Liked movies</p>
                             <hr className="new4"/>
                             <div className="grid-content">
-                                {this.state.movie && this.state.movie.map((element, i) => (
-                                    <div key={i}>
-                                        <div>
-                                            <Link to={"/movie/" + element.id}>
-                                                <img  alt="" className="rounded"
-                                                      style={{width: '250px', height: '300px', fontFamily: 'Helvetica'}}
-                                                      src={`data:image/jpeg;base64,${element.file}`}/>
-                                            </Link>
-                                        </div>
-                                        <div>
-                                        <span className="ml-1 font-weight-bold" style={{
-                                            fontSize: '18px',
-                                            color: 'red',
-                                            fontFamily: 'Helvetica'
-                                        }}>{element.name}</span>
-                                            <br/>
-                                            <a className="ml-3" href=""
-                                               style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}}>
-                                                <i className="fa fa-edit">
-                                                    <span className="font-italic">Edit this movie</span>
-                                                </i>
-                                            </a>
-                                            <a  href="" className="ml-3" onClick={() => this.props.onDelete(element.id)}  style={{color: 'white', fontSize: '20px', fontFamily: 'Helvetica'}}>
-                                                <i className="fa fa-trash-o">
-                                                    <span className="font-italic">Delete this movie</span>
-                                                </i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                ))}
                             </div>
                         </div>
                         }

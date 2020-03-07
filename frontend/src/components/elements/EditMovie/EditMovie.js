@@ -1,88 +1,28 @@
 import React , {useState,useEffect} from 'react';
 import axios from '../../../custom-axios/axios';
-import Select from 'react-select';
 import {useHistory} from "react-router";
 import {useParams} from "react-router";
 import './EditMovie.css'
 
 const EditMovie = (props) => {
 
-    const [genres,setGenres] = useState({});
-    const [actors,setActors] = useState({});
     const [movie,setMovie] = useState({});
-    const [actorSelected,setActorSelected] = useState([]);
-    const [genreSelected, setGenreSelected] = useState([]);
-
-
     const {id} = useParams();
-    console.log(id);
     const history = useHistory();
 
     useEffect(() => {
-        axios.get("/genre").then((data)=>{
-            setGenres(data.data);
-        });
-        axios.get("/actor").then((data)=>{
-            setActors(data.data);
-        });
+
         axios.get("/movie/id/"+id).then((data)=>{
             setMovie(data.data);
         });
 
-        console.log(movie);
     },[]);
 
 
-    function is_object(mixed_var) {
-        if (mixed_var instanceof Array) {
-            return false;
-        }else{
-            return (mixed_var !== null) && (typeof( mixed_var ) === 'object');
-        }
-    }
-
-    function objectToArray(obj) {
-        var array = [], tempObject;
-
-        for (var key in obj) {
-
-            tempObject = obj[key];
-
-            if (is_object(obj[key])) {
-                tempObject = objectToArray(obj[key]);
-            }
-            array[key] = tempObject;
-        }
-        return array;
-    }
-
-
-    const makeActorsKeys = () => {
-        const arrayOfActors = objectToArray(actors);
-        const item = [];
-
-        for (let i = 0; i < arrayOfActors.length; i++) {
-            let actorName = arrayOfActors[i].name;
-            item.push({value: actorName, label: actorName});
-        }
-
-        return item;
-    };
-
-    const makeGenresKeys = () => {
-        const arrayOfGenres = objectToArray(genres);
-        const items = [];
-        for (let i = 0; i < arrayOfGenres.length; i++) {
-            let GENRE = arrayOfGenres[i].name;
-            items.push({label: GENRE, value: GENRE} );
-        }
-        return items;
-    };
-
 
     const onFormSubmit = (e) => {
-        e.preventDefault();
 
+        e.preventDefault();
 
         props.onSubmit({
             "id":id,
@@ -92,23 +32,12 @@ const EditMovie = (props) => {
             "plot": e.target.plot.value,
             "runningTime":e.target.runningTime.value,
             "releaseInformation": e.target.releaseInformation.value,
-            "genres": genreSelected,
-            "actors":actorSelected,
         });
-
 
         history.push("/profile");
 
     };
 
-    const handleChangeActor = (actorSelected) => {
-        setActorSelected(() => (actorSelected))
-    };
-
-    const handleChangeGenres = (genreSelected) => {
-        console.log(genreSelected);
-        setGenreSelected(() => (genreSelected));
-    };
 
     const handleTermOnChange = (e) => {
         const paramName = e.target.name;
@@ -168,30 +97,7 @@ const EditMovie = (props) => {
                         <input type="date" name={"releaseInformation"} id="releaseInformation" value={movie.releaseInformation} onChange={handleTermOnChange} style={{fontStyle:'italic'}}/>
                     </div>
                     <br/>
-
-                    <div className="field">
-                        <label style={{color: '#800000', fontSize: 'medium'}}>Genre</label>
-                        <Select
-                            isMulti
-                            value={genreSelected}
-                            onChange={handleChangeGenres}
-                            options={makeGenresKeys()}
-                        />
-                        {/*{genreSelected.map(o => <p>{o.value}</p>)}*/}
-                    </div>
                     <br/>
-
-                    <div className="field">
-                        <label style={{color: '#800000', fontSize: 'medium'}}>Actors</label>
-                        {/*<Select*/}
-                        {/*    isMulti*/}
-                        {/*    value={actorSelected}*/}
-                        {/*    onChange={handleChangeActor()}*/}
-                        {/*    options={makeActorsKeys()}*/}
-                        {/*/>*/}
-                    </div>
-                    <br/>
-
                     <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
                         <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Edit</button>
                         <div className="or"></div>

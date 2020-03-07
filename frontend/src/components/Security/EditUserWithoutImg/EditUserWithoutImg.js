@@ -1,5 +1,6 @@
 import React, {useEffect,useState} from 'react';
 import {useHistory, useParams} from "react-router";
+import {Link} from "react-router-dom";
 import axios from "../../../custom-axios/axios";
 import './EditUserWithoutImg.css'
 
@@ -16,10 +17,13 @@ const EditUserWithoutImg = (props) => {
             setUser(data.data);
         })
 
+        console.log(props.errorMessage.toString());
+
     },[]);
 
 
     const onFormSubmit = (e) => {
+
         e.preventDefault();
 
         props.onSubmit({
@@ -30,11 +34,9 @@ const EditUserWithoutImg = (props) => {
             "gender":e.target.gender.value,
         });
 
-        if(props.errorMessage){
             history.push("/allUsers");
-        }
-
     };
+
 
     const handleTermOnChange = (e) => {
         const paramName = e.target.name;
@@ -87,10 +89,11 @@ const EditUserWithoutImg = (props) => {
                     </div>
                     <br/>
                     <br/>
+
                     <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
                         <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Edit</button>
                         <div className="or"></div>
-                        <button className="ui button"  style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Cancel</button>
+                        <Link to="/allUsers" className="ui button" style={{backgroundColor:' #800000',fontSize:'large',color:'black',height:'40px'}}>Cancel</Link>
                     </div>
                 </form>
             </div>

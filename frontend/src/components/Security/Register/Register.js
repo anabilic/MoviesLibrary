@@ -123,7 +123,7 @@ class Register extends React.Component {
                         <div className={'form-group' + (submitted && !user.gender ? 'has-error' : '')}>
                             <FontAwesomeIcon icon={faMale} /> <FontAwesomeIcon icon={faFemale} />
                             <label style={{color:'#800000', padding: '5px'}} htmlFor="gender">Gender</label>
-                            <input type="text" className="form-control" name="gender" placeholder="Type gender" value={user.gender}
+                            <input type="text" className="form-control" name="gender" placeholder="Type Female or Male" value={user.gender}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !user.gender &&
                             <div className="help-block">Gender is required</div>

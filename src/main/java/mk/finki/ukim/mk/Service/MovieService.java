@@ -29,7 +29,7 @@ public interface MovieService {
 
     Movie createMovie(String name, String director, String runningTime, String plot, LocalDate releaseInformation, String originalLanguage, Integer Likes, byte[] file, List<String> actors, List<String> genres, String user);
 
-    Movie editMovie(Long id,String name, String director, String runningTime,String plot, LocalDate releaseInformation, String originalLanguage, Integer Likes, List<String> actors, List<String> genres);
+    Movie editMovie(Long id,String name, String director, String runningTime,String plot, LocalDate releaseInformation, String originalLanguage);
 
     void deleteMovie(Long id);
 

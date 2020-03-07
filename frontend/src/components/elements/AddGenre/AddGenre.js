@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Redirect } from "react-router";
 import './AddGenre.css'
+import {Link} from "react-router-dom";
 
 class AddGenre extends Component {
 
@@ -50,10 +51,10 @@ class AddGenre extends Component {
                             </div>
                         </div>
                         <br/>
-                        <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
+                        <div className="ui medium buttons" style={{width: '800px', marginLeft: '110px'}}>
                             <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Add</button>
                             <div className="or"></div>
-                            <button className="ui button"  style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Cancel</button>
+                            <Link to="/profile" className="ui button" style={{backgroundColor:' #800000',fontSize:'large',color:'black',height:'40px'}}>Cancel</Link>
                         </div>
                     </form>
                 </div>

@@ -4,6 +4,7 @@ import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.exceptions.InvalidActorName;
 import mk.finki.ukim.mk.Model.exceptions.UserIdInvalid;
+import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Repository.ActorRepository;
 import mk.finki.ukim.mk.Service.ActorService;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,11 @@ public class ActorServiceImpl implements ActorService {
     @Override
     public List<Actor> listAllActors() {
         return actorRepository.getAllActors();
+    }
+
+    @Override
+    public Page<Actor> listAllActors(int page, int size) {
+        return actorRepository.getAllActors(page,size);
     }
 
     @Override
