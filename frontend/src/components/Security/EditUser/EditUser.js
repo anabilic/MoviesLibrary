@@ -17,6 +17,7 @@ class EditUser extends Component{
             submitted: false,
             loading: false,
             errorMessage: '',
+            imagePreview:null
         };
     }
 
@@ -88,6 +89,16 @@ class EditUser extends Component{
         let file=e.target.files[0];
         this.setState({selectedFile:file});
 
+        let reader = new FileReader();
+
+        reader.onloadend = () => {
+            this.setState({
+                imagePreview: reader.result
+            });
+        };
+
+        reader.readAsDataURL(file)
+
     };
 
 
@@ -98,6 +109,23 @@ class EditUser extends Component{
         }
 
         const {selectedFile, id, userDetails,redirect, flag, submitted, loading, errorMessage} = this.state;
+
+        let $previewImage;
+
+        if (this.state.imagePreview) {
+            $previewImage = (<img src={this.state.imagePreview} alt="icon" className="topPhotoEdit rounded-circle" />);
+        }else {
+            if (this.state.userDetails.file == null) {
+                if (this.state.userDetails.gender === "Female") {
+                    $previewImage = (<img src="./public/images/avatarFemale.png" alt="" className="topPhotoEdit rounded-circle"/>);
+                } else if (this.state.userDetails.gender === "Male") {
+                    $previewImage = (<img alt="" src="./public/images/avatarMaler.png" className="topPhotoEdit rounded-circle"/>);
+                }
+            } else {
+                $previewImage = (<img src={`data:image/jpeg;base64,${this.state.userDetails.file}`} alt=""
+                                      className="topPhotoEdit rounded-circle"/>);
+            }
+        }
 
         return (
 
@@ -111,6 +139,10 @@ class EditUser extends Component{
                      </div>
                      }
                      <form className="ui form" onSubmit={this.onFormSubmit}>
+                        <div className="field">
+                            {$previewImage}
+                        </div>
+                         <br/>
                          <div className="field">
                              <label  style={{color:'#800000',fontSize:'medium'}}>Name:</label>
                              <div className="">

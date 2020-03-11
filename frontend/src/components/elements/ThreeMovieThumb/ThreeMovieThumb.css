@@ -1,8 +1,8 @@
-.rmdb-moviethumb img {
-    width: 500px;
-    height: 400px!important;
+.rmdb-moviethumbThree img {
+    width: 200px!important;
+    height: 300px!important;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 100% !important;
     transition: all 0.3s;
     box-sizing: border-box;
 }

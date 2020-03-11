@@ -28,6 +28,7 @@ public class User {
 
     private String email;
 
+
     @Lob
     @Column(nullable = true)
     private byte[] file;
@@ -40,5 +41,10 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Movie> movies;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Movie> favouriteMovies;
+    //List of all movies that user have added to favourites
 
 }

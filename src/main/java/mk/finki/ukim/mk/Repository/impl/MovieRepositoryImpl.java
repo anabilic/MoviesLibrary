@@ -93,4 +93,5 @@ public class MovieRepositoryImpl implements MovieRepository {
     public List<Actor> getActorsByMovie(String name) {
         return this.jpaMovieRepository.getActorsByMovie(name);
     }
+
 }

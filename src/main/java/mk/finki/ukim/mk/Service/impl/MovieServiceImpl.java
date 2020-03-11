@@ -71,9 +71,22 @@ public class MovieServiceImpl implements MovieService {
         return this.movieRepository.searchMovies(term);
     }
 
+
+
+    @Override
+    public Movie saveFavourite(Boolean flag, Long id) {
+
+        Movie movie = this.movieRepository.findById(id).orElseThrow(UserIdInvalid::new);
+
+        movie.setFavourite(flag);
+
+        return this.movieRepository.save(movie);
+    }
+
+
     @Override
     @Transactional
-    public Movie createMovie(String name, String director, String runningTime, String plot, LocalDate releaseInformation, String originalLanguage, Integer Likes, byte[] file, List<String> actors, List<String> genres, String user) {
+    public Movie createMovie(String name, String director, String runningTime, String plot, LocalDate releaseInformation, String originalLanguage, byte[] file, List<String> actors, List<String> genres, String user) {
 
         Movie movie=this.movieRepository.checkIfMovieExists(name);
 
@@ -93,7 +106,6 @@ public class MovieServiceImpl implements MovieService {
             movie.setRunningTime(runningTime);
             movie.setReleaseInformation(releaseInformation);
             movie.setOriginalLanguage(originalLanguage);
-            movie.setLikes(Likes);
             movie.setPlot(plot);
             movie.setActors(movieActors);
             movie.setGenres(movieGenres);
@@ -124,7 +136,6 @@ public class MovieServiceImpl implements MovieService {
         movie.setReleaseInformation(releaseInformation);
         movie.setOriginalLanguage(originalLanguage);
         movie.setPlot(plot);
-        movie.setLikes(movie.getLikes());
         movie.setFile(movie.getFile());
         movie.setUser(movie.getUser());
         movie.setGenres(movie.getGenres());

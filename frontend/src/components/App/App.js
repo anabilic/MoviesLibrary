@@ -26,7 +26,6 @@ import AddActor from "../elements/AddActor/AddActor";
 import AddGenre from "../elements/AddGenre/AddGenre";
 import EditUser from "../Security/EditUser/EditUser";
 import './App.css';
-import FourColGrid from "../elements/FourColGrid/FourColGrid";
 
 
 class App extends React.Component {
@@ -41,12 +40,15 @@ class App extends React.Component {
             actors:[],
             genres:[],
             users:[],
+            errorMessageAddFavourite:'',
             errorMessageGenreAdd:false,
             errorMessageGenre: false,
             errorMessageAuthor:false,
             errorMessage:false,
             pageSize:9,
-            totalPages:0
+            totalPages:0,
+            countFavourites: 0,
+            colorFlag:false
         };
     }
 
@@ -78,9 +80,12 @@ class App extends React.Component {
 
              this.setState((prevState) => {
                  const newMovieRef = [...prevState.movies, movie];
-                 return {
-                     "movies": newMovieRef
-                 }
+                 newMovieRef.filter((m)=> {
+                     return {
+                         "movies": m
+                     }
+                 })
+
              });
          });
      };
@@ -244,6 +249,21 @@ class App extends React.Component {
         })
     };
 
+    addFavouriteMovie=(idMovie)=>{
+        UserService.addFavouriteMovie(this.state.currentUser.id,idMovie,this.state.currentUser).then((response)=>{
+            this.setState({
+                countFavourites: this.state.countFavourites+1,
+                colorFlag:true
+            });
+        },error => {
+            if (error.response.status === 409) {
+                this.setState({
+                    errorMessageAddFavourite: "The book is already added in your list"
+                });
+            }
+        })
+    };
+
 
     logout() {
         UserService.logOut().then(data => {
@@ -303,7 +323,7 @@ class App extends React.Component {
                         <Route path="/profile" render={()=> <Profile  onPageClick={this.loadMoviesPaginate}
                                                                       totalPages={this.state.totalPages}
                                                                       onDelete={this.deleteMovie}/>}  />
-                        <Route path="/movie/:id" render={()=> <Movie />} />
+                        <Route path="/movie/:id" render={()=> <Movie userId={currentUser.id} addMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} colorFlag={this.state.colorFlag} />} />
 
                         <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
                         <Route path="/addActor" render={()=><AddActor errorMessageAuthor={this.state.errorMessageAuthor} onNewActorAddedWithImg={this.createActor}/>} />

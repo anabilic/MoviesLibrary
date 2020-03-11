@@ -31,12 +31,17 @@ public class Movie {
 
     private String runningTime;
 
+    private Boolean favourite;
+
     @Column(nullable = true)
     private LocalDate releaseInformation;
 
     private String originalLanguage;
 
-    private Integer Likes;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "favouriteMovies")
+    private List<User> userFavourites;
+    //list of all users that have added the movie to favourites
 
     private Boolean deleted = false;
 

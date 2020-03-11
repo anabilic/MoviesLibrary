@@ -1,5 +1,6 @@
 package mk.finki.ukim.mk.Repository.impl;
 
+import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.User;
 import mk.finki.ukim.mk.Repository.UserRepository;
 import org.springframework.context.annotation.Profile;
@@ -33,6 +34,11 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void delete(Long id) {
         this.jpaUserRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Movie> getFavouriteMoviesPerUser(Long id) {
+        return this.jpaUserRepository.getFavouriteMoviesPerUser(id);
     }
 
     @Override

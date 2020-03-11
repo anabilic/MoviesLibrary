@@ -1,8 +1,10 @@
 package mk.finki.ukim.mk.Service.impl;
 
+import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.User;
 import mk.finki.ukim.mk.Model.exceptions.UserAlreadyExists;
 import mk.finki.ukim.mk.Model.exceptions.UserIdInvalid;
+import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Repository.UserRepository;
 import mk.finki.ukim.mk.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +111,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Long id) {
         this.userRepository.delete(id);
+    }
+
+    @Override
+    public User addFavouriteMovie(User user) {
+
+
+
+        return this.userRepository.save(user);
+    }
+
+    @Override
+    public List<Movie> getFavouriteMoviesPerUser(Long id) {
+        return this.userRepository.getFavouriteMoviesPerUser(id);
     }
 
 

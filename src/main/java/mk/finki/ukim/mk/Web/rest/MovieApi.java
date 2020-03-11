@@ -27,14 +27,9 @@ public class MovieApi {
 
     private final MovieService movieService;
 
-    private final GenreService genreService;
-
-    private final UserService userService;
-
-    public MovieApi(MovieService movieService, GenreService genreService, UserService userService) {
+    public MovieApi(MovieService movieService) {
         this.movieService = movieService;
-        this.genreService = genreService;
-        this.userService = userService;
+
     }
 
     @GetMapping("/id/{id}")
@@ -71,7 +66,6 @@ public class MovieApi {
                                       @RequestParam(value="plot",required=false) String plot,
                                       @RequestParam(value = "releaseInformation",required = false) String releaseInformation,
                                       @RequestParam(value = "originalLanguage",required = false)  String originalLanguage,
-                                      @RequestParam(value = "likes",required = false) Integer likes,
                                       @RequestParam(value="actors",required = false) ArrayList<String> actors,
                                       @RequestParam(value = "genres",required = false) ArrayList<String> genres,
                                       @RequestParam(value = "user",required = false) String user,
@@ -79,10 +73,9 @@ public class MovieApi {
 
         LocalDate localDate = LocalDate.parse(releaseInformation);
 
-        Movie newMovie = this.movieService.createMovie(name,director,runningTime,plot,localDate,originalLanguage,likes,file.getBytes(),actors,genres,user);
+        Movie newMovie = this.movieService.createMovie(name,director,runningTime,plot,localDate,originalLanguage,file.getBytes(),actors,genres,user);
         return newMovie;
     }
-
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)

@@ -1,6 +1,8 @@
 package mk.finki.ukim.mk.Service;
 
+import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.User;
+import mk.finki.ukim.mk.Model.pagination.Page;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -24,5 +26,9 @@ public interface UserService extends UserDetailsService {
     User editUserWithoutImg(Long id,String userName,String name, String email,String gender);
 
     void deleteUser(Long id);
+
+    User addFavouriteMovie(User user);
+
+    List<Movie> getFavouriteMoviesPerUser(Long id);
 
 }

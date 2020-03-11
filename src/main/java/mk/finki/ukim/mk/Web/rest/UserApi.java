@@ -1,7 +1,12 @@
 package mk.finki.ukim.mk.Web.rest;
 
+import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.Role;
 import mk.finki.ukim.mk.Model.User;
+import mk.finki.ukim.mk.Model.exceptions.InvalidMovieId;
+import mk.finki.ukim.mk.Model.exceptions.MovieAlreadyAddedToFavourites;
+import mk.finki.ukim.mk.Model.exceptions.UserIdInvalid;
+import mk.finki.ukim.mk.Service.MovieService;
 import mk.finki.ukim.mk.Service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +26,11 @@ public class UserApi {
 
     private final UserService userService;
 
-    public UserApi(UserService userService) {
+    private final MovieService movieService;
+
+    public UserApi(UserService userService, MovieService movieService) {
         this.userService = userService;
+        this.movieService = movieService;
     }
 
 
@@ -74,6 +82,34 @@ public class UserApi {
         return this.userService.editUserWithoutImg(id,userName,name,email,gender);
     }
 
+    @PatchMapping(path = "/addFavourite/{idUser}/{idMovie}")
+    public User userAddFavourite(@PathVariable(value="idUser") Long idUser, @PathVariable(value = "idMovie") Long idMovie){
+
+        User user=this.userService.findById(idUser).orElseThrow(UserIdInvalid::new);
+
+        Movie movie=this.movieService.findMovieById(idMovie).orElseThrow(InvalidMovieId::new);
+
+
+        List<Movie> moviesAddedToFavourites = userService.getFavouriteMoviesPerUser(idUser);
+
+        boolean check = moviesAddedToFavourites.stream().anyMatch(x -> x.getId().equals(idMovie));
+
+        if(check){
+            throw new MovieAlreadyAddedToFavourites();
+        }
+
+        moviesAddedToFavourites.add(movie);
+        movieService.saveFavourite(true,idMovie);
+        user.setFavouriteMovies(moviesAddedToFavourites);
+
+        return this.userService.addFavouriteMovie(user);
+    }
+
+    @GetMapping("/favouritesPerUser/{id}")
+    public List<Movie> getFavouriteMoviesPerUser(@PathVariable(value="id") Long id){
+        return userService.getFavouriteMoviesPerUser(id);
+    }
+
 
     @PostMapping("/names")
     public ResponseEntity<?> getNamesOfUsers(@RequestBody List<Long> idList){
@@ -84,6 +120,7 @@ public class UserApi {
     public Optional<User> getById(@RequestParam Long id){
         return userService.findById(id);
     }
+
 
     @GetMapping
     public ResponseEntity<?> getAllUsers(){

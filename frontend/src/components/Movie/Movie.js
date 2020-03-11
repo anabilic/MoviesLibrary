@@ -11,6 +11,7 @@ import './Movie.css';
 const Movie = (props) => {
 
     const [movie,setMovies] = useState({});
+    const [movieFavourites, setMoviesFavourite] = useState({});
     const [moviesActors,setMoviesActors] = useState({});
     const [moviesGenres,setMoviesGenres] = useState({});
     const {id} = useParams();
@@ -19,18 +20,21 @@ const Movie = (props) => {
         axios.get("/movie/id/" + id).then((data) => {
             setMovies(data.data);
         });
+        axios.get("/favouritesPerUser/" + id).then((data) => {
+            setMoviesFavourite(data.data);
+        });
         axios.get("/movie/" + id + "/actors").then((data) => {
             setMoviesActors(data.data);
         });
         axios.get("/movie/" + id + "/genres").then((data) => {
             setMoviesGenres(data.data);
         })
-    },[])
-
+    },[]);
 
 
     const actors = Object.values(moviesActors);
     const genres = Object.values(moviesGenres);
+
 
     return (
 
@@ -38,7 +42,7 @@ const Movie = (props) => {
                 {movie ?
                     <div>
                         <Navigation movie={movie.name} />
-                        <MovieInfo movie={movie} director={movie.director} genres={genres} />
+                        <MovieInfo userId={props.userId} movieFavourites={movieFavourites} movie={movie} director={movie.director} genres={genres} addMovieToFavourite={props.addMovieToFavourite} colorFlag={props.colorFlag} errorMessage={props.errorMessage}  />
                         <MovieInfoBar runningTime={movie.runningTime} releaseInformation={movie.releaseInformation} originalLanguage={movie.originalLanguage} />
                     </div> : null }
                     <br/>

@@ -1,0 +1,17 @@
+.rmdb-grid-threeFav h1 {
+    font-family: 'Abel', sans-serif;
+    font-size:42px;
+}
+
+.rmdb-grid-content-threeFav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+}
+
+.rmdb-grid-element-threeFav {
+    max-height: 430px !important;
+    animation: animateGrid 0.5s;
+    overflow: hidden;
+}

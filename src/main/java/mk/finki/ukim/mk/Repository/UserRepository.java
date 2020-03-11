@@ -1,5 +1,6 @@
 package mk.finki.ukim.mk.Repository;
 
+import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.User;
 
 import java.util.List;
@@ -21,6 +22,9 @@ public interface UserRepository {
     User save(User user);
 
     void delete(Long id);
+
+    List<Movie> getFavouriteMoviesPerUser(Long id);
+
 
 
 }

@@ -5,12 +5,13 @@ import MovieService from "../../../repository/axiosMovieRepository";
 import Navigation from '../../elements/Navigation/Navigation';
 import ThreeColGrid from "../../elements/ThreeColGrid/ThreeColGrid";
 import ThreeMovieThumb from "../../elements/ThreeMovieThumb/ThreeMovieThumb";
+import ThreeColGridFavourites from "../../elements/ThreeColGridFavourites/ThreeColGridFavourites";
+import MovieThumbFavourite from "../../elements/MovieThumbFavourite/MovieThumbFavourite";
 import UserService from '../../../repository/axiosUserRepository';
 import './Profile.css';
 
 
 class Profile extends Component{
-
 
     constructor(props){
         super(props);
@@ -20,7 +21,8 @@ class Profile extends Component{
             movie:[],
             userDetails:[],
             pageSize:6,
-            totalPages:0
+            totalPages:0,
+            favouriteMovies:[]
         };
     }
 
@@ -34,15 +36,22 @@ class Profile extends Component{
 
         this.loadMoviesPaginate();
 
-
             axios.get("/user?id="+this.state.user.id).then((response)=>{
                 this.setState(
                     {
                         userDetails:response.data
                     }
                 )
-
             });
+
+
+        axios.get("/user/favouritesPerUser/"+this.state.user.id).then((response)=>{
+            this.setState(
+                {
+                    favouriteMovies:response.data
+                }
+            )
+        });
 
     }
 
@@ -59,6 +68,8 @@ class Profile extends Component{
         })
     };
 
+
+
     render(){
 
         let $preview;
@@ -67,7 +78,6 @@ class Profile extends Component{
                 $preview = (<img alt="" src="./images/avatarFemale.png" className="topPhoto rounded-circle"/>);
             }else if(this.state.userDetails.gender === 'Male'){
                 $preview = (<img alt="" src="./images/avatarMaler.png" className="topPhoto rounded-circle"/>);
-
             }
         }else {
             $preview = (<img src={`data:image/jpeg;base64,${this.state.userDetails.file}`}  alt="" className="topPhoto rounded-circle"/>);
@@ -172,7 +182,7 @@ class Profile extends Component{
                             <br/>
                             <p className="font-italic"
                                style={{fontSize: '25px', color: 'white', fontFamily: 'Helvetica'}}>All movies</p>
-                            <hr className="new4"/>
+                            <hr className="new4" style={{width:'900px', marginLeft:'-15px'}}/>
                             <div>
                                 <ThreeColGrid
                                     onPageClick={this.loadMoviesPaginate}
@@ -193,13 +203,25 @@ class Profile extends Component{
                         </div>
                             }
                         {this.state.userDetails.role === 'USER' &&
-                        <div className="col-md-8" style={{color: '#800000'}}>
+                        <div className="col-md-8" style={{color: 'white'}}>
                             <br/>
                             <br/>
                             <p className="font-italic"
-                               style={{fontSize: '25px', color: 'white', fontFamily: 'Helvetica'}}>Liked movies</p>
-                            <hr className="new4"/>
-                            <div className="grid-content">
+                               style={{fontSize: '25px', color: 'white', fontFamily: 'Helvetica'}}>Favourite movies</p>
+                            <hr className="new4" style={{width:'900px', marginLeft:'-15px'}}/>
+                            <div>
+                                <ThreeColGridFavourites>
+                                    {this.state.favouriteMovies && this.state.favouriteMovies.map( (element, i) => (
+                                        <MovieThumbFavourite
+                                            key={i}
+                                            clickable={true}
+                                            image={element.file ? `data:image/jpeg;base64,${element.file}` : './images/no_image.jpg'}
+                                            movieId={element.id}
+                                            movieName={element.name}
+                                            onDelete = {this.props.onDelete}
+                                        />
+                                    ))}
+                                </ThreeColGridFavourites>
                             </div>
                         </div>
                         }
