@@ -94,4 +94,9 @@ public class MovieRepositoryImpl implements MovieRepository {
         return this.jpaMovieRepository.getActorsByMovie(name);
     }
 
+    @Override
+    public Movie getMovieById(Long id, Long userId) {
+        return this.jpaMovieRepository.getMovieById(id, userId);
+    }
+
 }

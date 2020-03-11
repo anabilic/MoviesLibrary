@@ -54,10 +54,10 @@ class App extends React.Component {
 
     componentDidMount() {
         UserService.currentUser.subscribe(data => {
-            this.setState({currentUser: data});
+            this.setState({currentUser: data, colorFlag: false});
         });
 
-        this.loadMoviesPaginate();
+        // this.loadMoviesPaginate();
 
     }
 
@@ -68,7 +68,8 @@ class App extends React.Component {
                 movies: data.data.content,
                 page:data.data.page,
                 pageSize: data.data.pageSize,
-                totalPages: data.data.totalPages
+                totalPages: data.data.totalPages,
+                colorFlag: false
             })
         })
     };
@@ -93,12 +94,14 @@ class App extends React.Component {
     createGenre= async (genre) => {
         await GenreService.addGenre(genre).then((response) => {
             const genre = response.data;
-
             this.setState((prevState) => {
                 const newGenreRef = [...prevState.genres, genre];
-                return {
-                    "genres": newGenreRef
-                }
+                newGenreRef.filter((g)=> {
+                    return {
+                        "genres": g
+                    }
+                })
+
             });
         },error => {
             if (error.response.status === 409) {
@@ -112,12 +115,14 @@ class App extends React.Component {
     createActor = async (actor) => {
         await ActorService.addActor(actor).then((response) => {
             const actor = response.data;
-
             this.setState((prevState) => {
                 const newActorRef = [...prevState.actors, actor];
-                return {
-                    "actors": newActorRef
-                }
+                newActorRef.filter((a)=> {
+                    return {
+                        "actors": a
+                    }
+                })
+
             });
         },error => {
             if (error.response.status === 409) {
@@ -317,13 +322,15 @@ class App extends React.Component {
                         </div>
                         }
                     <Switch>
-                        <Route path="/" component={Home} exact/>
+                        <Route path="/" render={()=> <Home userId={this.state.currentUser.id} colorFlag = {this.state.colorFlag} />} exact/>
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
                         <Route path="/profile" render={()=> <Profile  onPageClick={this.loadMoviesPaginate}
                                                                       totalPages={this.state.totalPages}
                                                                       onDelete={this.deleteMovie}/>}  />
-                        <Route path="/movie/:id" render={()=> <Movie userId={currentUser.id} addMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} colorFlag={this.state.colorFlag} />} />
+                        {/*<Route path="/movie/:id" render={()=> <Movie userId={currentUser.id} addMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} colorFlag={this.state.colorFlag} />} />*/}
+                        <Route path="/movie/:movieId/:userId" render={()=> <Movie userId={currentUser.id} addMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} colorFlag={this.state.colorFlag} />} />
+
 
                         <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
                         <Route path="/addActor" render={()=><AddActor errorMessageAuthor={this.state.errorMessageAuthor} onNewActorAddedWithImg={this.createActor}/>} />

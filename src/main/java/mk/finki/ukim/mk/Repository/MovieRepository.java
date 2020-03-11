@@ -38,5 +38,5 @@ public interface MovieRepository {
 
     List<Actor> getActorsByMovie(String name);
 
-
+    Movie getMovieById(Long id, Long userId);
 }

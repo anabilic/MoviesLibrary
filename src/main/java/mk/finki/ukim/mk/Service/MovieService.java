@@ -36,6 +36,6 @@ public interface MovieService {
 
     void deleteMovie(Long id);
 
-
+    Movie getMovieById(Long id, Long userId);
 
 }

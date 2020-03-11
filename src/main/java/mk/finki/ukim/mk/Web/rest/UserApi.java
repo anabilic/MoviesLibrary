@@ -6,6 +6,7 @@ import mk.finki.ukim.mk.Model.User;
 import mk.finki.ukim.mk.Model.exceptions.InvalidMovieId;
 import mk.finki.ukim.mk.Model.exceptions.MovieAlreadyAddedToFavourites;
 import mk.finki.ukim.mk.Model.exceptions.UserIdInvalid;
+import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Service.MovieService;
 import mk.finki.ukim.mk.Service.UserService;
 import org.springframework.http.HttpStatus;
@@ -110,6 +111,12 @@ public class UserApi {
         return userService.getFavouriteMoviesPerUser(id);
     }
 
+    @GetMapping(path = "/favouritesPerUserPaginate/{id}")
+    public Page<Movie> getFavouriteMoviesPerUserPaginate(@PathVariable(value = "id")Long id,
+                                                         @RequestHeader(name = "page", defaultValue = "0", required = false) int page,
+                                                         @RequestHeader(name = "page-size", defaultValue = "10", required = false)int size){
+        return this.userService.getFavouriteMoviesPerUserPaginate(id,page,size);
+    }
 
     @PostMapping("/names")
     public ResponseEntity<?> getNamesOfUsers(@RequestBody List<Long> idList){
@@ -125,6 +132,13 @@ public class UserApi {
     @GetMapping
     public ResponseEntity<?> getAllUsers(){
         return ResponseEntity.ok(userService.listAllUsers());
+    }
+
+    @DeleteMapping(path = "/deleteFavouriteBookByUser/{idUser}/{idMovie}")
+    public void deleteFavBook(@PathVariable(value ="idUser")Long idUser,
+                              @PathVariable(value ="idMovie")Long idMovie){
+        // Movie movie=this.movieService.findMovieById(idMovie).orElseThrow(InvalidMovieId::new);
+        // this.userService.deleteFavouriteBook(idUser,idMovie);
     }
 
     @DeleteMapping("/{id}")

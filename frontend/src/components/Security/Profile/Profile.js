@@ -35,6 +35,7 @@ class Profile extends Component{
         }
 
         this.loadMoviesPaginate();
+        this.loadFavouriteMoviesPaginate();
 
             axios.get("/user?id="+this.state.user.id).then((response)=>{
                 this.setState(
@@ -44,14 +45,14 @@ class Profile extends Component{
                 )
             });
 
-
-        axios.get("/user/favouritesPerUser/"+this.state.user.id).then((response)=>{
-            this.setState(
-                {
-                    favouriteMovies:response.data
-                }
-            )
-        });
+        //
+        // axios.get("/user/favouritesPerUser/"+this.state.user.id).then((response)=>{
+        //     this.setState(
+        //         {
+        //             favouriteMovies:response.data
+        //         }
+        //     )
+        // });
 
     }
 
@@ -60,6 +61,19 @@ class Profile extends Component{
             this.setState({
 
                 movie: data.data.content,
+                page:data.data.page,
+                pageSize: data.data.pageSize,
+                totalPages: data.data.totalPages
+
+            })
+        })
+    };
+
+    loadFavouriteMoviesPaginate = (page=0) => {
+        UserService.fetchFavouriteMoviesPaged(this.state.user.id,page, this.state.pageSize).then((data) => {
+            this.setState({
+
+                favouriteMovies: data.data.content,
                 page:data.data.page,
                 pageSize: data.data.pageSize,
                 totalPages: data.data.totalPages
@@ -85,9 +99,8 @@ class Profile extends Component{
 
         return(
 
-            <div>
+            <div style={{backgroundColor:'#1c1c1c', fontFamily: 'Helvetica'}}>
                 <Navigation movie="Profile" />
-                <div>
                     <div className="row" style={{backgroundColor:'#1c1c1c', fontFamily: 'Helvetica'}}>
                         {this.state.userDetails.role === 'USER' &&
                         <div className="col-md-4">
@@ -210,13 +223,17 @@ class Profile extends Component{
                                style={{fontSize: '25px', color: 'white', fontFamily: 'Helvetica'}}>Favourite movies</p>
                             <hr className="new4" style={{width:'900px', marginLeft:'-15px'}}/>
                             <div>
-                                <ThreeColGridFavourites>
+                                <ThreeColGridFavourites
+                                    onPageClick={this.loadFavouriteMoviesPaginate}
+                                    totalPages={this.state.totalPages}
+                                >
                                     {this.state.favouriteMovies && this.state.favouriteMovies.map( (element, i) => (
                                         <MovieThumbFavourite
                                             key={i}
                                             clickable={true}
                                             image={element.file ? `data:image/jpeg;base64,${element.file}` : './images/no_image.jpg'}
                                             movieId={element.id}
+                                            userId={this.state.userDetails.id}
                                             movieName={element.name}
                                             onDelete = {this.props.onDelete}
                                         />
@@ -227,7 +244,6 @@ class Profile extends Component{
                         }
                     </div>
                 </div>
-            </div>
         )
     }
 };

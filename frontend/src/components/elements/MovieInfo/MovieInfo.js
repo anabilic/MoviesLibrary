@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MovieThumb from '../MovieThumb/MovieThumb';
 import './MovieInfo.css';
 
-const MovieInfo = ({ movie, director ,genres, addMovieToFavourite, colorFlag,errorMessage, movieFavourites, userId}) => {
+const MovieInfo = ({ movie, director, genres, addMovieToFavourite, colorFlag,errorMessage, movieFavourites, userId}) => {
+    console.log('ANAAA', movieFavourites, colorFlag);
 
-    //const filter = {movie.userFavourites} && {movie.userFavourites}.filter((u) => { return u.id !== userId;});
+    const [isClicked,setIsClicked] = useState(false);
+
+    const handleClick = () =>{
+        setIsClicked(true);
+    };
+
+    // const filter = {movie.userFavourites} && {movie.userFavourites}.filter((u) => { return u.id !== userId;});
     return(
     <div className="rmdb-movieinfo"  style={{ background: '#000' }} >
             <div className="rmdb-movieinfo-content">
@@ -28,10 +35,10 @@ const MovieInfo = ({ movie, director ,genres, addMovieToFavourite, colorFlag,err
                     <h3>DIRECTOR/S</h3>
                     <p className="rmdb-director">{director}</p>
                 </div>
-                <button href="#" className="btn btn-light buttonFavourites" onClick={()=>addMovieToFavourite(movie.id)}>
+                <button href="#" className="btn btn-light buttonFavourites" onClick={()=>{addMovieToFavourite(movie.id); handleClick()}}>
                     {/*<i style={{fontSize: '50px', color: color }} className="fa fa-heart"/>*/}
 
-                    {colorFlag  ?
+                    {movieFavourites || isClicked  ?
                     <i style={{fontSize: '50px', color: 'red' }} className="fa fa-heart"/>
                     : <i style={{fontSize: '50px', color: 'white' }} className="fa fa-heart"/>
                     }

@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './MovieThumbFavourite.css'
 
-const MovieThumbFavourite = ({ image, movieId, movieName, onDelete }) => (
+const MovieThumbFavourite = ({ image, movieId, userId, movieName, onDelete }) => (
     <div className="rmdb-moviethumbFav">
         <div>
-            <Link to={"/movie/" + movieId}>
+            <Link to={"/movie/" + movieId + "/" + userId}>
                 <img alt="" className="rounded"
                      // style={{width: '200px', height: '250', fontFamily: 'Helvetica'}}
                      src={image}/>

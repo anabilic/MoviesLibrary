@@ -15,3 +15,52 @@
     animation: animateGrid 0.5s;
     overflow: hidden;
 }
+
+.gridPaginateFav{
+    margin-left: -70px;
+}
+
+.page-item,
+.page-item > li:disabled > a,
+.page-item > li,
+.pagination > li > a,
+.pagination > li > span,
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:active,
+.pagination > li > span:hover,
+.pagination > li > span:focus,
+.pagination > li:first-child > a,
+.pagination > li:first-child > span,
+.pagination > li:last-child > a,
+.pagination > li:last-child > span,
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus,
+.pagination > .page-item.active > .page-link
+{
+    color: white;
+    background-color: #800000;
+    border-color: whitesmoke;
+}
+
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus,
+.pagination > li:active,
+.pagination > li.active > a,
+.pagination > li > a:active,
+.pagination > .page-item.active > .page-link
+{
+    color: #800000;
+    background-color: white;
+    border-color: whitesmoke;
+}
+

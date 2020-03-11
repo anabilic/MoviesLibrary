@@ -4,56 +4,32 @@
     <list default="true" id="532f025a-be21-475c-8f45-64fc6e0668a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Home/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Movie/Movie.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Movie/Movie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Security/EditUser/EditUser.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Security/EditUser/EditUser.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Security/EditUser/EditUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Security/EditUser/EditUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Security/Profile/Profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Security/Profile/Profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Security/EditUserWithoutImg/EditUserWithoutImg.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Security/EditUserWithoutImg/EditUserWithoutImg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Security/EditUserWithoutImg/EditUserWithoutImgClass.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Security/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Security/Profile/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Security/Profile/profileFunc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/FourColGrid/FourColGrid.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/FourColGrid/FourColGrid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/FourColGridActors/FourColGridActors.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/FourColGridActors/FourColGridActors.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfo/MovieInfo.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfo/MovieInfo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/EditMovie/EditMovie.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/EditMovie/EditMovie.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfo/MovieInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieInfo/MovieInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieThumb/MovieThumb.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieThumb/MovieThumb.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/ThreeMovieThumb/ThreeMovieThumb.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/ThreeMovieThumb/ThreeMovieThumb.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/model/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/model/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieThumb/MovieThumb.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieThumb/MovieThumb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/MovieThumbFavourite/MovieThumbFavourite.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/MovieThumbFavourite/MovieThumbFavourite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/ThreeColGridFavourites/ThreeColGridFavourites.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/ThreeColGridFavourites/ThreeColGridFavourites.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/elements/ThreeColGridFavourites/ThreeColGridFavourites.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/elements/ThreeColGridFavourites/ThreeColGridFavourites.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/repository/axiosUserRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/repository/axiosUserRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Log.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/LogRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaLogRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/MovieRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaMovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaMovieRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/JpaUserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/LogRepositoryImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Repository/impl/UserRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/LogService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/MovieService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/LogServiceImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/LogApi.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/MovieApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/MovieApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/UserApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mk/finki/ukim/mk/Web/rest/UserApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Log.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/LogRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/JpaLogRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/JpaUserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/JpaUserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/LogRepositoryImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/UserRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/UserRepositoryImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/LogService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Repository/impl/MovieRepositoryImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/MovieService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/MovieService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/LogServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/MovieServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/LogApi.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/MovieApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/MovieApi.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/UserApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mk/finki/ukim/mk/Web/rest/UserApi.class" afterDir="false" />
     </list>
@@ -131,6 +107,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.language.Kotlin.scripting" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
@@ -1554,6 +1531,7 @@
       <workItem from="1583749735815" duration="8434000" />
       <workItem from="1583780108581" duration="5123000" />
       <workItem from="1583830986457" duration="18332000" />
+      <workItem from="1583925725100" duration="15276000" />
     </task>
     <servers />
   </component>
@@ -1581,10 +1559,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="420" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581083623705" />
-    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1583852659798">
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1583959910248">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1583852659798" />
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1583959910248" />
     <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1580122966769">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -1597,78 +1575,78 @@
       <screen x="0" y="23" width="1440" height="826" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.826@0.23.1440.826" timestamp="1581888801553" />
-    <state width="1398" height="302" key="GridCell.Tab.0.bottom" timestamp="1583856394232">
+    <state width="1398" height="283" key="GridCell.Tab.0.bottom" timestamp="1583968082649">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.0.1440.849@0.0.1440.849" timestamp="1582921190189" />
-    <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583856394232" />
-    <state width="1398" height="302" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1583854557259" />
-    <state width="1398" height="302" key="GridCell.Tab.0.center" timestamp="1583856394230">
+    <state width="1398" height="283" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583968082649" />
+    <state width="1398" height="223" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1583962019039" />
+    <state width="1398" height="283" key="GridCell.Tab.0.center" timestamp="1583968082648">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.center/0.0.1440.849@0.0.1440.849" timestamp="1582921190186" />
-    <state width="1398" height="302" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583856394230" />
-    <state width="1398" height="302" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1583854557257" />
-    <state width="1398" height="302" key="GridCell.Tab.0.left" timestamp="1583856394229">
+    <state width="1398" height="283" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583968082648" />
+    <state width="1398" height="223" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1583962019037" />
+    <state width="1398" height="283" key="GridCell.Tab.0.left" timestamp="1583968082647">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.left/0.0.1440.849@0.0.1440.849" timestamp="1582921190185" />
-    <state width="1398" height="302" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583856394229" />
-    <state width="1398" height="302" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1583854557256" />
-    <state width="1398" height="302" key="GridCell.Tab.0.right" timestamp="1583856394231">
+    <state width="1398" height="283" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583968082647" />
+    <state width="1398" height="223" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1583962019015" />
+    <state width="1398" height="283" key="GridCell.Tab.0.right" timestamp="1583968082648">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.0.right/0.0.1440.849@0.0.1440.849" timestamp="1582921190187" />
-    <state width="1398" height="302" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583856394231" />
-    <state width="1398" height="302" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1583854557258" />
-    <state width="1398" height="302" key="GridCell.Tab.1.bottom" timestamp="1583856394236">
+    <state width="1398" height="283" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583968082648" />
+    <state width="1398" height="223" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1583962019038" />
+    <state width="1398" height="283" key="GridCell.Tab.1.bottom" timestamp="1583968082651">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.0.1440.849@0.0.1440.849" timestamp="1582921190195" />
-    <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583856394236" />
-    <state width="1398" height="302" key="GridCell.Tab.1.bottom/0.23.1440.826@0.23.1440.826" timestamp="1583854556659" />
-    <state width="1398" height="302" key="GridCell.Tab.1.center" timestamp="1583856394234">
+    <state width="1398" height="283" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583968082651" />
+    <state width="1398" height="223" key="GridCell.Tab.1.bottom/0.23.1440.826@0.23.1440.826" timestamp="1583962018632" />
+    <state width="1398" height="283" key="GridCell.Tab.1.center" timestamp="1583968082650">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.center/0.0.1440.849@0.0.1440.849" timestamp="1582921190193" />
-    <state width="1398" height="302" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1583856394234" />
-    <state width="1398" height="302" key="GridCell.Tab.1.center/0.23.1440.826@0.23.1440.826" timestamp="1583854556657" />
-    <state width="1398" height="302" key="GridCell.Tab.1.left" timestamp="1583856394233">
+    <state width="1398" height="283" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1583968082650" />
+    <state width="1398" height="223" key="GridCell.Tab.1.center/0.23.1440.826@0.23.1440.826" timestamp="1583962018630" />
+    <state width="1398" height="283" key="GridCell.Tab.1.left" timestamp="1583968082649">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.left/0.0.1440.849@0.0.1440.849" timestamp="1582921190190" />
-    <state width="1398" height="302" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1583856394233" />
-    <state width="1398" height="302" key="GridCell.Tab.1.left/0.23.1440.826@0.23.1440.826" timestamp="1583854556656" />
-    <state width="1398" height="302" key="GridCell.Tab.1.right" timestamp="1583856394235">
+    <state width="1398" height="283" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1583968082649" />
+    <state width="1398" height="223" key="GridCell.Tab.1.left/0.23.1440.826@0.23.1440.826" timestamp="1583962018629" />
+    <state width="1398" height="283" key="GridCell.Tab.1.right" timestamp="1583968082650">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.1.right/0.0.1440.849@0.0.1440.849" timestamp="1582921190194" />
-    <state width="1398" height="302" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1583856394235" />
-    <state width="1398" height="302" key="GridCell.Tab.1.right/0.23.1440.826@0.23.1440.826" timestamp="1583854556658" />
-    <state width="1398" height="302" key="GridCell.Tab.2.bottom" timestamp="1583856394240">
+    <state width="1398" height="283" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1583968082650" />
+    <state width="1398" height="223" key="GridCell.Tab.1.right/0.23.1440.826@0.23.1440.826" timestamp="1583962018631" />
+    <state width="1398" height="283" key="GridCell.Tab.2.bottom" timestamp="1583968082653">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.2.bottom/0.0.1440.849@0.0.1440.849" timestamp="1582921190200" />
-    <state width="1398" height="302" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583856394240" />
-    <state width="1398" height="302" key="GridCell.Tab.2.bottom/0.23.1440.826@0.23.1440.826" timestamp="1583854556668" />
-    <state width="1398" height="302" key="GridCell.Tab.2.center" timestamp="1583856394239">
+    <state width="1398" height="283" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583968082653" />
+    <state width="1398" height="223" key="GridCell.Tab.2.bottom/0.23.1440.826@0.23.1440.826" timestamp="1583962018635" />
+    <state width="1398" height="283" key="GridCell.Tab.2.center" timestamp="1583968082652">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.2.center/0.0.1440.849@0.0.1440.849" timestamp="1582921190198" />
-    <state width="1398" height="302" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1583856394239" />
-    <state width="1398" height="302" key="GridCell.Tab.2.center/0.23.1440.826@0.23.1440.826" timestamp="1583854556663" />
-    <state width="1398" height="302" key="GridCell.Tab.2.left" timestamp="1583856394237">
+    <state width="1398" height="283" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1583968082652" />
+    <state width="1398" height="223" key="GridCell.Tab.2.center/0.23.1440.826@0.23.1440.826" timestamp="1583962018633" />
+    <state width="1398" height="283" key="GridCell.Tab.2.left" timestamp="1583968082651">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.2.left/0.0.1440.849@0.0.1440.849" timestamp="1582921190196" />
-    <state width="1398" height="302" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1583856394237" />
-    <state width="1398" height="302" key="GridCell.Tab.2.left/0.23.1440.826@0.23.1440.826" timestamp="1583854556662" />
-    <state width="1398" height="302" key="GridCell.Tab.2.right" timestamp="1583856394240">
+    <state width="1398" height="283" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1583968082651" />
+    <state width="1398" height="223" key="GridCell.Tab.2.left/0.23.1440.826@0.23.1440.826" timestamp="1583962018632" />
+    <state width="1398" height="283" key="GridCell.Tab.2.right" timestamp="1583968082652">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="302" key="GridCell.Tab.2.right/0.0.1440.849@0.0.1440.849" timestamp="1582921190199" />
-    <state width="1398" height="302" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1583856394240" />
-    <state width="1398" height="302" key="GridCell.Tab.2.right/0.23.1440.826@0.23.1440.826" timestamp="1583854556667" />
+    <state width="1398" height="283" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1583968082652" />
+    <state width="1398" height="223" key="GridCell.Tab.2.right/0.23.1440.826@0.23.1440.826" timestamp="1583962018634" />
     <state x="308" y="200" key="IDE.errors.dialog" timestamp="1581891232276">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -1681,10 +1659,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="208" y="31" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1582728785164" />
-    <state x="413" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1583830986037">
+    <state width="254" height="200" key="ShowFilterAction_Filter_Popup" timestamp="1583966486060">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="413" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1583830986037" />
+    <state width="254" height="200" key="ShowFilterAction_Filter_Popup/0.0.1440.900@0.0.1440.900" timestamp="1583966486060" />
+    <state x="413" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1583925774851">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="413" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1583925774851" />
     <state x="413" y="282" key="com.intellij.ide.util.TipDialog/0.23.1440.826@0.23.1440.826" timestamp="1583493191956" />
     <state x="479" y="199" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1580392438645">
       <screen x="0" y="0" width="1440" height="900" />
@@ -1702,10 +1684,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="400" y="212" width="639" height="476" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1582219414905" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1582894154612">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1583966606303">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1582894154612" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1583966606303" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

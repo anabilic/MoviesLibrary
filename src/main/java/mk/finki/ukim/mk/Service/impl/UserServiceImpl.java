@@ -114,6 +114,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void deleteFavouriteBook(Long id, Movie movie) {
+
+    }
+
+    @Override
     public User addFavouriteMovie(User user) {
 
 
@@ -124,6 +129,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Movie> getFavouriteMoviesPerUser(Long id) {
         return this.userRepository.getFavouriteMoviesPerUser(id);
+    }
+
+    @Override
+    public Page<Movie> getFavouriteMoviesPerUserPaginate(Long id, int page, int size) {
+
+        List<Movie>  favourites = this.userRepository.getFavouriteMoviesPerUser(id);
+
+        return Page.slice(favourites,page,size);
     }
 
 

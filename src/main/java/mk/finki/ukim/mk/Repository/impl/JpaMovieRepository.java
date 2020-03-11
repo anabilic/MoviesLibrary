@@ -35,5 +35,7 @@ public interface JpaMovieRepository extends JpaRepository<Movie,Long> {
     @Query(value = "select a from Actor a join a.movies m where m.name like :name")
     List<Actor> getActorsByMovie(@Param("name") String name);
 
+    @Query(value = "select movie from Movie movie inner join movie.userFavourites fave join fave.favouriteMovies favem where movie.Id = :movieId and fave.id = :userId")
+    Movie getMovieById(@Param("movieId") Long movieId, @Param("userId") Long userId);
 
 }

@@ -18,8 +18,6 @@ const EditMovie = (props) => {
 
     },[]);
 
-
-
     const onFormSubmit = (e) => {
 
         e.preventDefault();

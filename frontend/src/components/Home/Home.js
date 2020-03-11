@@ -13,7 +13,8 @@ class Home extends Component{
         movie:[],
         heroImage: null,
         pageSize:12,
-        totalPages:0
+        totalPages:0,
+        colorFlag: this.props.colorFlag
     };
 
     componentDidMount() {
@@ -28,7 +29,8 @@ class Home extends Component{
                 movies: data.data.content,
                 page:data.data.page,
                 pageSize: data.data.pageSize,
-                totalPages: data.data.totalPages
+                totalPages: data.data.totalPages,
+                colorFlag: false
             })
         })
     };
@@ -36,7 +38,7 @@ class Home extends Component{
     loadMovies = () => {
         MovieService.loadMovies().then((data) => {
             this.setState({
-
+                colorFlag: false,
                 movie: data.data.content,
                 heroImage: data.data.content[8],
             })
@@ -80,6 +82,7 @@ class Home extends Component{
                             <MovieThumb
                                 key={i}
                                 clickable={true}
+                                userId={this.props.userId}
                                 image={element.file ? `data:image/jpeg;base64,${element.file}` : './images/no_image.jpg'}
                                 movieId={element.id}
                                 movieName={element.name}

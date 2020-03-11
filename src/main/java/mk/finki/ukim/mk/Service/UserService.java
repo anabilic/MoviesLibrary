@@ -27,8 +27,12 @@ public interface UserService extends UserDetailsService {
 
     void deleteUser(Long id);
 
+    void deleteFavouriteBook(Long id,Movie movie);
+
     User addFavouriteMovie(User user);
 
     List<Movie> getFavouriteMoviesPerUser(Long id);
+
+    Page<Movie> getFavouriteMoviesPerUserPaginate(Long id,int page,int size);
 
 }

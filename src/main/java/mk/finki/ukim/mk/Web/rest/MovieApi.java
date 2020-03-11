@@ -113,4 +113,11 @@ public class MovieApi {
     public List<Actor> getActorsByMovie(@PathVariable String name){
         return this.movieService.getActorsByMovie(name);
     }
+
+    @GetMapping("/{movieId}/{userId}")
+    public Movie getMovieById(@PathVariable Long movieId, @PathVariable Long userId) {
+        Movie movie = this.movieService.getMovieById(movieId, userId);
+        return movie;
+    }
+
 }
