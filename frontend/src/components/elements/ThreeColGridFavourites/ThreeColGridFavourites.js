@@ -1,6 +1,6 @@
 import React from 'react';
-import './ThreeColGridFavourites.css';
 import ReactPaginate from "react-paginate";
+import './ThreeColGridFavourites.css';
 
 const ThreeColGridFavourites = (props) => {
 

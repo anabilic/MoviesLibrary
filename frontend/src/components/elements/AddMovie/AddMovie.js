@@ -1,10 +1,10 @@
 import React , { Component } from 'react';
 import { Redirect } from "react-router";
 import {Dropdown} from 'semantic-ui-react';
+import {Link} from "react-router-dom";
 import ActorService from "../../../repository/axiosActorRepository";
 import GenreService from "../../../repository/axiosGenreRepository";
 import './AddMovie.css'
-import {Link} from "react-router-dom";
 
 function objectToArray(obj) {
     var array = [], tempObject;
@@ -45,7 +45,6 @@ class AddMovie extends Component {
             submitted: false
         };
     }
-
 
     componentDidMount() {
         this.loadActors();

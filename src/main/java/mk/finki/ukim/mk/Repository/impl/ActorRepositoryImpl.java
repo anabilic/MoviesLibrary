@@ -21,10 +21,12 @@ public class ActorRepositoryImpl implements ActorRepository {
         this.jpaActorRepository = jpaActorRepository;
     }
 
+
     @Override
     public List<Actor> getAllActors() {
         return jpaActorRepository.findAll();
     }
+
 
     @Override
     public Page<Actor> getAllActors(int page, int size) {
@@ -32,30 +34,36 @@ public class ActorRepositoryImpl implements ActorRepository {
         return new Page<>(page,actorResult.getTotalPages(),size,actorResult.getContent());
     }
 
+
     @Override
     public Optional<Actor> findById(Long id) {
         return this.jpaActorRepository.findById(id);
     }
+
 
     @Override
     public Actor findByName(String name) {
         return this.jpaActorRepository.findByName(name);
     }
 
+
     @Override
     public String findBySameName(String name) {
         return this.jpaActorRepository.findBySameName(name);
     }
+
 
     @Override
     public Actor save(Actor actor) {
         return jpaActorRepository.save(actor);
     }
 
+
     @Override
     public List<Movie> checkMovies(List<String> movies) {
         return this.jpaActorRepository.checkMovies(movies);
     }
+
 
     @Override
     public void delete(Long id) {

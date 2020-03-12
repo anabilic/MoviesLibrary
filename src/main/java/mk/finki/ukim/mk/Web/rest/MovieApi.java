@@ -5,9 +5,7 @@ import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.exceptions.InvalidMovieId;
 import mk.finki.ukim.mk.Model.pagination.Page;
-import mk.finki.ukim.mk.Service.GenreService;
 import mk.finki.ukim.mk.Service.MovieService;
-import mk.finki.ukim.mk.Service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
@@ -41,16 +39,19 @@ public class MovieApi {
         return this.movieService.findMovieByName(name);
     }
 
+
     @GetMapping
     public Page<Movie> getAllMovies(@RequestHeader(name = "page", defaultValue = "0", required = false) int page,
                                     @RequestHeader(name = "page-size", defaultValue = "10", required = false) int size){
         return  this.movieService.listAllMovies(page,size);
     }
 
+
     @GetMapping("/all")
     public List<Movie> listAllMovies(){
         return  this.movieService.listAllMovies();
     }
+
 
     @GetMapping(params = "term")
     public List<Movie> searchMovie(@RequestParam String term) {
@@ -77,6 +78,7 @@ public class MovieApi {
         return newMovie;
     }
 
+
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Movie editMovie(@PathVariable Long id,
@@ -99,20 +101,24 @@ public class MovieApi {
         this.movieService.deleteMovie(id);
     }
 
+
     @GetMapping("/{id}/actors")
     public List<Actor> getMoviesActors(@PathVariable Long id){
         return this.movieService.getMoviesActors(id);
     }
+
 
     @GetMapping("/{id}/genres")
     public List<Genre> getMoviesGenres(@PathVariable Long id){
         return this.movieService.getMoviesGenres(id);
     }
 
+
     @GetMapping("/{name}/movie")
     public List<Actor> getActorsByMovie(@PathVariable String name){
         return this.movieService.getActorsByMovie(name);
     }
+
 
     @GetMapping("/{movieId}/{userId}")
     public Movie getMovieById(@PathVariable Long movieId, @PathVariable Long userId) {

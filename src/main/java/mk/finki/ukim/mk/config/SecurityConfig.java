@@ -21,14 +21,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
     @Qualifier("userServiceDetailsImpl")
     @Autowired
     private UserDetailsService userDetailsService;
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -52,29 +55,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //cross-side request forgery.
                 .csrf().disable();
 
-//        http
-//                .csrf()
-//                .disable()
-//                //starts authorizing configurations.
-//                .authorizeRequests()
-//                //ignoring the guest's urls...
-//                .antMatchers("/user/**", "/error", "/**/*").permitAll()
-//                .antMatchers(HttpMethod.POST, "/user/login").permitAll()
-//                .antMatchers(HttpMethod.GET, "/").permitAll()
-//                //authenticate all remaining URLs.
-//                .anyRequest().authenticated()
-//                .and()
-//                .cors();
-//                  //cross-side request forgery.
-
     }
-
 
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
 
     @Bean
     public WebMvcConfigurer corsConfigurer(){

@@ -21,20 +21,27 @@ public class Actor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     private String name;
+
 
     private String castName;
 
+
     private String biography;
 
+
     private String placeOfBirth;
+
 
     @Column(nullable = true)
     private LocalDate dateOfBirth;
 
+
     @Lob
     @Column(nullable = true)
     private byte[] imageActor;
+
 
     @JsonIgnore
     @ManyToMany(mappedBy = "actors")

@@ -9,11 +9,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Page<T> {
+
     int page;
     int totalPages;
     int pageSize;
     List<T> content;
-
 
     public static  <T> Page<T> slice(List<T>content,int page,int pageSize){
         int pageStart=0,pageEnd=0;

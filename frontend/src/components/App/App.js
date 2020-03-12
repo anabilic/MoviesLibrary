@@ -46,20 +46,22 @@ class App extends React.Component {
             errorMessageAuthor:false,
             errorMessage:false,
             pageSize:9,
-            totalPages:0,
-            countFavourites: 0,
-            colorFlag:false
+            totalPages:0
         };
     }
 
     componentDidMount() {
+        this.saveCurrentUser();
+    }
+
+
+    saveCurrentUser=()=>{
         UserService.currentUser.subscribe(data => {
-            this.setState({currentUser: data, colorFlag: false});
+            this.setState({currentUser: data});
+            this.loadMoviesPaginate();
         });
 
-        // this.loadMoviesPaginate();
-
-    }
+    };
 
     loadMoviesPaginate = (page=0) => {
         MovieService.fetchMoviesPaged(page, this.state.pageSize).then((data) => {
@@ -280,6 +282,7 @@ class App extends React.Component {
         });
     }
 
+
     render() {
 
         const {history, currentUser} = this.state;
@@ -322,15 +325,14 @@ class App extends React.Component {
                         </div>
                         }
                     <Switch>
-                        <Route path="/" render={()=> <Home userId={this.state.currentUser.id} colorFlag = {this.state.colorFlag} />} exact/>
+                        <Route path="/" render={()=> <Home />} exact/>
+
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
-                        <Route path="/profile" render={()=> <Profile  onPageClick={this.loadMoviesPaginate}
-                                                                      totalPages={this.state.totalPages}
-                                                                      onDelete={this.deleteMovie}/>}  />
-                        {/*<Route path="/movie/:id" render={()=> <Movie userId={currentUser.id} addMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} colorFlag={this.state.colorFlag} />} />*/}
-                        <Route path="/movie/:movieId/:userId" render={()=> <Movie userId={currentUser.id} addMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} colorFlag={this.state.colorFlag} />} />
+                        <Route path="/profile" render={()=> <Profile  onPageClick={this.loadMoviesPaginate}  totalPages={this.state.totalPages} onDelete={this.deleteMovie}/>}  />
 
+                        <Route path="/movie/:id" render={()=> <Movie userId={this.state.currentUser.id} addMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} colorFlag={this.state.colorFlag} />} />
+                        {/*<Route path="/movie/:movieId/:userId" render={()=> <Movie userId={currentUser.id} ddMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} />} />*/}
 
                         <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
                         <Route path="/addActor" render={()=><AddActor errorMessageAuthor={this.state.errorMessageAuthor} onNewActorAddedWithImg={this.createActor}/>} />

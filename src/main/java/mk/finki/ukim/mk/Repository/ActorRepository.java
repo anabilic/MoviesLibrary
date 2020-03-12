@@ -13,16 +13,17 @@ public interface ActorRepository {
 
     Page<Actor> getAllActors(int page, int size);
 
-    Actor save(Actor actor);
-
-    List<Movie> checkMovies(List<String> movies);
-
-    void delete(Long id);
-
     Optional<Actor> findById(Long id);
 
     Actor findByName(String name);
 
     String findBySameName(String name);
+
+    List<Movie> checkMovies(List<String> movies);
+
+    Actor save(Actor actor);
+
+    void delete(Long id);
+
 
 }

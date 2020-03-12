@@ -26,7 +26,6 @@ class Profile extends Component{
         };
     }
 
-
     componentDidMount() {
 
         if(!UserService.currentUserValue){
@@ -44,16 +43,6 @@ class Profile extends Component{
                     }
                 )
             });
-
-        //
-        // axios.get("/user/favouritesPerUser/"+this.state.user.id).then((response)=>{
-        //     this.setState(
-        //         {
-        //             favouriteMovies:response.data
-        //         }
-        //     )
-        // });
-
     }
 
     loadMoviesPaginate = (page=0) => {
@@ -233,7 +222,6 @@ class Profile extends Component{
                                             clickable={true}
                                             image={element.file ? `data:image/jpeg;base64,${element.file}` : './images/no_image.jpg'}
                                             movieId={element.id}
-                                            userId={this.state.userDetails.id}
                                             movieName={element.name}
                                             onDelete = {this.props.onDelete}
                                         />

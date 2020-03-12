@@ -18,13 +18,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column
     private String name;
+
 
     @Column(unique = true)
     private String username;
 
+
     private String password;
+
 
     private String email;
 
@@ -33,14 +37,18 @@ public class User {
     @Column(nullable = true)
     private byte[] file;
 
+
     private String gender;
+
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
+
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Movie> movies;
+
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)

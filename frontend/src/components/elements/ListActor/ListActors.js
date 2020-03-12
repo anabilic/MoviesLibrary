@@ -3,8 +3,8 @@ import {Link} from "react-router-dom";
 import axios from "../../../custom-axios/axios";
 import OneGrid from "../OneGrid/OneGrid";
 import Navigation from "../Navigation/Navigation";
-import './ListActors.css';
 import ReactPaginate from "react-paginate";
+import './ListActors.css';
 
 const ListActors = (props) => {
 

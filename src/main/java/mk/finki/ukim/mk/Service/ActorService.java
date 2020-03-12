@@ -1,7 +1,6 @@
 package mk.finki.ukim.mk.Service;
 
 import mk.finki.ukim.mk.Model.Actor;
-import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.pagination.Page;
 
 import java.time.LocalDate;

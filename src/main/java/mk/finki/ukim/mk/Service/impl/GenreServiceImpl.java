@@ -20,15 +20,18 @@ public class GenreServiceImpl implements GenreService {
         this.genreRepository = genreRepository;
     }
 
+
     @Override
     public List<Genre> listAllGenres() {
         return genreRepository.getAllGenres();
     }
 
+
     @Override
     public Optional<Genre> findById(Long id) {
         return genreRepository.findById(id);
     }
+
 
     @Override
     public Genre createGenre(String name, List<String> movies) {
@@ -45,6 +48,7 @@ public class GenreServiceImpl implements GenreService {
             return genreRepository.save(genre);
         }
     }
+
 
     @Override
     public Genre editGenre(Long id,String name, List<String> movies) {
@@ -68,4 +72,5 @@ public class GenreServiceImpl implements GenreService {
     public void deleteGenre(Long id) {
         this.genreRepository.delete(id);
     }
+
 }

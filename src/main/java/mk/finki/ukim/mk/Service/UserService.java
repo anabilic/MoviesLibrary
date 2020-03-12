@@ -17,7 +17,11 @@ public interface UserService extends UserDetailsService {
 
     User findByUsername(String username);
 
-    List<String> findUsers(List<Long> idList);
+    List<Movie> getFavouriteMoviesPerUser(Long id);
+
+    Page<Movie> getFavouriteMoviesPerUserPaginate(Long id,int page,int size);
+
+    User addFavouriteMovie(User user);
 
     User save(User user);
 
@@ -29,10 +33,8 @@ public interface UserService extends UserDetailsService {
 
     void deleteFavouriteBook(Long id,Movie movie);
 
-    User addFavouriteMovie(User user);
+    List<String> findUsers(List<Long> idList);
 
-    List<Movie> getFavouriteMoviesPerUser(Long id);
 
-    Page<Movie> getFavouriteMoviesPerUserPaginate(Long id,int page,int size);
 
 }

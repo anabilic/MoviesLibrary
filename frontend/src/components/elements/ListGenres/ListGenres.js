@@ -4,7 +4,6 @@ import { Table } from 'semantic-ui-react'
 import axios from "../../../custom-axios/axios";
 import Navigation from "../Navigation/Navigation";
 
-
 const ListGenres = (props) =>{
 
     const [genres,setGenres] =useState({});

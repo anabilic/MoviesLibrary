@@ -42,7 +42,6 @@ const ThreeColGrid = (props) => {
         }
     };
 
-
     return (
 
         <div className="rmdb-grid-three">

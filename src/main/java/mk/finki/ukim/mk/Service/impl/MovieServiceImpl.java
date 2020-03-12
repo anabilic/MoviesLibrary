@@ -29,31 +29,36 @@ public class MovieServiceImpl implements MovieService {
         this.userRepository = userRepository;
     }
 
+
     @Override
     public Page<Movie> listAllMovies(int page, int size) {
         return movieRepository.getAllMovies(page,size);
     }
+
 
     @Override
     public List<Movie> listAllMovies() {
         return this.movieRepository.getAllMovies();
     }
 
+
     @Override
     public Optional<Movie> findMovieById(Long id) {
-
         return this.movieRepository.findById(id);
     }
+
 
     @Override
     public Movie findMovieByName(String name) {
         return this.movieRepository.findByName(name);
     }
 
+
     @Override
     public List<Actor> getMoviesActors(Long id) {
         return this.movieRepository.getMoviesActor(id);
     }
+
 
     @Override
     public List<Genre> getMoviesGenres(Long id) {
@@ -66,11 +71,11 @@ public class MovieServiceImpl implements MovieService {
         return this.movieRepository.getActorsByMovie(name);
     }
 
+
     @Override
     public List<Movie> searchMovies(String term) {
         return this.movieRepository.searchMovies(term);
     }
-
 
 
     @Override
@@ -92,12 +97,10 @@ public class MovieServiceImpl implements MovieService {
 
         if(movie==null){
 
-
             List<Actor> movieActors = this.movieRepository.checkActors(actors);
             List<Genre> movieGenres = this.movieRepository.checkGenres(genres);
 
             User USER = this.userRepository.findByUsername(user);
-
 
             movie = new Movie();
             movie.getId();
@@ -121,12 +124,11 @@ public class MovieServiceImpl implements MovieService {
             }
         }
         return null;
-
     }
+
 
     @Override
     public Movie editMovie(Long id,String name, String director, String runningTime, String plot,LocalDate releaseInformation, String originalLanguage) {
-
 
         Movie movie = this.movieRepository.findById(id).orElseThrow(UserIdInvalid::new);
 
@@ -145,11 +147,11 @@ public class MovieServiceImpl implements MovieService {
     }
 
 
-
     @Override
     public void deleteMovie(Long id) {
         this.movieRepository.delete(id);
     }
+
 
     @Override
     public Movie getMovieById(Long id, Long userId) {

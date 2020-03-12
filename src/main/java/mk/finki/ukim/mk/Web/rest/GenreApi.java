@@ -22,10 +22,12 @@ public class GenreApi {
         this.genreService = genreService;
     }
 
+
     @GetMapping
     public List<Genre> getAllGenres(){
         return  this.genreService.listAllGenres();
     }
+
 
     @GetMapping("/{id}")
     public Optional<Genre> getGenre(@PathVariable Long id){
@@ -42,6 +44,7 @@ public class GenreApi {
         return newGenre;
     }
 
+
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Genre editGenre(@PathVariable Long id,
@@ -51,6 +54,7 @@ public class GenreApi {
         Genre editedGenre = this.genreService.editGenre(id,name,movies);
         return editedGenre;
     }
+
 
     @DeleteMapping("/{id}")
     public void deleteGenre(@PathVariable Long id) {

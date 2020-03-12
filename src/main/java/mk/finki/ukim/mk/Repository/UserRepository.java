@@ -15,16 +15,15 @@ public interface UserRepository {
 
     Optional<User> findById(Long id);
 
+    String findUserWithSameUsername(Long id,String username);
+
     List<String> findByIdList(List<Long> idList);
 
-    String findUserWithSameUsername(Long id,String username);
+    List<Movie> getFavouriteMoviesPerUser(Long id);
 
     User save(User user);
 
     void delete(Long id);
-
-    List<Movie> getFavouriteMoviesPerUser(Long id);
-
 
 
 }

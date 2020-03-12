@@ -25,8 +25,9 @@ public interface MovieService {
 
     List<Actor> getActorsByMovie(String name);
 
-    List<Movie> searchMovies(String term);
+    Movie getMovieById(Long id, Long userId);
 
+    List<Movie> searchMovies(String term);
 
     Movie saveFavourite(Boolean flag, Long id);
 
@@ -36,6 +37,5 @@ public interface MovieService {
 
     void deleteMovie(Long id);
 
-    Movie getMovieById(Long id, Long userId);
 
 }

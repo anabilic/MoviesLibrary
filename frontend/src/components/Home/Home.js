@@ -13,8 +13,7 @@ class Home extends Component{
         movie:[],
         heroImage: null,
         pageSize:12,
-        totalPages:0,
-        colorFlag: this.props.colorFlag
+        totalPages:0
     };
 
     componentDidMount() {
@@ -30,7 +29,6 @@ class Home extends Component{
                 page:data.data.page,
                 pageSize: data.data.pageSize,
                 totalPages: data.data.totalPages,
-                colorFlag: false
             })
         })
     };

@@ -31,19 +31,28 @@ public class UserRepositoryImpl implements UserRepository {
         return this.jpaUserRepository.save(user);
     }
 
+
     @Override
     public void delete(Long id) {
         this.jpaUserRepository.deleteById(id);
     }
+
 
     @Override
     public List<Movie> getFavouriteMoviesPerUser(Long id) {
         return this.jpaUserRepository.getFavouriteMoviesPerUser(id);
     }
 
+
     @Override
     public Optional<User> findById(Long id) {
         return this.jpaUserRepository.findById(id);
+    }
+
+
+    @Override
+    public String findUserWithSameUsername(Long id, String username) {
+        return this.jpaUserRepository.findUserWithSameUsername(id,username);
     }
 
     @Override
@@ -51,10 +60,6 @@ public class UserRepositoryImpl implements UserRepository {
         return this.jpaUserRepository.findByIdList(idList);
     }
 
-    @Override
-    public String findUserWithSameUsername(Long id, String username) {
-        return this.jpaUserRepository.findUserWithSameUsername(id,username);
-    }
 
     @Override
     public User findByUsername(String username) {

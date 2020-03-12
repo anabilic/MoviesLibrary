@@ -3,8 +3,6 @@ import {Link} from "react-router-dom";
 import { Table,Header,Image } from 'semantic-ui-react'
 import axios from "../../../custom-axios/axios";
 import Navigation from "../Navigation/Navigation";
-import './ListUser.css';
-
 
 const ListUser = (props) =>{
 
@@ -16,7 +14,9 @@ const ListUser = (props) =>{
         });
     },[]);
 
+
     const userList = Object.values(users);
+
 
     return(
         <div>

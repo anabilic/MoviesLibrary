@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import MovieThumb from '../MovieThumb/MovieThumb';
 import './MovieInfo.css';
 
-const MovieInfo = ({ movie, director, genres, addMovieToFavourite, colorFlag,errorMessage, movieFavourites, userId}) => {
-    console.log('ANAAA', movieFavourites, colorFlag);
+const MovieInfo = ({ movie, director, genres, addMovieToFavourite,errorMessage, movieFavourites}) => {
 
     const [isClicked,setIsClicked] = useState(false);
 
@@ -11,9 +10,9 @@ const MovieInfo = ({ movie, director, genres, addMovieToFavourite, colorFlag,err
         setIsClicked(true);
     };
 
-    // const filter = {movie.userFavourites} && {movie.userFavourites}.filter((u) => { return u.id !== userId;});
     return(
-    <div className="rmdb-movieinfo"  style={{ background: '#000' }} >
+
+        <div className="rmdb-movieinfo"  style={{ background: '#000' }} >
             <div className="rmdb-movieinfo-content">
                 <div className="rmdb-movieinfo-thumb">
                     <MovieThumb
@@ -36,22 +35,23 @@ const MovieInfo = ({ movie, director, genres, addMovieToFavourite, colorFlag,err
                     <p className="rmdb-director">{director}</p>
                 </div>
                 <button href="#" className="btn btn-light buttonFavourites" onClick={()=>{addMovieToFavourite(movie.id); handleClick()}}>
-                    {/*<i style={{fontSize: '50px', color: color }} className="fa fa-heart"/>*/}
 
                     {movieFavourites || isClicked  ?
                     <i style={{fontSize: '50px', color: 'red' }} className="fa fa-heart"/>
                     : <i style={{fontSize: '50px', color: 'white' }} className="fa fa-heart"/>
                     }
+
                 </button>
                 <br/>
                 <br/>
+
                 {errorMessage ?
                     <p style={{fontStyle:'bold',fontSize: '15px', color: 'red', marginLeft:'1080px',marginTop:'450px'}} >
                       {errorMessage}</p>
                     :
                     null
                 }
-                {/*You have already added this <br/>movie to your favourites list!!!*/}
+
             </div>
         </div>
     );

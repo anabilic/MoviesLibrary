@@ -29,10 +29,12 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+
     @Override
     public List<User> listAllUsers() {
         return this.userRepository.getAllUsers();
     }
+
 
     @Override
     public Optional<User> findById(Long id) {
@@ -44,15 +46,15 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username);
     }
 
-    @Override
-    public List<String> findUsers(List<Long> idList){
-        return userRepository.findByIdList(idList);
-    }
-
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return null;
+    }
+
+    @Override
+    public List<String> findUsers(List<Long> idList){
+        return userRepository.findByIdList(idList);
     }
 
     @Override
@@ -61,6 +63,7 @@ public class UserServiceImpl implements UserService {
          return userRepository.save(user);
 
     }
+
 
     @Override
     public User editUser(Long id, String username, String name, String email, String gender, byte[] file) {
@@ -84,8 +87,8 @@ public class UserServiceImpl implements UserService {
         }else{
             throw new UserAlreadyExists();
         }
-
     }
+
 
     @Override
     public User editUserWithoutImg(Long id, String username, String name, String email, String gender) {
@@ -108,36 +111,34 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+
     @Override
     public void deleteUser(Long id) {
         this.userRepository.delete(id);
     }
 
-    @Override
-    public void deleteFavouriteBook(Long id, Movie movie) {
-
-    }
 
     @Override
     public User addFavouriteMovie(User user) {
-
-
-
         return this.userRepository.save(user);
     }
+
 
     @Override
     public List<Movie> getFavouriteMoviesPerUser(Long id) {
         return this.userRepository.getFavouriteMoviesPerUser(id);
     }
 
+
     @Override
     public Page<Movie> getFavouriteMoviesPerUserPaginate(Long id, int page, int size) {
-
         List<Movie>  favourites = this.userRepository.getFavouriteMoviesPerUser(id);
-
         return Page.slice(favourites,page,size);
     }
 
+    @Override
+    public void deleteFavouriteBook(Long id, Movie movie) {
+
+    }
 
 }

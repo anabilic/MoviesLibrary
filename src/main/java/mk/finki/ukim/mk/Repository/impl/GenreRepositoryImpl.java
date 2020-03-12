@@ -19,35 +19,42 @@ public class GenreRepositoryImpl implements GenreRepository {
         this.jpaGenreRepository = jpaGenreRepository;
     }
 
+
     @Override
     public List<Genre> getAllGenres() {
         return jpaGenreRepository.findAll();
     }
+
 
     @Override
     public Optional<Genre> findById(Long id) {
         return this.jpaGenreRepository.findById(id);
     }
 
+
     @Override
     public Genre save(Genre genre) {
         return this.jpaGenreRepository.save(genre);
     }
+
 
     @Override
     public List<Movie> checkMovies(List<String> movies) {
         return this.jpaGenreRepository.checkMovies(movies);
     }
 
+
     @Override
     public Genre findByName(String name) {
         return this.jpaGenreRepository.findByName(name);
     }
 
+
     @Override
     public void delete(Long id) {
         this.jpaGenreRepository.deleteById(id);
     }
+
 
     @Override
     public String findBySameName(String name) {

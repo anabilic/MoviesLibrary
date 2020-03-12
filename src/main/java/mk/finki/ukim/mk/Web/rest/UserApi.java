@@ -29,12 +29,14 @@ public class UserApi {
 
     private final MovieService movieService;
 
+
     public UserApi(UserService userService, MovieService movieService) {
         this.userService = userService;
         this.movieService = movieService;
     }
 
 
+    //Method for registration of user
     @PostMapping("/registration")
     public ResponseEntity<?> saveUser(@RequestBody User user){
         if(userService.findByUsername(user.getUsername()) != null){
@@ -45,6 +47,7 @@ public class UserApi {
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
 
+    //Method for login
     @GetMapping("/login")
     public ResponseEntity<?> getUser(Principal principal){
         //Principal principal = request.getUserPrincipal();
@@ -56,6 +59,8 @@ public class UserApi {
         return ResponseEntity.ok(userService.findByUsername(principal.getName()));
     }
 
+
+    //Method for editing user with adding picture
     @PatchMapping("/{id}")
     public User editUser(
             @PathVariable(value="id") Long id,
@@ -72,6 +77,7 @@ public class UserApi {
         return (this.userService.editUser(id,userName,name,email,gender,file.getBytes()));
     }
 
+    //Method for editing user without adding picture
     @PatchMapping("/edit/{id}")
     public User editUserWithoutImg(
             @PathVariable(value="id") Long id,
@@ -83,6 +89,7 @@ public class UserApi {
         return this.userService.editUserWithoutImg(id,userName,name,email,gender);
     }
 
+    //Method for adding movie to favourites by user
     @PatchMapping(path = "/addFavourite/{idUser}/{idMovie}")
     public User userAddFavourite(@PathVariable(value="idUser") Long idUser, @PathVariable(value = "idMovie") Long idMovie){
 
@@ -106,11 +113,13 @@ public class UserApi {
         return this.userService.addFavouriteMovie(user);
     }
 
+    //Method for finding all the favourite movies per user
     @GetMapping("/favouritesPerUser/{id}")
     public List<Movie> getFavouriteMoviesPerUser(@PathVariable(value="id") Long id){
         return userService.getFavouriteMoviesPerUser(id);
     }
 
+    //Method for finding all the favourite movies per user with pagination
     @GetMapping(path = "/favouritesPerUserPaginate/{id}")
     public Page<Movie> getFavouriteMoviesPerUserPaginate(@PathVariable(value = "id")Long id,
                                                          @RequestHeader(name = "page", defaultValue = "0", required = false) int page,
@@ -123,24 +132,27 @@ public class UserApi {
         return ResponseEntity.ok(userService.findUsers(idList));
     }
 
+    //Method for getting user by id
     @GetMapping(params = "id")
     public Optional<User> getById(@RequestParam Long id){
         return userService.findById(id);
     }
 
-
+    //Method for listing all the users
     @GetMapping
     public ResponseEntity<?> getAllUsers(){
         return ResponseEntity.ok(userService.listAllUsers());
     }
 
+    //Method for deleting favourite book of user
     @DeleteMapping(path = "/deleteFavouriteBookByUser/{idUser}/{idMovie}")
     public void deleteFavBook(@PathVariable(value ="idUser")Long idUser,
                               @PathVariable(value ="idMovie")Long idMovie){
-        // Movie movie=this.movieService.findMovieById(idMovie).orElseThrow(InvalidMovieId::new);
-        // this.userService.deleteFavouriteBook(idUser,idMovie);
+
     }
 
+
+    //Method for deleting user
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         this.userService.deleteUser(id);

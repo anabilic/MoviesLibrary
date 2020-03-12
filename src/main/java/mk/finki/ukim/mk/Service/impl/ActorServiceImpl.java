@@ -22,25 +22,30 @@ public class ActorServiceImpl implements ActorService {
         this.actorRepository = actorRepository;
     }
 
+
     @Override
     public List<Actor> listAllActors() {
         return actorRepository.getAllActors();
     }
+
 
     @Override
     public Page<Actor> listAllActors(int page, int size) {
         return actorRepository.getAllActors(page,size);
     }
 
+
     @Override
     public Optional<Actor> findById(Long id) {
         return this.actorRepository.findById(id);
     }
 
+
     @Override
     public Actor findActorByName(String name) {
         return this.actorRepository.findByName(name);
     }
+
 
     @Override
     public Actor createActor(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate, byte[] imageActor) {
@@ -64,6 +69,7 @@ public class ActorServiceImpl implements ActorService {
         }
 
     }
+
 
     @Override
     public Actor editActor(Long id,String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate) {

@@ -23,32 +23,42 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+
     private String name;
+
 
     private String director;
 
+
     private String plot;
+
 
     private String runningTime;
 
+
     private Boolean favourite;
+
 
     @Column(nullable = true)
     private LocalDate releaseInformation;
 
+
     private String originalLanguage;
+
+
+    private Boolean deleted = false;
+
 
     @JsonIgnore
     @ManyToMany(mappedBy = "favouriteMovies")
     private List<User> userFavourites;
     //list of all users that have added the movie to favourites
 
-    private Boolean deleted = false;
-
 
     @Lob
     @Column(nullable=true)
     private byte[] file;
+
 
     @JsonIgnore
     @ManyToMany
@@ -58,6 +68,7 @@ public class Movie {
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<Actor> actors;
 
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(
@@ -65,6 +76,7 @@ public class Movie {
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre>  genres;
+
 
     @JsonIgnore
     @ManyToOne()

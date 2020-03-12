@@ -14,29 +14,30 @@ const Movie = (props) => {
     const [movieFavourites, setMoviesFavourite] = useState({});
     const [moviesActors,setMoviesActors] = useState({});
     const [moviesGenres,setMoviesGenres] = useState({});
-    const {movieId} = useParams();
-    const {userId} = useParams();
+    const [fav,setFav] = useState({});
+    const {id} = useParams();
 
 
     useEffect(()=>{
-        axios.get("/movie/id/"+movieId).then((data) => {
+
+        axios.get("/movie/id/"+id).then((data) => {
             setMovies(data.data);
         });
-        // axios.get("/favouritesPerUser/" + id).then((data) => {
-        //     setMoviesFavourite(data.data);
-        // });
-        axios.get("/movie/" + movieId + "/actors").then((data) => {
+        axios.get("/movie/" + id + "/actors").then((data) => {
             setMoviesActors(data.data);
         });
-        axios.get("/movie/" + movieId + "/genres").then((data) => {
+        axios.get("/movie/" + id + "/genres").then((data) => {
             setMoviesGenres(data.data);
         });
-        axios.get("/movie/" + movieId + "/" + userId).then((data) => {
-            console.log(data);
-            setMoviesFavourite(data.data);
-        });
+
+        setFav(loadFavourites());
+
     },[]);
 
+   const  loadFavourites = async() =>{
+    axios.get("/movie/" + id + "/" + props.userId).then(await ((data)=> {
+        setMoviesFavourite(data.data);
+    }))};
 
     const actors = Object.values(moviesActors);
     const genres = Object.values(moviesGenres);

@@ -80,9 +80,6 @@ class UserService {
         });
     }
 
-    loadFavouriteMovies(idUser){
-    return axios.get("/user/favouritesPerUser/"+idUser);
-    }
 
     fetchFavouriteMoviesPaged(id,page,pageSize){
         return axios.get("/user/favouritesPerUserPaginate/"+id,{

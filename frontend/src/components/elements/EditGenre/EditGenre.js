@@ -2,11 +2,13 @@ import React,{useEffect,useState} from 'react';
 import {useHistory, useParams} from "react-router";
 import axios from "../../../custom-axios/axios";
 
+
 const EditGenre = (props) => {
 
     const [genre,setGenre] = useState({});
     const {id} = useParams();
     const history = useHistory();
+
 
     useEffect(() => {
         axios.get("/genre/"+id).then((data)=>{

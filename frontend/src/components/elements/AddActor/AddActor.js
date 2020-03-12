@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 import { Redirect } from "react-router";
 import './AddActor.css'
-import {Link} from "react-router-dom";
 
 class AddActor extends Component {
 
@@ -61,9 +61,11 @@ class AddActor extends Component {
                 <form className="ui form" onSubmit={this.onFormSubmit}>
                     <h4 className="ui dividing header" style={{color:'#800000', fontSize:'xx-large',fontStyle:'italic'}}>Add Actor</h4>
                     <br/>
+
                     {this.props.errorMessageAuthor && <div className="alert alert-danger errorMessage2 col-md-6"  role="alert">
                         <strong>Error! </strong> Name is already taken!
                     </div>}
+
                     <div className="field">
                         <label  style={{color:'#800000',fontSize:'medium'}}>Name</label>
                         <div className="">

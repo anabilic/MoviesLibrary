@@ -3,6 +3,7 @@ import {useHistory, useParams} from "react-router";
 import axios from "../../../custom-axios/axios";
 import './EditActor.css'
 
+
 const EditActor = (props) => {
 
     const [actor,setActor] = useState({});

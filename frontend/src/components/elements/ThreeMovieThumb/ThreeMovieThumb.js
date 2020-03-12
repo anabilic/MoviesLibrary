@@ -7,9 +7,7 @@ const ThreeMovieThumb = ({ image, movieId, movieName, onDelete }) => (
     <div className="rmdb-moviethumbThree">
         <div>
             <Link to={"/movie/" + movieId}>
-                <img alt="" className="rounded"
-                     // style={{width: '200px!important', height: '250px!important', fontFamily: 'Helvetica'}}
-                     src={image}/>
+                <img alt="" className="rounded"  src={image}/>
             </Link>
         </div>
         <div>
