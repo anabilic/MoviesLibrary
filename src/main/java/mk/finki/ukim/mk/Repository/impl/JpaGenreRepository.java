@@ -22,4 +22,8 @@ public interface JpaGenreRepository extends JpaRepository<Genre,Long> {
     @Query(value = "select g.name from Genre g where g.name like :name")
     String findBySameName(String name);
 
+    @Query("select g from Genre g where g.deletedFlag=0 order by g.name asc")
+    List<Genre> getAllGenres();
+
+
 }

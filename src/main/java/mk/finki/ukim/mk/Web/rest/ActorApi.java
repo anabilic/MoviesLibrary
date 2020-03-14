@@ -61,7 +61,7 @@ public class ActorApi {
                                       @RequestParam(value = "dateOfBirth",required = false) String dateOfBirth,
                                       @RequestParam(value = "placeOfBirth",required = false) String placeOfBirth,
                                       @RequestParam(value = "biography",required = false) String biography,
-                                      @RequestParam(value = "file", required = false) MultipartFile file) throws IOException, ActorAlreadyExists {
+                                      @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
 
         LocalDate birthDate = LocalDate.parse(dateOfBirth);
 

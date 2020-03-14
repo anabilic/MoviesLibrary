@@ -13,6 +13,8 @@ public interface MovieService {
 
     Page<Movie> listAllMovies(int page, int size);
 
+    Page<Movie> findAllMovies(int page, int size);
+
     List<Movie> listAllMovies();
 
     Optional<Movie> findMovieById(Long id);
@@ -35,7 +37,6 @@ public interface MovieService {
 
     Movie editMovie(Long id,String name, String director, String runningTime,String plot, LocalDate releaseInformation, String originalLanguage);
 
-    void deleteMovie(Long id);
-
+    void deleteMovieById(Long id);
 
 }

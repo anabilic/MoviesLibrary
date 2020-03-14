@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {useHistory, useParams} from "react-router";
 import axios from "../../../custom-axios/axios";
+import {Link} from "react-router-dom";
 
 
 const EditGenre = (props) => {
@@ -25,9 +26,7 @@ const EditGenre = (props) => {
             "name": e.target.name.value,
         });
 
-        if(props.errorMessageGenre){
             history.push("/allGenres");
-        }
 
     };
 
@@ -61,7 +60,7 @@ const EditGenre = (props) => {
                     <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
                         <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Edit</button>
                         <div className="or"></div>
-                        <button className="ui button"  style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Cancel</button>
+                        <Link to="/allGenres"  className="ui button"  style={{height:'40px',backgroundColor:' #800000',fontSize:'large',color:'black'}}>Cancel</Link>
                     </div>
                 </form>
             </div>

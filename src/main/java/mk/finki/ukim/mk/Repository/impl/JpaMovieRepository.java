@@ -4,9 +4,11 @@ import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface JpaMovieRepository extends JpaRepository<Movie,Long> {
@@ -36,7 +38,7 @@ public interface JpaMovieRepository extends JpaRepository<Movie,Long> {
     List<Genre> getMoviesGenres(@Param("id") Long id);
 
 
-    @Query("select m from Movie m WHERE m.name like %:term%")
+    @Query("select m from Movie m WHERE m.deletedFlag=0 and m.name like %:term%")
     List<Movie> searchMovies(@Param("term") String term);
 
 
@@ -47,5 +49,13 @@ public interface JpaMovieRepository extends JpaRepository<Movie,Long> {
     @Query(value = "select movie from Movie movie inner join movie.userFavourites fave join fave.favouriteMovies favem where movie.Id = :movieId and fave.id = :userId")
     Movie getMovieById(@Param("movieId") Long movieId, @Param("userId") Long userId);
 
+    @Modifying
+    @Transactional
+    @Query(value="delete from Movie m where m.Id=:id")
+    void delete(@Param("id") Long id);
+
+
+    @Query(value="select m from Movie m where m.deletedFlag=0")
+    List<Movie> findAllMovies();
 
 }

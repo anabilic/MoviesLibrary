@@ -41,10 +41,11 @@ class App extends React.Component {
             genres:[],
             users:[],
             errorMessageAddFavourite:'',
-            errorMessageGenreAdd:false,
-            errorMessageGenre: false,
+            errorMessageGenre:false,
             errorMessageAuthor:false,
             errorMessage:false,
+            redirectForActor:false,
+            redirectForGenre:false,
             pageSize:9,
             totalPages:0
         };
@@ -71,10 +72,10 @@ class App extends React.Component {
                 page:data.data.page,
                 pageSize: data.data.pageSize,
                 totalPages: data.data.totalPages,
-                colorFlag: false
             })
         })
     };
+
 
 
     createMovie= async (movie) => {
@@ -96,6 +97,7 @@ class App extends React.Component {
     createGenre= async (genre) => {
         await GenreService.addGenre(genre).then((response) => {
             const genre = response.data;
+            this.setState({redirectForGenre:true });
             this.setState((prevState) => {
                 const newGenreRef = [...prevState.genres, genre];
                 newGenreRef.filter((g)=> {
@@ -108,7 +110,7 @@ class App extends React.Component {
         },error => {
             if (error.response.status === 409) {
                 this.setState({
-                    errorMessageGenreAdd:true
+                    errorMessageGenre:true
                 });
             }
         });
@@ -117,6 +119,7 @@ class App extends React.Component {
     createActor = async (actor) => {
         await ActorService.addActor(actor).then((response) => {
             const actor = response.data;
+            this.setState({redirectForActor:true });
             this.setState((prevState) => {
                 const newActorRef = [...prevState.actors, actor];
                 newActorRef.filter((a)=> {
@@ -183,12 +186,6 @@ class App extends React.Component {
                     "genres": newGenreRef
                 }
             });
-        },error => {
-            if (error.response.status === 409) {
-                this.setState({
-                    errorMessageGenre: true
-                });
-            }
         });
     });
 
@@ -256,16 +253,21 @@ class App extends React.Component {
         })
     };
 
+    deleteFavouriteMovie = (userId,movieId) => {
+        UserService.deleteFavouriteMovie(userId,movieId).then((response) =>{
+        },error => {
+            if (error.response.status === 409) {
+               console.log(error);
+            }
+        });
+    };
+
     addFavouriteMovie=(idMovie)=>{
         UserService.addFavouriteMovie(this.state.currentUser.id,idMovie,this.state.currentUser).then((response)=>{
-            this.setState({
-                countFavourites: this.state.countFavourites+1,
-                colorFlag:true
-            });
         },error => {
             if (error.response.status === 409) {
                 this.setState({
-                    errorMessageAddFavourite: "The book is already added in your list"
+                    errorMessageAddFavourite: "The book is added in your list"
                 });
             }
         })
@@ -329,22 +331,22 @@ class App extends React.Component {
 
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
-                        <Route path="/profile" render={()=> <Profile  onPageClick={this.loadMoviesPaginate}  totalPages={this.state.totalPages} onDelete={this.deleteMovie}/>}  />
+                        <Route path="/profile" render={()=> <Profile deleteFavourite={this.deleteFavouriteMovie} onPageClick={this.loadMoviesPaginate}  totalPages={this.state.totalPages} onDelete={this.deleteMovie} redirectForGenre={this.state.redirectForGenre} redirectForActor={this.state.redirectForActor}/>}  />
 
-                        <Route path="/movie/:id" render={()=> <Movie userId={this.state.currentUser.id} addMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} colorFlag={this.state.colorFlag} />} />
+                        <Route path="/movie/:id" render={()=> <Movie userId={this.state.currentUser.id} addMovieToFavourite={this.addFavouriteMovie}  errorMessage={this.state.errorMessageAddFavourite} colorFlag={this.state.colorFlag} />} />
                         {/*<Route path="/movie/:movieId/:userId" render={()=> <Movie userId={currentUser.id} ddMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} />} />*/}
 
                         <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
-                        <Route path="/addActor" render={()=><AddActor errorMessageAuthor={this.state.errorMessageAuthor} onNewActorAddedWithImg={this.createActor}/>} />
-                        <Route path="/addGenre" render={()=><AddGenre errorMessageGenreAdd={this.state.errorMessageGenreAdd} onNewGenreAdded={this.createGenre}/>} />
+                        <Route path="/addActor" render={()=><AddActor errorMessageAuthor={this.state.errorMessageAuthor} redirectForActor={this.state.redirectForActor} onNewActorAddedWithImg={this.createActor}/>} />
+                        <Route path="/addGenre" render={()=><AddGenre errorMessageGenreAdd={this.state.errorMessageGenre} redirectForGenre={this.state.redirectForGenre} onNewGenreAdded={this.createGenre}/>} />
 
                         <Route path="/allActors" render={()=> <ListActors onDelete={this.deleteActor}/>}  />
                         <Route path="/allUsers" render={()=> <ListUser onDelete={this.deleteUser} />}  />
                         <Route path="/allGenres" render={()=> <ListGenres onDelete={this.deleteGenre} />}  />
 
                         <Route path="/editMovie/:id" render={()=> <EditMovie onSubmit={this.updateMovie}/>} />
-                        <Route path="/editActor/:id" render={()=> <EditActor onSubmit={this.updateActor}/>} />
-                        <Route path="/editGenre/:id" render={()=> <EditGenre errorMessageGenre={this.state.errorMessageGenre} onSubmit={this.updateGenre}/>} />
+                        <Route path="/editActor/:id" render={()=> <EditActor  onSubmit={this.updateActor}/>} />
+                        <Route path="/editGenre/:id" render={()=> <EditGenre  onSubmit={this.updateGenre}/>} />
                         <Route path="/user/edit/:id" render={()=> <EditUserWithoutImg errorMessage={this.state.errorMessage} onSubmit={this.updateUserWithoutImg}/>}/>
                         <Route path="/editUser/:id"  render={()=> <EditUser currentUserId={this.state.currentUser.id}/>}/>
 

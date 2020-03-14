@@ -20,9 +20,10 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     private String name;
 
+    @Column
+    private Integer deletedFlag;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "genres")

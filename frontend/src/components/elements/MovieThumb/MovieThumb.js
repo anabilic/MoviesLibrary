@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './MovieThumb.css';
 
-const MovieThumb = ({ image, movieId, clickable ,userId}) => (
+const MovieThumb = ({ image, movieId, clickable }) => (
     <div className="rmdb-moviethumb">
         {clickable ?
             <Link to={"/movie/"+movieId}>

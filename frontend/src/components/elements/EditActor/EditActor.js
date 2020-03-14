@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {useHistory, useParams} from "react-router";
 import axios from "../../../custom-axios/axios";
 import './EditActor.css'
+import {Link} from "react-router-dom";
 
 
 const EditActor = (props) => {
@@ -17,7 +18,7 @@ const EditActor = (props) => {
     },[]);
 
 
-    const onFormSubmit = (e) => {
+    const onFormSubmit =  (e) => {
         e.preventDefault();
 
         props.onSubmit({
@@ -28,7 +29,6 @@ const EditActor = (props) => {
             "dateOfBirth": e.target.dateOfBirth.value,
             "placeOfBirth":e.target.placeOfBirth.value,
         });
-
 
         history.push("/allActors");
 
@@ -43,7 +43,6 @@ const EditActor = (props) => {
     };
 
 
-
     return (
 
         <div className="container">
@@ -51,6 +50,11 @@ const EditActor = (props) => {
                 <form className="ui form" onSubmit={onFormSubmit}>
                     <h4 className="ui dividing header" style={{color:'#800000', fontSize:'xx-large',fontStyle:'italic'}}>Edit Actor</h4>
                     <br/>
+                    {props.errorMessageAuthor &&
+                    <div className="alert alert-danger" role="alert">
+                        <strong>Error! Name is not valid. Already exists! </strong>
+                    </div>
+                    }
 
                     <div className="field">
                         <label  style={{color:'#800000',fontSize:'medium'}}>Name</label>
@@ -93,7 +97,7 @@ const EditActor = (props) => {
                     <div className="ui large buttons" style={{width: '800px', marginLeft: '110px'}}>
                         <button className="ui button" type="submit" style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Edit</button>
                         <div className="or"></div>
-                        <button className="ui button"  style={{backgroundColor:' #800000',fontSize:'large',color:'black'}}>Cancel</button>
+                        <Link to="/allActors"  className="ui button"  style={{height:'40px',backgroundColor:' #800000',fontSize:'large',color:'black'}}>Cancel</Link>
                     </div>
                 </form>
             </div>

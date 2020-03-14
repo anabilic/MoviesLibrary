@@ -43,6 +43,11 @@ public class UserRepositoryImpl implements UserRepository {
         return this.jpaUserRepository.getFavouriteMoviesPerUser(id);
     }
 
+    @Override
+    public List<User> getUserPerFavouriteMovie(Long id) {
+        return this.jpaUserRepository.getUserPerFavouriteMovie(id);
+    }
+
 
     @Override
     public Optional<User> findById(Long id) {

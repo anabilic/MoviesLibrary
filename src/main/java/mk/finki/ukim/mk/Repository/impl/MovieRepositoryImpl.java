@@ -26,7 +26,7 @@ public class MovieRepositoryImpl implements MovieRepository {
 
     @Override
     public Page<Movie> getAllMovies(int page, int size) {
-        org.springframework.data.domain.Page<Movie> movieResult =  this.jpaMovieRepository.findAll(PageRequest.of(page, size));
+        org.springframework.data.domain.Page<Movie> movieResult = this.jpaMovieRepository.findAll(PageRequest.of(page, size));
         return new Page<>(page, movieResult.getTotalPages(), size, movieResult.getContent());
     }
 
@@ -34,6 +34,11 @@ public class MovieRepositoryImpl implements MovieRepository {
     @Override
     public List<Movie> getAllMovies() {
         return this.jpaMovieRepository.findAll();
+    }
+
+    @Override
+    public List<Movie> getAllMoviesPaged() {
+        return this.jpaMovieRepository.findAllMovies();
     }
 
 
@@ -113,5 +118,6 @@ public class MovieRepositoryImpl implements MovieRepository {
     public Movie getMovieById(Long id, Long userId) {
         return this.jpaMovieRepository.getMovieById(id, userId);
     }
+
 
 }

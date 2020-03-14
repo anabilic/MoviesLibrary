@@ -88,6 +88,15 @@ class UserService {
             }
         })
     }
+
+    deleteFavouriteMovie(idUser,idMovie){
+        return axios.post("/user/deleteFavouriteBookByUser/"+idUser+"/"+idMovie, {
+                headers: {'Content-Type': 'application/json; charset=UTF-8'}
+            }
+        )
+    }
+
+
 }
 
 

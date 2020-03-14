@@ -2,9 +2,9 @@ import React from 'react';
 import {faEnvelope, faLock, faSignature, faUser, faMale, faFemale} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import validator from 'validator';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import UserService from '../../../repository/axiosUserRepository';
 import {User} from '../../../model/User';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import './Register.css';
 
 class Register extends React.Component {
@@ -32,7 +32,6 @@ class Register extends React.Component {
 
         user[name] = value;
         this.setState({user: user});
-
 
     }
 

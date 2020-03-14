@@ -22,7 +22,6 @@ class AddActor extends Component {
 
     };
 
-
     onFormSubmit = (e) => {
 
         e.preventDefault();
@@ -31,7 +30,6 @@ class AddActor extends Component {
             this.setState({submitted: true});
             return;
         }
-
 
         const formData = new FormData();
         formData.append('name',e.target.name.value);
@@ -51,7 +49,7 @@ class AddActor extends Component {
 
     render() {
 
-    if (this.state.redirect) {
+    if (this.props.redirectForActor) {
         return <Redirect to='/profile'/>;
     }
 

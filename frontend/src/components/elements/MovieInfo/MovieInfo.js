@@ -5,9 +5,18 @@ import './MovieInfo.css';
 const MovieInfo = ({ movie, director, genres, addMovieToFavourite,errorMessage, movieFavourites}) => {
 
     const [isClicked,setIsClicked] = useState(false);
+    const [isError,setIsError] = useState(false);
+
 
     const handleClick = () =>{
         setIsClicked(true);
+    };
+
+    const handleError = () =>{
+
+        if(errorMessage){
+            setIsError(true);
+        }
     };
 
     return(
@@ -34,7 +43,7 @@ const MovieInfo = ({ movie, director, genres, addMovieToFavourite,errorMessage, 
                     <h3>DIRECTOR/S</h3>
                     <p className="rmdb-director">{director}</p>
                 </div>
-                <button href="#" className="btn btn-light buttonFavourites" onClick={()=>{addMovieToFavourite(movie.id); handleClick()}}>
+                <button href="#" className="btn btn-light buttonFavourites" onClick={()=>{addMovieToFavourite(movie.id); handleClick();handleError()}}>
 
                     {movieFavourites || isClicked  ?
                     <i style={{fontSize: '50px', color: 'red' }} className="fa fa-heart"/>
@@ -45,7 +54,7 @@ const MovieInfo = ({ movie, director, genres, addMovieToFavourite,errorMessage, 
                 <br/>
                 <br/>
 
-                {errorMessage ?
+                {isError ?
                     <p style={{fontStyle:'bold',fontSize: '15px', color: 'red', marginLeft:'1080px',marginTop:'450px'}} >
                       {errorMessage}</p>
                     :

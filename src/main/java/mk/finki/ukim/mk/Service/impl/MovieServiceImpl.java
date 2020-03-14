@@ -4,6 +4,7 @@ import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Genre;
 import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.User;
+import mk.finki.ukim.mk.Model.exceptions.InvalidMovieId;
 import mk.finki.ukim.mk.Model.exceptions.MovieAlreadyExists;
 import mk.finki.ukim.mk.Model.exceptions.UserIdInvalid;
 import mk.finki.ukim.mk.Model.pagination.Page;
@@ -35,6 +36,11 @@ public class MovieServiceImpl implements MovieService {
         return movieRepository.getAllMovies(page,size);
     }
 
+    @Override
+    public Page<Movie> findAllMovies(int page, int size) {
+        List<Movie> movies = this.movieRepository.getAllMoviesPaged();
+        return Page.slice(movies,page,size);
+    }
 
     @Override
     public List<Movie> listAllMovies() {
@@ -83,8 +89,6 @@ public class MovieServiceImpl implements MovieService {
 
         Movie movie = this.movieRepository.findById(id).orElseThrow(UserIdInvalid::new);
 
-        movie.setFavourite(flag);
-
         return this.movieRepository.save(movie);
     }
 
@@ -114,6 +118,7 @@ public class MovieServiceImpl implements MovieService {
             movie.setGenres(movieGenres);
             movie.setFile(file);
             movie.setUser(USER);
+            movie.setDeletedFlag(0);
             return movieRepository.saveAndFlash(movie);
 
         }else {
@@ -142,16 +147,32 @@ public class MovieServiceImpl implements MovieService {
         movie.setUser(movie.getUser());
         movie.setGenres(movie.getGenres());
         movie.setActors(movie.getActors());
+        movie.setDeletedFlag(movie.getDeletedFlag());
 
         return movieRepository.save(movie);
     }
 
-
     @Override
-    public void deleteMovie(Long id) {
-        this.movieRepository.delete(id);
-    }
+    public void deleteMovieById(Long id) {
 
+        Movie movie =this.movieRepository.findById(id).orElseThrow(InvalidMovieId::new);
+        movie.setDeletedFlag(1);
+
+        List<User> usersPerMovie = this.userRepository.getUserPerFavouriteMovie(id);
+
+        for(User user : usersPerMovie){
+            List<Movie> favouriteMovies =  user.getFavouriteMovies();
+            boolean check = favouriteMovies.stream().anyMatch(x -> x.getId().equals(id));
+            if(check){
+                favouriteMovies.remove(movie);
+            }
+            user.setFavouriteMovies(favouriteMovies);
+
+            userRepository.save(user);
+        }
+
+         this.movieRepository.save(movie);
+    }
 
     @Override
     public Movie getMovieById(Long id, Long userId) {

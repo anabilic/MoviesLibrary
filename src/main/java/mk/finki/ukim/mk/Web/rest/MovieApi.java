@@ -40,16 +40,21 @@ public class MovieApi {
     }
 
 
-    @GetMapping
+    @GetMapping("/allMovies")
     public Page<Movie> getAllMovies(@RequestHeader(name = "page", defaultValue = "0", required = false) int page,
                                     @RequestHeader(name = "page-size", defaultValue = "10", required = false) int size){
         return  this.movieService.listAllMovies(page,size);
     }
 
+    @GetMapping
+    public Page<Movie> findAllMovies(@RequestHeader(name = "page", defaultValue = "0", required = false) int page,
+                                    @RequestHeader(name = "page-size", defaultValue = "10", required = false) int size){
+        return this.movieService.findAllMovies(page,size);
+    }
 
     @GetMapping("/all")
     public List<Movie> listAllMovies(){
-        return  this.movieService.listAllMovies();
+        return this.movieService.listAllMovies();
     }
 
 
@@ -98,7 +103,7 @@ public class MovieApi {
 
     @DeleteMapping("/{id}")
     public void deleteMovie(@PathVariable Long id) {
-        this.movieService.deleteMovie(id);
+        this.movieService.deleteMovieById(id);
     }
 
 

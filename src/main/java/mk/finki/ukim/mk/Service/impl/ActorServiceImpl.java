@@ -2,6 +2,7 @@ package mk.finki.ukim.mk.Service.impl;
 
 import mk.finki.ukim.mk.Model.Actor;
 import mk.finki.ukim.mk.Model.Movie;
+import mk.finki.ukim.mk.Model.exceptions.ActorIdInvalid;
 import mk.finki.ukim.mk.Model.exceptions.InvalidActorName;
 import mk.finki.ukim.mk.Model.exceptions.UserIdInvalid;
 import mk.finki.ukim.mk.Model.pagination.Page;
@@ -31,9 +32,11 @@ public class ActorServiceImpl implements ActorService {
 
     @Override
     public Page<Actor> listAllActors(int page, int size) {
-        return actorRepository.getAllActors(page,size);
-    }
 
+        List<Actor> actors = this.actorRepository.getAllActorsPaged();
+        return Page.slice(actors,page,size);
+
+    }
 
     @Override
     public Optional<Actor> findById(Long id) {
@@ -61,6 +64,7 @@ public class ActorServiceImpl implements ActorService {
         actor.setBiography(biography);
         actor.setDateOfBirth(birthDate);
         actor.setPlaceOfBirth(placeOfBirth);
+        actor.setDeletedFlag(0);
 
         if(name.equals(this.actorRepository.findBySameName(name))){
             throw new InvalidActorName();
@@ -83,13 +87,17 @@ public class ActorServiceImpl implements ActorService {
         actor.setBiography(biography);
         actor.setDateOfBirth(birthDate);
         actor.setPlaceOfBirth(placeOfBirth);
+        actor.setDeletedFlag(actor.getDeletedFlag());
 
         return actorRepository.save(actor);
     }
 
     @Override
     public void deleteActor(Long id) {
-        this.actorRepository.delete(id);
+
+        Actor actor =this.actorRepository.findById(id).orElseThrow(ActorIdInvalid::new);
+        actor.setDeletedFlag(1);
+        this.actorRepository.save(actor);
     }
 
 }

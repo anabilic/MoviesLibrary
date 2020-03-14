@@ -34,6 +34,11 @@ public class ActorRepositoryImpl implements ActorRepository {
         return new Page<>(page,actorResult.getTotalPages(),size,actorResult.getContent());
     }
 
+    @Override
+    public List<Actor> getAllActorsPaged() {
+        return this.jpaActorRepository.getAllActors();
+    }
+
 
     @Override
     public Optional<Actor> findById(Long id) {

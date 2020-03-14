@@ -43,6 +43,7 @@ class Profile extends Component{
                     }
                 )
             });
+
     }
 
     loadMoviesPaginate = (page=0) => {
@@ -221,9 +222,10 @@ class Profile extends Component{
                                             key={i}
                                             clickable={true}
                                             image={element.file ? `data:image/jpeg;base64,${element.file}` : './images/no_image.jpg'}
+                                            userId={this.state.user.id}
                                             movieId={element.id}
                                             movieName={element.name}
-                                            onDelete = {this.props.onDelete}
+                                            onDeleteFavourite = {this.props.deleteFavourite}
                                         />
                                     ))}
                                 </ThreeColGridFavourites>

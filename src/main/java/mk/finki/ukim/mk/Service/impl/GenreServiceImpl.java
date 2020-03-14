@@ -41,6 +41,7 @@ public class GenreServiceImpl implements GenreService {
         Genre genre = new Genre();
         genre.setName(name);
         genre.setMovies(genresMovies);
+        genre.setDeletedFlag(0);
 
         if(name.equals(this.genreRepository.findBySameName(name))){
             throw new InvalidGenreName();
@@ -59,18 +60,20 @@ public class GenreServiceImpl implements GenreService {
 
         genre.setName(name);
         genre.setMovies(genreMovies);
+        genre.setDeletedFlag(genre.getDeletedFlag());
 
-        if(name.equals(this.genreRepository.findBySameName(name))){
-            throw new InvalidGenreName();
-        }else{
-            return genreRepository.save(genre);
-        }
+        return genreRepository.save(genre);
+
     }
 
 
     @Override
     public void deleteGenre(Long id) {
-        this.genreRepository.delete(id);
+
+        Genre genre =this.genreRepository.findById(id).orElseThrow(GenreInvalidId::new);
+        genre.setDeletedFlag(1);
+        this.genreRepository.save(genre);
+
     }
 
 }

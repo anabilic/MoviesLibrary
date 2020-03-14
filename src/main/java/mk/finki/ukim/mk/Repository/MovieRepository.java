@@ -14,6 +14,8 @@ public interface MovieRepository {
 
     List<Movie> getAllMovies();
 
+    List<Movie> getAllMoviesPaged();
+
     Movie save(Movie movie);
 
     Movie saveAndFlash(Movie movie);
@@ -39,4 +41,5 @@ public interface MovieRepository {
     List<Actor> getActorsByMovie(String name);
 
     Movie getMovieById(Long id, Long userId);
+
 }

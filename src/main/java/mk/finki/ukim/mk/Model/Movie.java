@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,7 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Where(clause = "deleted=false")
 public class Movie {
 
     @Id
@@ -35,22 +33,16 @@ public class Movie {
 
     private String runningTime;
 
-
-    private Boolean favourite;
-
+    @Column
+    private Integer deletedFlag;
 
     @Column(nullable = true)
     private LocalDate releaseInformation;
 
-
     private String originalLanguage;
 
-
-    private Boolean deleted = false;
-
-
     @JsonIgnore
-    @ManyToMany(mappedBy = "favouriteMovies")
+    @ManyToMany(mappedBy = "favouriteMovies",fetch = FetchType.EAGER)
     private List<User> userFavourites;
     //list of all users that have added the movie to favourites
 
@@ -79,8 +71,32 @@ public class Movie {
 
 
     @JsonIgnore
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
+
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof Movie))
+            return false;
+        Movie other = (Movie) obj;
+        if (Id == null) {
+            if (other.Id != null)
+                return false;
+        } else if (!Id.equals(other.Id))
+            return false;
+        return true;
+    }
 
 }
 

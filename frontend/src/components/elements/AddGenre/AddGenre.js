@@ -23,7 +23,7 @@ class AddGenre extends Component {
 
         this.props.onNewGenreAdded(formData);
 
-        if(this.props.errorMessageGenreAdd){
+         if(this.props.errorMessageGenreAdd){
             this.setState({redirect:true});
         }
 
@@ -31,7 +31,7 @@ class AddGenre extends Component {
 
     render() {
 
-        if (this.state.redirect) {
+        if (this.props.redirectForGenre) {
             return <Redirect to='/profile'/>;
         }
 

@@ -2,9 +2,11 @@ package mk.finki.ukim.mk.Service.impl;
 
 import mk.finki.ukim.mk.Model.Movie;
 import mk.finki.ukim.mk.Model.User;
+import mk.finki.ukim.mk.Model.exceptions.InvalidMovieId;
 import mk.finki.ukim.mk.Model.exceptions.UserAlreadyExists;
 import mk.finki.ukim.mk.Model.exceptions.UserIdInvalid;
 import mk.finki.ukim.mk.Model.pagination.Page;
+import mk.finki.ukim.mk.Repository.MovieRepository;
 import mk.finki.ukim.mk.Repository.UserRepository;
 import mk.finki.ukim.mk.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,14 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+    private final MovieRepository movieRepository;
+
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, MovieRepository movieRepository) {
         this.userRepository = userRepository;
+        this.movieRepository = movieRepository;
     }
 
 
@@ -137,8 +142,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteFavouriteBook(Long id, Movie movie) {
+    public User deleteFavouriteBook(Long idUser, Long idMovie) {
 
+        User user=this.userRepository.findById(idUser).orElseThrow(UserIdInvalid::new);
+        Movie movie=this.movieRepository.findById(idMovie).orElseThrow(InvalidMovieId::new);
+
+        List<Movie> favouriteMovies =  user.getFavouriteMovies();
+
+        boolean check = favouriteMovies.stream().anyMatch(x -> x.getId().equals(idMovie));
+
+        if(check){
+            favouriteMovies.remove(movie);
+        }
+
+        user.setFavouriteMovies(favouriteMovies);
+
+        return userRepository.save(user);
     }
-
 }

@@ -21,6 +21,8 @@ public interface UserRepository {
 
     List<Movie> getFavouriteMoviesPerUser(Long id);
 
+    List<User> getUserPerFavouriteMovie(Long id);
+
     User save(User user);
 
     void delete(Long id);

@@ -145,12 +145,13 @@ public class UserApi {
     }
 
     //Method for deleting favourite book of user
-    @DeleteMapping(path = "/deleteFavouriteBookByUser/{idUser}/{idMovie}")
+    @PostMapping(path = "/deleteFavouriteBookByUser/{idUser}/{idMovie}")
     public void deleteFavBook(@PathVariable(value ="idUser")Long idUser,
                               @PathVariable(value ="idMovie")Long idMovie){
 
-    }
+        this.userService.deleteFavouriteBook(idUser,idMovie);
 
+    }
 
     //Method for deleting user
     @DeleteMapping("/{id}")

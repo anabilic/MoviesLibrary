@@ -22,7 +22,7 @@ public class GenreRepositoryImpl implements GenreRepository {
 
     @Override
     public List<Genre> getAllGenres() {
-        return jpaGenreRepository.findAll();
+        return jpaGenreRepository.getAllGenres();
     }
 
 

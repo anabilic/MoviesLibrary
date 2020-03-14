@@ -60,4 +60,5 @@ public class GenreApi {
     public void deleteGenre(@PathVariable Long id) {
         this.genreService.deleteGenre(id);
     }
+
 }

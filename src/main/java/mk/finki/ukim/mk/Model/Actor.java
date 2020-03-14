@@ -37,6 +37,8 @@ public class Actor {
     @Column(nullable = true)
     private LocalDate dateOfBirth;
 
+    @Column
+    private Integer deletedFlag;
 
     @Lob
     @Column(nullable = true)

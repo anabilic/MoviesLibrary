@@ -13,6 +13,8 @@ public interface ActorRepository {
 
     Page<Actor> getAllActors(int page, int size);
 
+    List<Actor> getAllActorsPaged();
+
     Optional<Actor> findById(Long id);
 
     Actor findByName(String name);

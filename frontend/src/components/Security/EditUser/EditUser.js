@@ -54,11 +54,12 @@ class EditUser extends Component{
         formData.append('file', this.state.selectedFile);
 
 
-        this.setState({loading: true});
-
         UserService.editUser(formData, this.state.id, newUser).then((response) => {
                 const newUser = response.data;
-            this.setState({redirect:true});
+            this.setState({
+                redirect:true,
+                loading:true
+            });
             }, error => {
                 if (error.response.status === 409) {
                     this.setState({

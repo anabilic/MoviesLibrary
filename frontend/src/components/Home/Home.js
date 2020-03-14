@@ -36,9 +36,8 @@ class Home extends Component{
     loadMovies = () => {
         MovieService.loadMovies().then((data) => {
             this.setState({
-                colorFlag: false,
                 movie: data.data.content,
-                heroImage: data.data.content[8],
+                heroImage: data.data.content[1],
             })
         })
     };
@@ -61,7 +60,7 @@ class Home extends Component{
                 {heroImage ?
                     <div>
                         <HeroImage
-                            image={`./images/Movie-Poster.jpg`}
+                            image={`./images/onceIn.jpg`}
                             title={heroImage.name}
                             text={heroImage.plot}
                             style={{width: '1200px'}}

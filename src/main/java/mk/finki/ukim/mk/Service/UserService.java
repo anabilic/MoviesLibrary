@@ -31,7 +31,7 @@ public interface UserService extends UserDetailsService {
 
     void deleteUser(Long id);
 
-    void deleteFavouriteBook(Long id,Movie movie);
+    User deleteFavouriteBook(Long idUser, Long idMovie);
 
     List<String> findUsers(List<Long> idList);
 
