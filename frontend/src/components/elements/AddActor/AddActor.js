@@ -49,9 +49,10 @@ class AddActor extends Component {
 
     render() {
 
-    if (this.props.redirectForActor) {
-        return <Redirect to='/profile'/>;
-    }
+
+        if (this.props.redirectForActor) {
+            return <Redirect to='/profile'/>;
+        }
 
     return (
         <div className="container">

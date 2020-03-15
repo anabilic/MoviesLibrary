@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import MovieThumb from '../MovieThumb/MovieThumb';
 import './MovieInfo.css';
 
-const MovieInfo = ({ movie, director, genres, addMovieToFavourite,errorMessage, movieFavourites}) => {
+const MovieInfo = ({ movie, director, genres, addMovieToFavourite,errorMessage, movieFavourites, user}) => {
 
     const [isClicked,setIsClicked] = useState(false);
     const [isError,setIsError] = useState(false);
@@ -43,14 +43,20 @@ const MovieInfo = ({ movie, director, genres, addMovieToFavourite,errorMessage, 
                     <h3>DIRECTOR/S</h3>
                     <p className="rmdb-director">{director}</p>
                 </div>
-                <button href="#" className="btn btn-light buttonFavourites" onClick={()=>{addMovieToFavourite(movie.id); handleClick();handleError()}}>
+                {user &&
+                <button href="#" className="btn btn-light buttonFavourites" onClick={() => {
+                    addMovieToFavourite(movie.id);
+                    handleClick();
+                    handleError()
+                }}>
 
-                    {movieFavourites || isClicked  ?
-                    <i style={{fontSize: '50px', color: 'red' }} className="fa fa-heart"/>
-                    : <i style={{fontSize: '50px', color: 'white' }} className="fa fa-heart"/>
+                    {movieFavourites || isClicked ?
+                        <i style={{fontSize: '50px', color: 'red'}} className="fa fa-heart"/>
+                        : <i style={{fontSize: '50px', color: 'white'}} className="fa fa-heart"/>
                     }
 
                 </button>
+                }
                 <br/>
                 <br/>
 

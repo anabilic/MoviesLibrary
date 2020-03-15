@@ -49,7 +49,7 @@ const Movie = (props) => {
                 {movie ?
                     <div>
                         <Navigation movie={movie.name} />
-                        <MovieInfo userId={props.userId} movieFavourites={movieFavourites} movie={movie} director={movie.director} genres={genres} addMovieToFavourite={props.addMovieToFavourite} colorFlag={props.colorFlag} errorMessage={props.errorMessage}  />
+                        <MovieInfo user={props.user} userId={props.userId} movieFavourites={movieFavourites} movie={movie} director={movie.director} genres={genres} addMovieToFavourite={props.addMovieToFavourite} colorFlag={props.colorFlag} errorMessage={props.errorMessage}  />
                         <MovieInfoBar runningTime={movie.runningTime} releaseInformation={movie.releaseInformation} originalLanguage={movie.originalLanguage} />
                     </div> : null }
                     <br/>

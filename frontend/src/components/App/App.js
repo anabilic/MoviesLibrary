@@ -52,6 +52,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+
         this.saveCurrentUser();
     }
 
@@ -289,6 +290,12 @@ class App extends React.Component {
 
         const {history, currentUser} = this.state;
 
+        let {CurrentUserId}="";
+        if(this.state.currentUser!==null){
+            CurrentUserId=this.state.currentUser.id
+        }else{
+            CurrentUserId=0;
+        }
         return (
 
             <Router history={history}>
@@ -333,7 +340,7 @@ class App extends React.Component {
                         <Route path="/register" component={Register} exact/>
                         <Route path="/profile" render={()=> <Profile deleteFavourite={this.deleteFavouriteMovie} onPageClick={this.loadMoviesPaginate}  totalPages={this.state.totalPages} onDelete={this.deleteMovie} redirectForGenre={this.state.redirectForGenre} redirectForActor={this.state.redirectForActor}/>}  />
 
-                        <Route path="/movie/:id" render={()=> <Movie userId={this.state.currentUser.id} addMovieToFavourite={this.addFavouriteMovie}  errorMessage={this.state.errorMessageAddFavourite} colorFlag={this.state.colorFlag} />} />
+                        <Route path="/movie/:id" render={()=> <Movie user={this.state.currentUser} userId={CurrentUserId} addMovieToFavourite={this.addFavouriteMovie}  errorMessage={this.state.errorMessageAddFavourite} />} />
                         {/*<Route path="/movie/:movieId/:userId" render={()=> <Movie userId={currentUser.id} ddMovieToFavourite={this.addFavouriteMovie} errorMessage={this.state.errorMessageAddFavourite} />} />*/}
 
                         <Route path="/addMovie" render={()=><AddMovie User={currentUser.username} onNewMovieAddedWithImg={this.createMovie}/> }/>
