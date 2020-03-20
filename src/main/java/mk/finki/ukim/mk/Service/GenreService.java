@@ -15,6 +15,7 @@ public interface GenreService {
 
     Genre editGenre(Long id,String name, List<String> movies);
 
-    void deleteGenre(Long id);
+    void deleteGenreById(Long id);
 
+    void deleteGenre(Long id);
 }

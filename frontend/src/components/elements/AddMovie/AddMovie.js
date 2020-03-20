@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import ActorService from "../../../repository/axiosActorRepository";
 import GenreService from "../../../repository/axiosGenreRepository";
 import './AddMovie.css'
+import MovieService from "../../../repository/axiosMovieRepository";
 
 function objectToArray(obj) {
     var array = [], tempObject;
@@ -42,7 +43,10 @@ class AddMovie extends Component {
             genreSelected:[],
             actorSelected:{},
             redirect:false,
-            submitted: false
+            submitted: false,
+            errorMessageMovie:false,
+            errorMessageMovieFile:false,
+            redirectForMovie:false,
         };
     }
 
@@ -50,6 +54,7 @@ class AddMovie extends Component {
         this.loadActors();
         this.loadGenres();
     }
+
 
     makeActorsKeys(){
         const arrayOfActors = objectToArray(this.state.actors);
@@ -124,10 +129,34 @@ class AddMovie extends Component {
             formData.append('file', this.state.selectedFile);
             formData.append('user', this.props.User);
 
-            this.props.onNewMovieAddedWithImg(formData);
+            // this.props.onNewMovieAddedWithImg(formData);
 
-            this.setState({redirect: true});
+        MovieService.addMovie(formData).then((response) => {
+            const movie = response.data;
+            this.setState({redirectForMovie:true });
+            this.setState((prevState) => {
+                const newMovieRef = [...prevState.movies, movie];
+                newMovieRef.filter((m)=> {
+                    return {
+                        "movies": m
+                    }
+                })
+            });
+        },error => {
+            if (error.response.status === 500) {
+                this.setState({
+                    errorMessageMovieFile:true
+                });
+            }else if(error.response.status){
+                this.setState({
+                    errorMessageMovie:true
+                });
+            }
+        });
 
+        if(this.state.errorMessageMovie || this.state.errorMessageMovieFile) {
+            this.setState({redirect:true});
+        }
 
     };
 
@@ -158,7 +187,7 @@ class AddMovie extends Component {
 
     render() {
 
-        if (this.state.redirect) {
+        if (this.state.redirectForMovie) {
             return <Redirect to='/'/>;
         }
 
@@ -169,7 +198,13 @@ class AddMovie extends Component {
                     <h4 className="ui dividing header"
                         style={{color: '#800000', fontSize: 'xx-large', fontStyle: 'italic'}}>Add Movie</h4>
                     <br/>
+                    {this.state.errorMessageMovie && <div className="alert alert-danger errorMessage2 col-md-6" style={{width:'500px'}} role="alert">
+                        <strong>Error! </strong> Some error occurred, please try again later.
+                    </div>}
 
+                    {this.state.errorMessageMovieFile && <div className="alert alert-danger errorMessage2 col-md-6" style={{width:'500px'}} role="alert">
+                        <strong>Error! </strong> Check your file size or release date format!!!
+                    </div>}
                     <div className="field">
                         <label id="name" style={{color: '#800000', fontSize: 'medium'}}>Name</label>
                         <div className="">

@@ -26,7 +26,7 @@ class Profile extends Component{
         };
     }
 
-    componentDidMount() {
+     componentDidMount() {
 
         if(!UserService.currentUserValue){
             this.props.history.push('/');

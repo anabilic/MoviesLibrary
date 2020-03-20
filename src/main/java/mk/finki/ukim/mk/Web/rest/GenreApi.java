@@ -56,6 +56,11 @@ public class GenreApi {
     }
 
 
+    @PostMapping("/{id}")
+    public void deleteGenreById(@PathVariable Long id) {
+        this.genreService.deleteGenreById(id);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteGenre(@PathVariable Long id) {
         this.genreService.deleteGenre(id);

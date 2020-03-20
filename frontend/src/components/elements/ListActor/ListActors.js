@@ -1,6 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import {Link} from "react-router-dom";
 import axios from "../../../custom-axios/axios";
+import FontAwesome from "react-fontawesome";
+import ActorService from "../../../repository/axiosActorRepository";
 import OneGrid from "../OneGrid/OneGrid";
 import Navigation from "../Navigation/Navigation";
 import ReactPaginate from "react-paginate";
@@ -13,20 +15,17 @@ const ListActors = (props) => {
     const [totalPages,setTotalPages]=useState(0);
     const [pageSize,setPageSize]=useState(3);
 
-
     useEffect(()=>{
         axios.get("/actor/paginate",{
             headers: {
                 'page':page,'page-size':pageSize
             }
         }).then((data)=>{
-
             setActors(data.data.content),
                 setPage(data.data.page),
                 setPageSize(data.data.pageSize),
                 setTotalPages(data.data.totalPages)
-        })
-
+        });
     },[]);
 
     const actorsList = Object.values(actors);
@@ -43,6 +42,23 @@ const ListActors = (props) => {
                 setTotalPages(data.data.totalPages)
         })
     };
+
+
+    const searchData = (searchTerm) => {
+        if(searchTerm !== ""){
+            ActorService.searchActorTermPaged(searchTerm,0,pageSize).then((data)=>{
+                console.log(data.data);
+                setActors(data.data.content);
+                setPage(data.data.page),
+                    setPageSize(data.data.pageSize),
+                    setTotalPages(data.data.totalPages)
+            })
+        }else{
+            loadActors(0);
+        }
+    };
+
+
 
     const handlePageClick = (e) => {
         loadActors(e.selected);
@@ -72,16 +88,30 @@ const ListActors = (props) => {
         }
     };
 
+    const onSearch = (e)=>{
+        e.preventDefault();
+        searchData(e.target["searchTerm"].value);
+    };
 
 
     return(
         <div>
         <Navigation movie='List of All Actors' />
-        <div className="col-md-12">
+            <div className="rmdb-searchbar-contentActors">
+                <FontAwesome className="rmdb-fa-searchActors" name="search" size="2x" />
+                <form onSubmit={onSearch} className="form-inline mt-2 mt-md-0">
+                    <input  type="text"
+                            className="rmdb-searchbar-inputActor"
+                            placeholder="Search"
+                            name={"searchTerm"}
+                    />
+                </form>
+            </div>
+            <div className="col-md-12">
             <div style={{borderColor:'black', boxShadow: '5px 10px 18px 5px black'}} className="cardActor card-container">
                 <OneGrid>
                     {actorsList && actorsList.map( (element, i) => (
-                        <div className="imdb-actor">
+                        <div className="imdb-actor" key={i}>
                             <img
                                 src={element.imageActor ? `data:image/jpeg;base64,${element.imageActor}` : './images/no_image.jpg'}
                                 alt="ictorthumb"

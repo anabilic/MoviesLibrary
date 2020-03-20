@@ -15,7 +15,7 @@ const MovieThumbFavourite = ({ image, movieId, movieName, onDeleteFavourite, use
             <br/>
             <Link to="/" className="" onClick={() => onDeleteFavourite(userId,movieId)}  style={{color: 'red', fontSize: '20px', fontFamily: 'Helvetica'}}>
                 <i className="fa fa-trash-o">
-                    <span className="font-italic">Delete from favourites</span>
+                    <span className="font-italic">Remove from favourites</span>
                 </i>
             </Link>
         </div>

@@ -66,9 +66,14 @@ public class GenreServiceImpl implements GenreService {
 
     }
 
-
     @Override
     public void deleteGenre(Long id) {
+        this.genreRepository.delete(id);
+    }
+
+
+    @Override
+    public void deleteGenreById(Long id) {
 
         Genre genre =this.genreRepository.findById(id).orElseThrow(GenreInvalidId::new);
         genre.setDeletedFlag(1);

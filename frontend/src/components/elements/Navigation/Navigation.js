@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
+import FontAwesome from "react-fontawesome";
 
 const Navigation = ({ movie }) => (
     <div className="rmdb-navigation">

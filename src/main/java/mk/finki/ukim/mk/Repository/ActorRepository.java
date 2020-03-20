@@ -23,6 +23,8 @@ public interface ActorRepository {
 
     List<Movie> checkMovies(List<String> movies);
 
+    List<Actor> searchActor(String term);
+
     Actor save(Actor actor);
 
     void delete(Long id);

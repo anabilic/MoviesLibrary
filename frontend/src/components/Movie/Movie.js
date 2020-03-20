@@ -7,6 +7,7 @@ import FourColGridActors from "../elements/FourColGridActors/FourColGridActors";
 import Actor from '../elements/Actor/Actor';
 import {useParams} from "react-router";
 import './Movie.css';
+import {Link} from "react-router-dom";
 
 const Movie = (props) => {
 
@@ -45,27 +46,32 @@ const Movie = (props) => {
 
     return (
 
-            <div className="rmdb-movie">
+            <div className="rmdb-movie" >
                 {movie ?
                     <div>
                         <Navigation movie={movie.name} />
                         <MovieInfo user={props.user} userId={props.userId} movieFavourites={movieFavourites} movie={movie} director={movie.director} genres={genres} addMovieToFavourite={props.addMovieToFavourite} colorFlag={props.colorFlag} errorMessage={props.errorMessage}  />
-                        <MovieInfoBar runningTime={movie.runningTime} releaseInformation={movie.releaseInformation} originalLanguage={movie.originalLanguage} />
+                        <MovieInfoBar user={props.user} runningTime={movie.runningTime} releaseInformation={movie.releaseInformation} originalLanguage={movie.originalLanguage}/>
                     </div> : null }
                     <br/>
 
-                {actors ?
-                    <div className="rmdb-movie-grid">
-                        <FourColGridActors
-                            header={'Actors'}>
-                            {actors.map( (element, i) => (
-                                <Actor key={i} actor={element} />
+                <div className="rmdb-movie-grid">
+                {props.user && actors ?
+                            <FourColGridActors
+                                header={'Actors'}>
+                                {actors.map((element, i) => (
+                                    <Actor key={i} actor={element}/>
                                 ))}
-                        </FourColGridActors>
-                    </div>
-                    : null }
+                            </FourColGridActors>
+                     :
+                    <h4 style={{color: 'black', fontStyle: 'italic', display:'absolute'}}>To view more details about actors,please <Link to="/register" style={{color: '#800000'}}>sign up</Link> or <Link
+                        style={{color: '#800000'}} to="/login">sign in!</Link></h4>
+
+                }
+                </div>
+
             </div>
-        )
+    )
 };
 
 export default Movie;

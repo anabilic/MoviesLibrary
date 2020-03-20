@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import GenreService from "../../../repository/axiosGenreRepository";
 import { Redirect } from "react-router";
 import './AddGenre.css'
 
@@ -9,7 +10,10 @@ class AddGenre extends Component {
         super(props);
 
         this.state = {
-            redirect:false
+            redirect:false,
+            genres:[],
+            errorMessageGenre:false,
+            redirectForGenre:false
         };
     }
 
@@ -21,9 +25,27 @@ class AddGenre extends Component {
         const formData = new FormData();
         formData.append('name',e.target.name.value);
 
-        this.props.onNewGenreAdded(formData);
+        GenreService.addGenre(formData).then((response) => {
+            const genre = response.data;
+            this.setState({redirectForGenre:true });
+            this.setState((prevState) => {
+                const newGenreRef = [...prevState.genres, genre];
+                newGenreRef.filter((g)=> {
+                    return {
+                        "genres": g
+                    }
+                })
+            });
+            },error => {
+                if (error.response.status === 409) {
+                    this.setState({
+                        errorMessageGenre:true
+                    });
+                }
+            });
 
-         if(this.props.errorMessageGenreAdd){
+
+         if(this.state.errorMessageGenre){
             this.setState({redirect:true});
         }
 
@@ -31,8 +53,8 @@ class AddGenre extends Component {
 
     render() {
 
-        if (this.props.redirectForGenre) {
-            return <Redirect to='/profile'/>;
+        if (this.state.redirectForGenre) {
+            return <Redirect to='/allGenres'/>;
         }
 
         return (
@@ -42,7 +64,7 @@ class AddGenre extends Component {
                         <h4 className="ui dividing header" style={{color:'#800000', fontSize:'xx-large',fontStyle:'italic'}}>Add Genre</h4>
                         <br/>
 
-                        {this.props.errorMessageGenreAdd &&
+                        {this.state.errorMessageGenre &&
                         <div className="alert alert-danger" role="alert">
                             <strong>Error! Name is not valid. It already exists!</strong>
                         </div>

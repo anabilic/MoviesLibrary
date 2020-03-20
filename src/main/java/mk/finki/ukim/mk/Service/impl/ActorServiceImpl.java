@@ -49,6 +49,12 @@ public class ActorServiceImpl implements ActorService {
         return this.actorRepository.findByName(name);
     }
 
+    @Override
+    public Page<Actor> searchActor(String term, int page, int size) {
+        List<Actor> actors = this.actorRepository.searchActor(term);
+        return Page.slice(actors,page,size);
+    }
+
 
     @Override
     public Actor createActor(String name, String castName, List<String> movies, String biography, String placeOfBirth, LocalDate birthDate, byte[] imageActor) {
@@ -94,6 +100,11 @@ public class ActorServiceImpl implements ActorService {
 
     @Override
     public void deleteActor(Long id) {
+        this.actorRepository.delete(id);
+    }
+
+    @Override
+    public void deleteActorById(Long id) {
 
         Actor actor =this.actorRepository.findById(id).orElseThrow(ActorIdInvalid::new);
         actor.setDeletedFlag(1);

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import ActorService from "../../../repository/axiosActorRepository";
 import { Redirect } from "react-router";
 import './AddActor.css'
 
@@ -10,8 +11,13 @@ class AddActor extends Component {
 
         this.state = {
             selectedFile:null,
+            actors:[],
             redirect:false,
-            submitted: false
+            submitted: false,
+            errorMessageAuthor:false,
+            errorMessageAuthorTwo:false,
+            errorMessageAuthorThree:false,
+            redirectForActor:false
         };
     }
 
@@ -21,6 +27,7 @@ class AddActor extends Component {
         this.setState({selectedFile:file});
 
     };
+
 
     onFormSubmit = (e) => {
 
@@ -39,19 +46,44 @@ class AddActor extends Component {
         formData.append('dateOfBirth', e.target.dateOfBirth.value);
         formData.append('placeOfBirth', e.target.placeOfBirth.value);
 
-        this.props.onNewActorAddedWithImg(formData);
 
-        if(this.props.errorMessageAuthor){
+        ActorService.addActor(formData).then((response) => {
+            const actor = response.data;
+            this.setState({redirectForActor:true });
+            this.setState((prevState) => {
+                const newActorRef = [...prevState.actors, actor];
+                newActorRef.filter((a)=> {
+                    return {
+                        "actors": a
+                    }
+                })
+
+            });
+        },error => {
+            if (error.response.status === 409) {
+                this.setState({
+                    errorMessageAuthor:true
+                });
+            }else if (error.response.status === 500){
+                this.setState({
+                    errorMessageAuthorTwo:true
+                });
+            }else{
+                this.setState({
+                    errorMessageAuthorThree:true
+                });
+            }
+        });
+
+        if(this.state.errorMessageAuthor || this.state.errorMessageAuthorTwo || this.state.errorMessageAuthorThree){
             this.setState({redirect:true});
         }
-
     };
 
     render() {
 
-
-        if (this.props.redirectForActor) {
-            return <Redirect to='/profile'/>;
+        if (this.state.redirectForActor) {
+            return <Redirect to='/allActors'/>;
         }
 
     return (
@@ -61,8 +93,17 @@ class AddActor extends Component {
                     <h4 className="ui dividing header" style={{color:'#800000', fontSize:'xx-large',fontStyle:'italic'}}>Add Actor</h4>
                     <br/>
 
-                    {this.props.errorMessageAuthor && <div className="alert alert-danger errorMessage2 col-md-6"  role="alert">
+                    {this.state.errorMessageAuthor && <div className="alert alert-danger errorMessage2 col-md-6"  role="alert">
                         <strong>Error! </strong> Name is already taken!
+                    </div>}
+
+
+                    {this.state.errorMessageAuthorTwo && <div className="alert alert-danger errorMessage2 col-md-6"  role="alert">
+                        <strong>Error! </strong> The biography filed should be shorter!
+                    </div>}
+
+                    {this.state.errorMessageAuthorThree && <div className="alert alert-danger errorMessage2 col-md-6"  role="alert">
+                        <strong>Error! </strong> Some unexpected error happened, try again!
                     </div>}
 
                     <div className="field">

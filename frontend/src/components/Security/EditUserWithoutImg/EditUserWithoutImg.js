@@ -12,11 +12,9 @@ const EditUserWithoutImg = (props) => {
 
 
     useEffect(() => {
-
         axios.get("/user?id="+id).then((data)=>{
             setUser(data.data);
         });
-
     },[]);
 
 
@@ -32,7 +30,7 @@ const EditUserWithoutImg = (props) => {
             "gender":e.target.gender.value,
         });
 
-        if(props.errorMessage){
+        if(!props.errorMessage){
             history.push("/allUsers");
         }
     };

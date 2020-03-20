@@ -175,6 +175,11 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public void deleteMovie(Long id) {
+        this.movieRepository.delete(id);
+    }
+
+    @Override
     public Movie getMovieById(Long id, Long userId) {
         return movieRepository.getMovieById(id, userId);
     }

@@ -69,6 +69,11 @@ public class ActorRepositoryImpl implements ActorRepository {
         return this.jpaActorRepository.checkMovies(movies);
     }
 
+    @Override
+    public List<Actor> searchActor(String term) {
+        return this.jpaActorRepository.searchActor(term);
+    }
+
 
     @Override
     public void delete(Long id) {

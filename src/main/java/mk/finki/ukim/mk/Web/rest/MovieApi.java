@@ -101,8 +101,8 @@ public class MovieApi {
     }
 
 
-    @DeleteMapping("/{id}")
-    public void deleteMovie(@PathVariable Long id) {
+    @PostMapping("/{id}")
+    public void deleteMovieById(@PathVariable Long id) {
         this.movieService.deleteMovieById(id);
     }
 
@@ -129,6 +129,11 @@ public class MovieApi {
     public Movie getMovieById(@PathVariable Long movieId, @PathVariable Long userId) {
         Movie movie = this.movieService.getMovieById(movieId, userId);
         return movie;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteMovie(@PathVariable Long id) {
+        this.movieService.deleteMovie(id);
     }
 
 }

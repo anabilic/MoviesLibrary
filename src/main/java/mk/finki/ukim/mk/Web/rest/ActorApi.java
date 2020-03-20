@@ -1,7 +1,6 @@
 package mk.finki.ukim.mk.Web.rest;
 
 import mk.finki.ukim.mk.Model.Actor;
-import mk.finki.ukim.mk.Model.exceptions.ActorAlreadyExists;
 import mk.finki.ukim.mk.Model.exceptions.ActorIdInvalid;
 import mk.finki.ukim.mk.Model.pagination.Page;
 import mk.finki.ukim.mk.Service.ActorService;
@@ -53,6 +52,13 @@ public class ActorApi {
     }
 
 
+    @GetMapping(params = "term")
+    public Page<Actor> searchActor(@RequestParam String term,
+                                   @RequestHeader(name = "page", defaultValue = "0", required = false) int page,
+                                   @RequestHeader(name = "page-size", defaultValue = "6", required = false) int size) {
+        return this.actorService.searchActor(term,page,size);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Actor createActor(@RequestParam(value = "name") String name,
@@ -86,6 +92,11 @@ public class ActorApi {
         return editedActor;
     }
 
+
+    @PostMapping("/{id}")
+    public void deleteActorById(@PathVariable Long id) {
+        this.actorService.deleteActorById(id);
+    }
 
     @DeleteMapping("/{id}")
     public void deleteActor(@PathVariable Long id) {

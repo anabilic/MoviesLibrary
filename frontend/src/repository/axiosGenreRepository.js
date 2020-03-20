@@ -24,7 +24,7 @@ const GenreService = {
         });
     },
     deleteGenre: (genreId) => {
-        return axios.delete(`/genre/${genreId}`);
+        return axios.post(`/genre/${genreId}`);
     }
 
 };

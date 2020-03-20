@@ -24,8 +24,18 @@ const ActorService = {
         });
     },
     deleteActor: (actorId) => {
-        return axios.delete(`/actor/${actorId}`);
-    }
+        return axios.post(`/actor/${actorId}`);
+    },
+    searchActorTerm: (searchTerm) => {
+        return axios.get(`/actor?term=${searchTerm}`);
+    },
+    searchActorTermPaged:(searchTerm,page,size)=>{
+        return axios.get(`/actor?term=${searchTerm}`,{
+            headers: {
+                'page':page, 'page-size':size
+            }
+        })
+    },
 };
 
 export default ActorService;

@@ -38,7 +38,7 @@ const MovieService = {
         });
     },
     deleteMovie: (movieId) => {
-        return axios.delete(`/movie/${movieId}`);
+        return axios.post(`/movie/${movieId}`);
     }
 };
 

@@ -39,4 +39,6 @@ public interface MovieService {
 
     void deleteMovieById(Long id);
 
+    void deleteMovie(Long id);
+
 }
