@@ -142,6 +142,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Integer getTotalUsersPerFavouriteMovie(Long id) {
+        return this.userRepository.getTotalUsersPerFavouriteMovie(id);
+    }
+
+    @Override
     public User deleteFavouriteBook(Long idUser, Long idMovie) {
 
         User user=this.userRepository.findById(idUser).orElseThrow(UserIdInvalid::new);

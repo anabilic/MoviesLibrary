@@ -23,6 +23,8 @@ public interface UserRepository {
 
     List<User> getUserPerFavouriteMovie(Long id);
 
+    Integer getTotalUsersPerFavouriteMovie(Long id);
+
     User save(User user);
 
     void delete(Long id);

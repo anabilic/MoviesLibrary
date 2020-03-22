@@ -159,9 +159,16 @@ public class UserApi {
         this.userService.deleteUser(id);
     }
 
+    @GetMapping("/getTotal/{id}")
+    public Integer getTotalUsersPerFavouriteMovie(@PathVariable(value="id") String id){
+        Long movieId= Long.valueOf(id);
+        return this.userService.getTotalUsersPerFavouriteMovie(movieId);
+    }
+
     @GetMapping("/test")
     public ResponseEntity<?> test(){
         return ResponseEntity.ok("It is working...");
     }
+
 
 }

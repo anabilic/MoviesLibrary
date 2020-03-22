@@ -48,6 +48,11 @@ public class UserRepositoryImpl implements UserRepository {
         return this.jpaUserRepository.getUserPerFavouriteMovie(id);
     }
 
+    @Override
+    public Integer getTotalUsersPerFavouriteMovie(Long id) {
+        return this.jpaUserRepository.getTotalUsersPerFavouriteMovie(id);
+    }
+
 
     @Override
     public Optional<User> findById(Long id) {

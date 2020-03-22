@@ -72,7 +72,17 @@ class Profile extends Component{
         })
     };
 
-
+    deleteFavouriteMovie = (userId,movieId) => {
+        UserService.deleteFavouriteMovie(userId,movieId).then((response) => {
+            this.setState((state) => {
+                const favMovie = state.favouriteMovies.filter((fm) => {
+                    return fm.id !== movieId;
+                });
+                return {favMovie};
+            })
+            this.loadFavouriteMoviesPaginate(0);
+        })
+    };
 
     render(){
 
@@ -104,7 +114,7 @@ class Profile extends Component{
                             <span>
                                 <Link to={"/editUser/"+this.state.userDetails.id} style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
                                     <i className="fa fa-edit">
-                                        <span className="font-italic">Edit my profile</span>
+                                        <span className="font-italic"> Edit my profile</span>
                                     </i>
                                 </Link>
                             </span>
@@ -124,7 +134,7 @@ class Profile extends Component{
                             <span>
                                 <Link to={"/editUser/"+this.state.userDetails.id} style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
                             <i className="fa fa-edit">
-                            <span className="font-italic">Edit my profile</span>
+                            <span className="font-italic"> Edit my profile</span>
                             </i>
                             </Link>
                             </span>
@@ -132,7 +142,7 @@ class Profile extends Component{
                             <span>
                             <Link to="/addMovie" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
                             <i className="fa fa-plus">
-                            <span className="font-italic">Add new movie</span>
+                            <span className="font-italic"> Add new movie</span>
                             </i>
                             </Link>
                             </span>
@@ -140,7 +150,7 @@ class Profile extends Component{
                             <span>
                             <Link to="/addActor" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
                             <i className="fa fa-plus">
-                            <span className="font-italic">Add new actor</span>
+                            <span className="font-italic"> Add new actor</span>
                             </i>
                             </Link>
                             </span>
@@ -148,7 +158,7 @@ class Profile extends Component{
                             <span>
                             <Link to="/addGenre" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
                             <i className="fa fa-plus">
-                            <span className="font-italic">Add new genre</span>
+                            <span className="font-italic"> Add new genre</span>
                             </i>
                             </Link>
                             </span>
@@ -156,7 +166,7 @@ class Profile extends Component{
                             <span>
                             <Link to="/allActors" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
                             <i className="fa fa-list">
-                            <span className="font-italic">List of all actors</span>
+                            <span className="font-italic"> List of all actors</span>
                             </i>
                             </Link>
                             </span>
@@ -164,7 +174,7 @@ class Profile extends Component{
                             <span>
                                 <Link to="/allUsers" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
                                     <i className="fa fa-list">
-                                    <span className="font-italic">List of all users</span>
+                                    <span className="font-italic"> List of all users</span>
                                     </i>
                                 </Link>
                             </span>
@@ -172,7 +182,15 @@ class Profile extends Component{
                             <span>
                             <Link to="/allGenres" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
                             <i className="fa fa-list">
-                            <span className="font-italic">List of all genres</span>
+                            <span className="font-italic"> List of all genres</span>
+                            </i>
+                            </Link>
+                            </span>
+                            <br/>
+                            <span>
+                            <Link to="/allFavourites" style={{color:'white', marginLeft:'15px',fontSize: '18px',fontFamily: 'Helvetica'}}>
+                            <i className="fa fa-heart">
+                            <span className="font-italic"> List of favourites movies</span>
                             </i>
                             </Link>
                             </span>
@@ -225,7 +243,7 @@ class Profile extends Component{
                                             userId={this.state.user.id}
                                             movieId={element.id}
                                             movieName={element.name}
-                                            onDeleteFavourite = {this.props.deleteFavourite}
+                                            onDeleteFavourite = {this.deleteFavouriteMovie}
                                         />
                                     ))}
                                 </ThreeColGridFavourites>

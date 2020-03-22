@@ -82,7 +82,7 @@ class UserService {
 
 
     fetchFavouriteMoviesPaged(id,page,pageSize){
-        return axios.get("/user/favouritesPerUserPaginate/"+id,{
+        return axios.get(`/user/favouritesPerUserPaginate/`+id,{
             headers: {
                 'page':page,'page-size':pageSize
             }
@@ -94,6 +94,10 @@ class UserService {
                 headers: {'Content-Type': 'application/json; charset=UTF-8'}
             }
         )
+    }
+
+    getTotalUsersFavourites(movieId){
+        return axios.get("/getTotal/"+movieId);
     }
 
 

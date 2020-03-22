@@ -13,7 +13,7 @@ class Home extends Component{
         movie:[],
         heroImage: null,
         pageSize:12,
-        totalPages:0
+        totalPages:0,
     };
 
     componentDidMount() {
@@ -43,14 +43,16 @@ class Home extends Component{
     };
 
     searchData = (searchTerm) => {
-        MovieService.searchMovieTerm(searchTerm).then((data)=>{
-            this.setState({
-                movies: data.data,
+        if(searchTerm !== "") {
+            MovieService.searchMovieTerm(searchTerm).then((data) => {
+                this.setState({
+                    movies: data.data,
+                })
             })
-        })
+        }else{
+            this.loadMoviesPaginate(0);
+        }
     };
-
-
 
     render() {
 
@@ -67,25 +69,24 @@ class Home extends Component{
                         />
                         <SearchBar onSearch={this.searchData}/>
                     </div> : null}
-
                     <br/>
                 <div className="rmdb-home-grid">
-                    <FourColGrid
-                        header={'All Popular Movies'}
-                        onPageClick={this.loadMoviesPaginate}
-                        totalPages={this.state.totalPages}
+                        <FourColGrid
+                            header={'All Popular Movies'}
+                            onPageClick={this.loadMoviesPaginate}
+                            totalPages={this.state.totalPages}
                         >
-                        {movies &&  movies.map( (element, i) => (
-                            <MovieThumb
-                                key={i}
-                                clickable={true}
-                                userId={this.props.userId}
-                                image={element.file ? `data:image/jpeg;base64,${element.file}` : './images/no_image.jpg'}
-                                movieId={element.id}
-                                movieName={element.name}
-                            />
-                        ))}
-                    </FourColGrid>
+                            {movies && movies.map((element, i) => (
+                                <MovieThumb
+                                    key={i}
+                                    clickable={true}
+                                    userId={this.props.userId}
+                                    image={element.file ? `data:image/jpeg;base64,${element.file}` : './images/no_image.jpg'}
+                                    movieId={element.id}
+                                    movieName={element.name}
+                                />
+                            ))}
+                        </FourColGrid>
                 </div>
             </div>
         )

@@ -18,7 +18,6 @@ const MovieService = {
     searchMovieTerm: (searchTerm) => {
         return axios.get(`/movie?term=${searchTerm}`);
     },
-
     addMovie: (movie) => {
 
         return axios.post("/movie", movie,{

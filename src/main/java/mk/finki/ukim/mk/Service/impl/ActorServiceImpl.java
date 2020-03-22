@@ -49,6 +49,7 @@ public class ActorServiceImpl implements ActorService {
         return this.actorRepository.findByName(name);
     }
 
+
     @Override
     public Page<Actor> searchActor(String term, int page, int size) {
         List<Actor> actors = this.actorRepository.searchActor(term);
@@ -98,10 +99,12 @@ public class ActorServiceImpl implements ActorService {
         return actorRepository.save(actor);
     }
 
+
     @Override
     public void deleteActor(Long id) {
         this.actorRepository.delete(id);
     }
+
 
     @Override
     public void deleteActorById(Long id) {

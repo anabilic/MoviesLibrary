@@ -21,6 +21,8 @@ public interface UserService extends UserDetailsService {
 
     Page<Movie> getFavouriteMoviesPerUserPaginate(Long id,int page,int size);
 
+    Integer getTotalUsersPerFavouriteMovie(Long id);
+
     User addFavouriteMovie(User user);
 
     User save(User user);

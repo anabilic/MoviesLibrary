@@ -36,7 +36,7 @@ const ListActors = (props) => {
                 'page':page,'page-size':pageSize
             }
         }).then((data)=>{
-            setActors(data.data.content),
+                setActors(data.data.content),
                 setPage(data.data.page),
                 setPageSize(data.data.pageSize),
                 setTotalPages(data.data.totalPages)
@@ -47,10 +47,8 @@ const ListActors = (props) => {
     const searchData = (searchTerm) => {
         if(searchTerm !== ""){
             ActorService.searchActorTermPaged(searchTerm,0,pageSize).then((data)=>{
-                console.log(data.data);
                 setActors(data.data.content);
-                setPage(data.data.page),
-                    setPageSize(data.data.pageSize),
+                setPage(data.data.page), setPageSize(data.data.pageSize),
                     setTotalPages(data.data.totalPages)
             })
         }else{

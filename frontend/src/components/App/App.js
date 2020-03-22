@@ -13,6 +13,7 @@ import Movie from "../Movie/Movie";
 import ListActors from "../elements/ListActor/ListActors";
 import ListUser from "../elements/ListUser/ListUser";
 import EditUserWithoutImg from "../Security/EditUserWithoutImg/EditUserWithoutImg";
+import ListFavourites from "../elements/ListFavourites/ListFavourites";
 import ListGenres from "../elements/ListGenres/ListGenres";
 import EditGenre from "../elements/EditGenre/EditGenre";
 import Profile from "../Security/Profile/Profile";
@@ -26,6 +27,7 @@ import AddActor from "../elements/AddActor/AddActor";
 import AddGenre from "../elements/AddGenre/AddGenre";
 import EditUser from "../Security/EditUser/EditUser";
 import './App.css';
+import axios from "../../custom-axios/axios";
 
 
 class App extends React.Component {
@@ -145,8 +147,7 @@ class App extends React.Component {
                     return m.id !== movieId;
                 });
                 return {movie};
-            })
-
+            });
         })
     };
 
@@ -157,9 +158,8 @@ class App extends React.Component {
                     return a.id !== actorId;
                 });
                 return {actor};
-            })
-
-        })
+            });
+        });
     };
 
     deleteGenre = (genreId) => {
@@ -169,11 +169,9 @@ class App extends React.Component {
                     return g.id !== genreId;
                 });
                 return {genre};
-            })
-
-        })
+            });
+        });
     };
-
 
     deleteUser = (userId) => {
         UserService.deleteUser(userId).then((response) => {
@@ -183,18 +181,9 @@ class App extends React.Component {
                 });
                 return {user};
             })
-
         })
     };
 
-    deleteFavouriteMovie = (userId,movieId) => {
-        UserService.deleteFavouriteMovie(userId,movieId).then((response) =>{
-        },error => {
-            if (error.response.status === 409) {
-               console.log(error);
-            }
-        });
-    };
 
     addFavouriteMovie=(idMovie)=>{
         UserService.addFavouriteMovie(this.state.currentUser.id,idMovie,this.state.currentUser).then((response)=>{
@@ -271,7 +260,7 @@ class App extends React.Component {
 
                         <Route path="/login" component={LogIn} exact/>
                         <Route path="/register" component={Register} exact/>
-                        <Route path="/profile" render={()=> <Profile deleteFavourite={this.deleteFavouriteMovie} onPageClick={this.loadMoviesPaginate}  totalPages={this.state.totalPages} onDelete={this.deleteMovie} redirectForGenre={this.state.redirectForGenre} redirectForActor={this.state.redirectForActor}/>}  />
+                        <Route path="/profile" render={()=> <Profile onPageClick={this.loadMoviesPaginate}  totalPages={this.state.totalPages} onDelete={this.deleteMovie} redirectForGenre={this.state.redirectForGenre} redirectForActor={this.state.redirectForActor}/>}  />
 
                         <Route path="/movie/:id" render={()=> <Movie user={this.state.currentUser} userId={CurrentUserId} addMovieToFavourite={this.addFavouriteMovie}  errorMessage={this.state.errorMessageAddFavourite}  />} />
 
@@ -282,10 +271,11 @@ class App extends React.Component {
                         <Route path="/allActors" render={()=> <ListActors onDelete={this.deleteActor}/>}  />
                         <Route path="/allUsers" render={()=> <ListUser onDelete={this.deleteUser} />}  />
                         <Route path="/allGenres" render={()=> <ListGenres onDelete={this.deleteGenre} />}  />
+                        <Route path="/allFavourites" render={()=> <ListFavourites user={this.state.currentUser} />} />
 
                         <Route path="/editMovie/:id" render={()=> <EditMovie onSubmit={this.updateMovie}/>} />
                         <Route path="/editActor/:id" render={()=> <EditActor  onSubmit={this.updateActor}/>} />
-                        <Route path="/editGenre/:id" render={()=> <EditGenre  onSubmit={this.updateGenre}/>} />
+                        <Route path="/editGenre/:id" render={()=> <EditGenre   onSubmit={this.updateGenre}/>} />
                         <Route path="/user/edit/:id" render={()=> <EditUserWithoutImg errorMessage={this.state.errorMessage} onSubmit={this.updateUserWithoutImg}/>}/>
                         <Route path="/editUser/:id"  render={()=> <EditUser currentUserId={this.state.currentUser.id}/>}/>
 

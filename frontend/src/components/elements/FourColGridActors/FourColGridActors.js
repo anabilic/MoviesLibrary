@@ -16,6 +16,7 @@ const FourColGridActors = (props) => {
     return (
 
         <div className="rmdb-grid">
+            <h1>{props.header}</h1>
             <br/>
             <div className="rmdb-grid-content">
                 {renderElements()}
