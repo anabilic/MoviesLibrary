@@ -14,15 +14,13 @@ public interface JpaActorRepository extends JpaRepository<Actor,Long> {
     @Query("select m from Movie m where m.name in :movies")
     List<Movie> checkMovies(List<String> movies);
 
-
     @Query(value = "select a from Actor a where a.name=:name")
     Actor findByName(@Param("name") String name);
-
 
     @Query(value = "select a.name from Actor a where a.name like :name")
     String findBySameName(String name);
 
-    @Query(value="select a from Actor a where a.deletedFlag=0")
+    @Query(value="select a from Actor a where a.deletedFlag=0 order by a.name asc")
     List<Actor> getAllActors();
 
     @Query(value="select a from Actor a WHERE a.name like %:term% and a.deletedFlag=0")

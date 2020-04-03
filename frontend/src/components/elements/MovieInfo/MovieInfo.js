@@ -47,7 +47,6 @@ const MovieInfo = ({ movie, director, genres, addMovieToFavourite,errorMessage, 
                             ))}
                             <h3>DIRECTOR/S</h3>
                             <p className="rmdb-director">{director}</p>
-                            <p style={{color:'white'}}>Count: {count}</p>
 
                         </div>
                         <button href="#" className="btn btn-light buttonFavourites" onClick={() => {
