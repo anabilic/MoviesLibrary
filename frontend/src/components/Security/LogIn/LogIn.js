@@ -71,7 +71,7 @@ render() {
                         <label style={{color:'#800000',padding: '5px'}} htmlFor="username"> Username</label>
                         <input style={{boxShadow:'#800000'}} type="text" className="form-control" name="username" placeholder="Type username" value={user.username} onChange={(e)=>this.handleChange(e)}/>
                         {submitted && !user.username &&
-                        <div className="help-block">Username is required</div>
+                        <div className="help-block" style={{color:'red'}}>Username is required</div>
                         }
                     </div>
                     <div className={'form-group' + (submitted && !user.password ? 'has-error':'')}>
@@ -79,7 +79,7 @@ render() {
                         <label style={{color:'#800000',padding: '5px'}}  htmlFor="password">Password</label>
                         <input type="password" className="form-control" placeholder="Type password" name="password" value={user.password} onChange={(e)=>this.handleChange(e)}/>
                         {submitted && !user.password &&
-                        <div className="help-block">Password is required</div>
+                        <div className="help-block" style={{color:'red'}}>Password is required</div>
                         }
                     </div>
                     <br/>

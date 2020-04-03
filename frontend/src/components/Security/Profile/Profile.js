@@ -79,7 +79,7 @@ class Profile extends Component{
                     return fm.id !== movieId;
                 });
                 return {favMovie};
-            })
+            });
             this.loadFavouriteMoviesPaginate(0);
         })
     };
@@ -98,12 +98,11 @@ class Profile extends Component{
         }
 
         return(
-
             <div style={{backgroundColor:'#1c1c1c', fontFamily: 'Helvetica'}}>
                 <Navigation movie="Profile" />
-                    <div className="row" style={{backgroundColor:'#1c1c1c', fontFamily: 'Helvetica'}}>
+                    <div className="row" style={{fontFamily: 'Helvetica'}}>
                         {this.state.userDetails.role === 'USER' &&
-                        <div className="col-md-4">
+                        <div className="col-lg-4" style={{height:'600px'}}>
                             <br/>
                             <br/>
                             <br/>
@@ -121,7 +120,7 @@ class Profile extends Component{
                         </div>
                         }
                         {this.state.userDetails.role === 'ADMIN' &&
-                        <div className="col-md-4">
+                        <div className="col-lg-4">
                             <br/>
                             <br/>
                             <br/>
@@ -195,10 +194,9 @@ class Profile extends Component{
                             </Link>
                             </span>
                         </div>
-
                         }
                         {this.state.userDetails.role === 'ADMIN' &&
-                        <div className="col-md-8" style={{color: 'white'}}>
+                        <div className="col-lg-8" style={{color: 'white'}}>
                             <br/>
                             <br/>
                             <p className="font-italic"
@@ -224,18 +222,29 @@ class Profile extends Component{
                         </div>
                             }
                         {this.state.userDetails.role === 'USER' &&
-                        <div className="col-md-8" style={{color: 'white'}}>
+                        <div className="col-lg-8" style={{color: 'white'}}>
                             <br/>
                             <br/>
                             <p className="font-italic"
                                style={{fontSize: '25px', color: 'white', fontFamily: 'Helvetica'}}>Favourite movies</p>
-                            <hr className="new4" style={{width:'900px', marginLeft:'-15px'}}/>
+                            <hr className="new4" style={{width: '900px', marginLeft: '-15px'}}/>
+                            {this.state.favouriteMovies.length === 0 &&
+                            <div>
+                            <h2 style={{
+                                color: 'white',
+                                fontStyle: 'italic',
+                                display: 'absolute',
+                                marginTop: '50px',
+                            }}>You don't have any favorite movie right now!</h2>
+                            </div>
+                            }
+                            {this.state.favouriteMovies.length !== 0 &&
                             <div>
                                 <ThreeColGridFavourites
                                     onPageClick={this.loadFavouriteMoviesPaginate}
                                     totalPages={this.state.totalPages}
                                 >
-                                    {this.state.favouriteMovies && this.state.favouriteMovies.map( (element, i) => (
+                                    {this.state.favouriteMovies && this.state.favouriteMovies.map((element, i) => (
                                         <MovieThumbFavourite
                                             key={i}
                                             clickable={true}
@@ -243,15 +252,17 @@ class Profile extends Component{
                                             userId={this.state.user.id}
                                             movieId={element.id}
                                             movieName={element.name}
-                                            onDeleteFavourite = {this.deleteFavouriteMovie}
+                                            onDeleteFavourite={this.deleteFavouriteMovie}
                                         />
                                     ))}
                                 </ThreeColGridFavourites>
                             </div>
+                            }
                         </div>
+
                         }
                     </div>
-                </div>
+            </div>
         )
     }
 };

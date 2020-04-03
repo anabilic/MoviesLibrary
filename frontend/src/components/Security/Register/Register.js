@@ -85,7 +85,7 @@ class Register extends React.Component {
                             <input type="text" className="form-control" name="name" placeholder="Type full name" value={user.name}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !user.name &&
-                            <div className="help-block">Full name is required!</div>
+                            <div className="help-block" style={{color:'red'}}>Full name is required!</div>
                             }
                         </div>
 
@@ -95,7 +95,7 @@ class Register extends React.Component {
                             <input type="text" className="form-control" name="email" placeholder="Type email" value={user.email}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !validator.isEmail(user.email) &&
-                            <div className="help-block">Email is not valid!</div>
+                            <div className="help-block" style={{color:'red'}}>Email is not valid!</div>
                             }
                         </div>
 
@@ -105,7 +105,7 @@ class Register extends React.Component {
                             <input type="text" className="form-control" name="username" placeholder="Type username" value={user.username}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !user.username &&
-                            <div className="help-block">Username is required!</div>
+                            <div className="help-block" style={{color:'red'}}>Username is required!</div>
                             }
                         </div>
 
@@ -115,7 +115,7 @@ class Register extends React.Component {
                             <input type="password" className="form-control" name="password" placeholder="Type password" value={user.password}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && user.password.length < 8 &&
-                            <div className="help-block">Password must have minimum 8 characters!</div>
+                            <div className="help-block" style={{color:'red'}}>Password must have minimum 8 characters!</div>
                             }
                         </div>
 
@@ -125,7 +125,7 @@ class Register extends React.Component {
                             <input type="text" className="form-control" name="gender" placeholder="Type Female or Male" value={user.gender}
                                    onChange={(e) => this.handleChange(e)}/>
                             {submitted && !user.gender &&
-                            <div className="help-block">Gender is required</div>
+                            <div className="help-block" style={{color:'red'}}>Gender is required</div>
                             }
                         </div>
 
